@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/mongodb/rrhh/" />
-      <link rel="shortcut icon" href="../../../../../img/favicon.ico" />
-    <title>BD RRHH (Recursos Humans) extreta de la BD de proves d'SQL - SaPalomera Bases de dades</title>
-    <link rel="stylesheet" href="../../../../../css/theme.css" />
-    <link rel="stylesheet" href="../../../../../css/theme_extra.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/mongodb/sistema_solar/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>BD Sistema Solar - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "BD RRHH (Recursos Humans) extreta de la BD de proves d\u0027SQL";
-        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\MYSQL\\mongodb\\rrhh\\README.md";
-        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/mongodb/rrhh/";
+        var mkdocs_page_name = "BD Sistema Solar";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\mongodb\\sistema_solar\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/mongodb/sistema_solar/";
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../../../../../js/html5shiv.min.js"></script>
+      <script src="../../../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
@@ -31,9 +31,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../../../../.." class="icon icon-home"> SaPalomera Bases de dades
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -41,7 +41,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../../../..">About</a>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
                 </li>
               </ul>
       </div>
@@ -51,14 +51,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../..">SaPalomera Bases de dades</a>
+          <a href="../../../..">SaPalomera Bases de dades</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">BD RRHH (Recursos Humans) extreta de la BD de proves d'SQL</li>
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">BD Sistema Solar</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -67,7 +67,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="bd-rrhh-recursos-humans-extreta-de-la-bd-de-proves-dsql">BD RRHH (Recursos Humans) extreta de la BD de proves d'SQL</h1>
+                <h1 id="bd-sistema-solar">BD Sistema Solar</h1>
+<p>Base de dades i col·lecció dels cossos celestes del sistema solar</p>
+<p>Aquesta BD està extreta de MongoUniversity i l'ús que se'n vol fer és totalment docent.</p>
+<p>Per importar la BD podem utilitzar <code>mongoimport</code></p>
+<pre><code class="language-bash">$ mongoimport --db=solarSystem --collection=cossos --file=solarSystem.json
+</code></pre>
               
             </div>
           </div><footer>
@@ -95,11 +100,11 @@
     
   </span>
 </div>
-    <script src="../../../../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../../../../..";</script>
-    <script src="../../../../../js/theme_extra.js"></script>
-    <script src="../../../../../js/theme.js"></script>
-      <script src="../../../../../search/main.js"></script>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
