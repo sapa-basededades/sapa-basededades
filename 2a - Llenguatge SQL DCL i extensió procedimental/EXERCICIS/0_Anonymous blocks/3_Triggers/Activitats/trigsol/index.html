@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/2a%20-%20Llenguatge%20SQL%20DCL%20i%20extensi%C3%B3%20procedimental/EXERCICIS/0_Anonymous%20blocks/3_Triggers/Activitats/trigsol/" />
+      <link rel="shortcut icon" href="../../../../../../img/favicon.ico" />
+    <title>Triggers - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Triggers";
+        var mkdocs_page_input_path = "2a - Llenguatge SQL DCL i extensi\u00f3 procedimental\\EXERCICIS\\0_Anonymous blocks\\3_Triggers\\Activitats\\trigsol.md";
+        var mkdocs_page_url = "/2a%20-%20Llenguatge%20SQL%20DCL%20i%20extensi%C3%B3%20procedimental/EXERCICIS/0_Anonymous%20blocks/3_Triggers/Activitats/trigsol/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Triggers</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="triggers">Triggers</h1>
+<ol>
+<li>Utilitzant triggers per mantenir regles de negoci.
+Suposem que Middlesex Transport Authority (MTA) té una regla que estableix que el salari d’un conductor d’autobus no pot ser modificat per un import que superi el 20% del salari actual. 
+Crear un trigger que es dispari cada vegada que es produeixi una modificació en la columna salari de la taula d’empleats de manera que si modifiquem el salari d’un conductor que no respecti aquesta regla mostri un missatge d’error a l’usuari.</li>
+</ol>
+<pre><code class="language-sql">create or replace function f_salary_change_monitoring()
+returns trigger
+language plpgsql
+as
+$$
+begin
+  if ((OLD.salary &lt;&gt; 0 and ((NEW.salary/OLD.salary) &gt;= 1.2)) or
+     ( NEW.salary &lt;&gt;0 and (OLD.salary/NEW.salary) &gt;= 1.2)) then
+         RAISE EXCEPTION 'Large percentage change in salary prohibited.';
+   end if;
+   return NEW;
+end;$$;
+
+create trigger tr_salary_change_monitoring
+before update on employees
+for each row 
+execute procedure f_salary_change_monitoring();
+
+Update employees
+ set salary = 3600
+where last_name = 'Hunold';
+
+</code></pre>
+<ol>
+<li>Triggers per prevenir esborrats o modificacions.
+A la base de dades Empleats tenim una columna Department_id que fa referència al departament on treballen els empleats. Tot i aquesta clau forana enacara podriem posar un trigger a la taula Departments per aturar qualsevol canvi en el nom del departament o bé per aturar qualsevol acció d’eliminar una fila de la taula. Tot i que és força irreal imaginem que tenim una regla de negoci que estableix que una vegada creat un departament aquest s’ha de mantenir ‘per sempre’ i no pot canviar el seu nom. El trigger que crearem és un trigger de sentència i actuarà sobre els events DELETE I UPDATE department_name.</li>
+</ol>
+<pre><code class="language-sql">create or replace function f_dept_trigger()
+returns trigger
+language plpgsql as
+$$
+begin
+   RAISE EXCEPTION 'You are not allowed to change the value of dname or delete a dept row';
+end;$$;
+
+create trigger tr_dept_trigger
+before update of department_name or delete 
+on departments
+execute procedure f_dept_trigger();
+
+update departments
+set department_name = 'Hola que ase'
+where department_name = 'Marketing';
+
+</code></pre>
+<ol>
+<li>Crear triggers per validació de dades.
+Les Check constraint són similars a la validació de dades i és una opció que podem utilitzar en la sentència CREATE TABLE on podem especificar quin tipus de dades podem entrar en una columna en particular. Imaginem que tenim una regla de negoci que ens diu que els salaris no poden ser negatius o zero, ni majors de 30000€. Podriem crear una check constraint com aquesta:
+            check (salary &gt;0 and salary &lt;30000)
+Així qualsevol salari que sigui més petit o igual a 0 o més gran de 30000 causarà una violació de la constraint. Aplicant aquesta constraint, no obstant, no podrem saber si el salari era més gran de 30000€ o bé era negatiu o zero.
+Podem crear un trigger en comptes de la check constraint, que ens digui com s’ha infringit la restricció sobre aquesta column. D’aquesta manera si el salari està fora del rang (0 – 30000], el trigger generarà un missatge d’error informant a l’usuari si el salari és major de 30000 o bé és negatiu. 
+Aquest serà un trigger que haurà d’actuar a nivell de fila i només per a les operacions Insert i Update de la columna salary.</li>
+</ol>
+<pre><code class="language-sql">create or replace function f_verifica_salary_trigger()
+returns trigger language plpgsql
+as
+$body$
+begin
+    if NEW.salary &lt; 0 then
+        RAISE EXCEPTION 'The salary cannot be negative.';
+    end if;
+    if NEW.salary &gt; 5000 then
+        RAISE EXCEPTION 'The salary cannot exceed 30000.';
+    end if;
+end; $body$;
+
+
+create trigger tr_verifica_salary_trigger
+before update of salary or insert 
+on employees
+for each row
+when((NEW.salary &lt; 0) or (NEW.salary &gt; 30000))
+execute procedure f_verifica_salary_trigger();
+
+UPDATE employees
+SET salary = -9000
+WHERE employee_id = '114';
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../../../..";</script>
+    <script src="../../../../../../js/theme_extra.js"></script>
+    <script src="../../../../../../js/theme.js"></script>
+      <script src="../../../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

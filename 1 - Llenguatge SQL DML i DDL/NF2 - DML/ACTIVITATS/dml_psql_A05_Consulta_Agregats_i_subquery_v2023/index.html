@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A05_Consulta_Agregats_i_subquery_v2023/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>A05 – Consultes d'agregat de dades i subconsultes. - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "A05 \u2013 Consultes d\u0027agregat de dades i subconsultes.";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\ACTIVITATS\\dml_psql_A05_Consulta_Agregats_i_subquery_v2023.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A05_Consulta_Agregats_i_subquery_v2023/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">A05 – Consultes d'agregat de dades i subconsultes.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="a05-consultes-dagregat-de-dades-i-subconsultes">A05 – Consultes d'agregat de dades i subconsultes.</h1>
+<h2 id="descripcio-de-lactivitat">Descripció de l'activitat</h2>
+<ul>
+<li>Treballarem amb PostGreSQL i base de dades <strong>HR</strong> i <strong>PAGILA</strong>. </li>
+<li>Pots consultar els esquemes de la Base de Dades en el següent link: <a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></li>
+<li>Pots consultar el model relacional en el següent link:</li>
+<li><a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/1%20-%20DATABASES/ESQUEMES/1%20-%20POSTGRES/08%20-%20Pagila/pagila-erm.png">Pagila</a></li>
+<li>
+<p><a href="">HR</a></p>
+</li>
+<li>
+<p>Format d'entrega en pdf.</p>
+</li>
+<li>No adjunteu captures de pantalla ni de la consulta ni amb els resultats.</li>
+<li>Les imatges son orientatives</li>
+<li>Només vull la sentencia SQL escrita (així en cas de dubte la puc copiar-enganxar i executar-la)</li>
+</ul>
+<h2 id="resultats-daprenentatge">Resultats d'aprenentatge</h2>
+<p>RA1. Consulta i modifica la informació emmagatzemada en una base de dades emprant assistents, eines gràfiques i el llenguatge de manipulació de dades.
+- 1.a. Identifica les funcions, la sintaxi i les ordres bàsiques del llenguatge SQL (llenguatge d’interrogació estructurat) per consultar i modificar les dades de la base de dades de manera interactiva.
+- 1.b. Empra assistents, eines gràfiques i el llenguatge de manipulació de dades sobre un SGBDR corporatiu de manera interactiva i tenint en compte les regles sintàctiques.
+- 1.c. Realitza consultes simples de selecció sobre una taula (amb restricció i ordenació) per consultar les dades d’una base de dades.
+- 1.d. Realitza consultes utilitzant funcions afegides i valors nuls
+- 1.e. Realitza consultes amb diverses taules mitjançant composicions internes
+- 1.f. Realitza consultes amb diverses taules mitjançant composicions externes
+- 1.g. <strong>Realitza consultes amb subconsultes</strong></p>
+<h2 id="tasques">Tasques</h2>
+<h3 id="part-i-consultes-dagregat-de-dades-bdd-hr">Part I – Consultes d'agregat de dades (<strong>BDD HR</strong>)</h3>
+<ol>
+<li>Mostra el salari més alt, el més baix, la suma i la mitjana per tots els empleats. Anomena les columnes com a "Salari maxim", "Salari minim", Suma i Mitjana respectivament. Arrodoneix els resultats a l'enter més pròxim. (0,5 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img1.png" />
+(1 fila)</p>
+<ol>
+<li>Mostra la mitjana dels salaris i el número d'empleats que tenim. Arrodoneix la mitjana al número enter més pròxim i anomena les columnes com a "Salari mig" i "Num. Empleats" respectivament. (0,5 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img2.png" />
+(1 fila)</p>
+<ol>
+<li>Per cada diferent treball (JOB_ID), calcula la mitjana dels salaris. Mostra el nom del treball (JOB_TITLE) i ordena la informació per aquesta mateixacolumna. (1 punt)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img3.png" /></p>
+<p>(19 files)</p>
+<ol>
+<li>Fes una consulta per calcular la diferència que hi ha entre el salari major i el menor dels empleats (tots). Anomena la columna com a Diferencia. (0,5 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img4.png" /></p>
+<p>(1 fila)</p>
+<ol>
+<li>Mostra, per cada departament, el codi del departament i el salari de l'empleat pitjor pagat en aquest departament. Exclou els empleats que no tinguin assignat departament i els departaments on l'empleat pitjor pagat cobri menys de 6000 € (1 punt)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img5.png" /></p>
+<p>(6 files)</p>
+<p><img alt="Shape2" src="RackMultipart20230721-1-prj4cz_html_6ad3514c9ad98947.gif" /> <strong>BDD PAGILA</strong></p>
+<ol>
+<li>Quants clients te assignats cada encarregat (staff)? Ordena la informació per número de clients. (1 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img6.png" /></p>
+<p>(2 files)</p>
+<ol>
+<li>Obté el número de lloguers realitzats cada mes. El mes ha de sortir amb el següent format: mm/yyyy (ex: 05/2005). Ordena la informació per mes/any. Haureu d'agafar el camp rental_period que es un interval. Per agafar el primer valor del interval, la data en que va ser llogada, podeu fer servir la funció lower(rental_period)(1 punt)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img7.png" /></p>
+<p>(5 files)</p>
+<ol>
+<li>Quants actors diferents (ACTOR_ID) de la taula FILM_ACTOR tenim? Anomena la columna com a "Num d'actors". (0,5 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img8.png" /></p>
+<p>(1 fila)</p>
+<ol>
+<li>Escriu una consulta per mostrar el nom de cada client, la ciutat on viu el client, el número de lloguers i el cost mig per tots els lloguers del client. Anomena les columnes com Nom, Ciutat, Num_Lloguers i Cost_Mig respectivament. Arrodoneix el cost mig a dos decimals. Ordena la informació per ciutat i nom de client. (2 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img9.png" />
+(599 files)</p>
+<ol>
+<li>Volem saber les pel·lícules que s'han llogat més de 30 vegades. Volem saber el títol de la pel·lícula, l'any de llançament, el cost de reposició (replacement_cost) expressat en un valor entre 0 i 1 amb un decimal (els possibles null s'han de mostrar com a 0), i el número de vegades que s'ha llogat. Ordena la informació per número de vegades que s'ha llogat de major a menor. (2 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img10.png" /></p>
+<p>(16 registres)</p>
+<h2 id="part-ii-subconsultes">Part II – Subconsultes</h2>
+<p><strong>BDD HR</strong></p>
+<ol>
+<li>Obtenir el codi d'empleat, nom i salari dels empleats <strong>que tenen el mateix salari que l'empleat 104.</strong> (0,5 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img11.png" /></p>
+<p>(2 files)</p>
+<ol>
+<li>Obtenir el codi d'empleat, nom i salari dels empleats <strong>que tenen el mateix salari que l'empleat 104.</strong> Exclou l'empleat 104 del llistat. (0,5 punts)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img12.png" /></p>
+<p>(1 fila)</p>
+<ol>
+<li>Obté el codi empleat, nom i salari dels empleats <strong>que guanyen més que la mitjana del salari dels empleats</strong>. Ordena la informació per salari. (1 punt)</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img13.png" /></p>
+<p>(17 files)</p>
+<ol>
+<li>Tinc empleats del departament 9 que van ser contractat abans <strong>QUE TOTS</strong> elsempleat del departament 6? Mostra els cognoms i la data de contractació. (1 punt)</li>
+</ol>
+<p>(2 files)</p>
+<p><strong>BDD PAGILA</strong></p>
+<ol>
+<li>Obtenir l'identificador de pel·lícula, el títol i la durada del lloguer, de les pel·lícules que tenen el preu de lloguer més alt. (1 punt)</li>
+</ol>
+<p>(336 files)</p>
+<ol>
+<li>Volem saber les pel·lícules (títol i nom de la categoria) de la categoria <em>Drama</em> que tenen un cost de substitució (replacement_cost) menor que alguna de les pel·lícules de la categoria "<em>Classics"</em>. (Utilitza l'operador ANY) (1 punt)</li>
+</ol>
+<p>(38 files)</p>
+<ol>
+<li>Volem saber les pel·lícules (títol i nom de la categoria) de la categoria <em>Drama</em> que tenen un cost de substitució menor que TOTES les pel·lícules de la categoria "<em>Classics"</em>. (Utilitza l'operador ALL) (1 punt)</li>
+</ol>
+<p>(2 files)</p>
+<ol>
+<li>
+<p>Intenta respondre a la mateixa pregunta que l'apartat anterior però sense utilitzar l'operador ALL. Planteja-la com vulguis. (1punts)</p>
+</li>
+<li>
+<p>Volem saber id d'actor i nom complert dels actors que han treballat en alguna pel·lícula de les que tenen un cost de reposició (replacement_cost) de 9.99€. (Utilitza l'operador IN) (1 punts)</p>
+</li>
+</ol>
+<p>(135 files)</p>
+<ol>
+<li>Quines còpies no s'han llogat? Mostra el codi de còpia i el títol de la pel·lícula. Utilitza l'operador NOT IN. (2 punts)</li>
+</ol>
+<p>(1 fila)</p>
+<p><strong>Ampliació. Aquesta és de nivell a veure qui la treu! (Amb el vist fins i una mica d'imaginació es pot fer). (2 punts extra )</strong></p>
+<ol>
+<li>Volem saber el número total de lloguers que es van fer en cada un dels trimestres de 2005 i el total de pel·lícules llogades en aquest any. Cal mostrar la informació tal com s'indica en la figura.</li>
+</ol>
+<p><img alt="Tabla" src="../assets/A05_img21.png" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

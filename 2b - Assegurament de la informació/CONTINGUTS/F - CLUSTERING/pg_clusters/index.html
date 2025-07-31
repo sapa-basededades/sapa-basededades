@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/2b%20-%20Assegurament%20de%20la%20informaci%C3%B3/CONTINGUTS/F%20-%20CLUSTERING/pg_clusters/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Creació de Clusters amb Postgres - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Creaci\u00f3 de Clusters amb Postgres";
+        var mkdocs_page_input_path = "2b - Assegurament de la informaci\u00f3\\CONTINGUTS\\F - CLUSTERING\\pg_clusters.md";
+        var mkdocs_page_url = "/2b%20-%20Assegurament%20de%20la%20informaci%C3%B3/CONTINGUTS/F%20-%20CLUSTERING/pg_clusters/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Creació de Clusters amb Postgres</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creacio-de-clusters-amb-postgres">Creació de Clusters amb Postgres</h1>
+<h2 id="introduccio">Introducció</h2>
+<p>Un cluster és un conjunt de bases de dades de Postgres que es gestionen i administren juntes com una unitat. La creació de clusters és especialment útil en entorns d' alta disponibilitat i rendiment, on es requereix una escalabilitat horitzontal i una tolerància a fallades.
+En aquest curs, aprendrem com crear clusters amb Postgres utilitzant diverses configuracions i estratègies. Veurem com configurar nodes primaris i secundaris, com sincronitzar-los i com manejar les fallades en el cluster. També explorarem aspectes clau com la configuració de connexions, el balanceig de càrrega i la recuperació davant desastres.</p>
+<p>Durant aquest curs, abordarem els següents temes fonamentals:</p>
+<ol>
+<li>Arquitectura del Cluster: Explorarem l' estructura bàsica d' un cluster de Postgres, incloent-hi els rols dels nodes primaris i secundaris, així com la importància dels arxius de configuració.</li>
+<li>Instal·lació de Postgres: Aprendrem com instal·lar Postgres en un entorn de cluster, considerant els diversos sistemes operatius i les consideracions específiques de la instal·lació en cadascun d'ells.</li>
+<li>Configuració de Nodes Primaris i Secundaris: Veurem com configurar els nodes primaris i secundaris en el cluster, establint la comunicació entre ells i garantint la sincronització adequada.</li>
+<li>Gestió de Fallades: Analitzarem com manejar les fallades en un cluster de Postgres, incloent la detecció de fallades, l'elecció d'un nou node primari i la recuperació del cluster després d'una fallada.</li>
+<li>Balanç de Càrrega i Escalabilitat: Examinarem estratègies per distribuir la càrrega entre els nodes del cluster, permetent una major escalabilitat i rendiment en entorns amb alt trànsit.</li>
+<li>Backup i Recuperació davant Desastres: Estudiarem com realitzar recolzaments regulars de la base de dades i com restaurar-la davant possibles desastres, assegurant la continuïtat del sistema.</li>
+</ol>
+<h2 id="configuracio-i-gestio-d-un-cluster-de-postgresql">Configuració i gestió d' un clúster de PostgreSQL</h2>
+<h3 id="creacio-dun-cluster">Creació d'un cluster</h3>
+<p>El clúster de PostgreSQL és una configuració avançada que permet distribuir les tasques i dades de la base de dades en múltiples nodes. Això permet millorar el rendiment, garantir l' alta disponibilitat i garantir l' escalabilitat.
+En aquest tema, explorarem els aspectes clau per configurar i gestionar un clúster de PostgreSQL, incloent-hi la instal·lació, configuració inicial, sincronització de dades i la gestió de l'alta disponibilitat.</p>
+<h3 id="conceptes-basics">Conceptes bàsics</h3>
+<p>Abans de submergir-nos en la configuració d' un clúster de PostgreSQL, és important comprendre alguns conceptes clau:</p>
+<p><em>Clúster</em>
+Un clúster de PostgreSQL és un conjunt de bases de dades interconnectades que s' executen en múltiples nodes. Cada node és un servidor de base de dades independent que conté la seva pròpia base de dades i taula de catàleg.</p>
+<p><em>Nodes primaris i secundaris</em>
+Un clúster de PostgreSQL consta d' un node primari i un o més nodes secundaris. El node primari és responsable de gestionar les transaccions i les escriptures, mentre que els nodes secundaris s' utilitzen per a lectures i còpies de seguretat.</p>
+<p><em>Replicació</em>
+La replicació és el procés de copiar i sincronitzar les dades entre els nodes primaris i secundaris. Això garanteix que els nodes secundaris sempre estiguin actualitzats i disponibles per brindar lectures i recolzaments.</p>
+<p><em>Alta disponibilitat</em>
+L' alta disponibilitat es refereix a la capacitat del clúster de PostgreSQL per mantenir-se en funcionament fins i tot en cas de fallades en els nodes primaris. Això s' assoleix automàticament mitjançant la promoció d' un node secundari a primari en cas que el node primari falli.</p>
+<h3 id="configuracio-de-un-cluster-de-postgresql">Configuració de un clúster de PostgreSQL</h3>
+<p>A continuació, es presenten les passes per configurar un clúster de PostgreSQL:</p>
+<ol>
+<li>Instal·lació de PostgreSQL en els nodes: Per començar, haurem d'instalar PostgreSQL en cadascun dels nodes del clúster. Això es pot fer utilizant els paquets precompilats o compilant el codi font de PostgreSQL.</li>
+<li>Configuració inicial del node primarie: Una vegaa instal·lat, haurem de configurar el nodo primari. Això implica editar l'arxiu de configuració de PostgreSQL per habilitar la replicació i especificar els parámetres del clúster, com la direcció IP i el port.</li>
+<li>Configuració dels nodes secundaris: Després de configurar el node primari, haurem de  configurar els nodes secundaris. Això implica editar l'arxiu de configuració per especificar la direcció IP i el port del node primari, així como habilitar la replicació.</li>
+<li>Inici del clúster: Una vegada que tots els nodes estan configurats, podem iniciar el clúster de PostgreSQL. Això es pot fer mitjançant l'inici de cada instancia de servidor PostgreSQL.</li>
+<li>Sincronizació de dades: Desprñes d'iniciar el clúster, haurem d'assegurar de que les dades estiguin sincronitzades entre els nods primaris i secundarios. Esto se puede hacer configurando la replicación y realizando copias de seguridad y restauraciones iniciales.</li>
+</ol>
+<h3 id="gestio-d-un-cluster-de-postgresql">Gestió d' un clúster de PostgreSQL</h3>
+<p>Un cop el clúster de PostgreSQL estigui configurat i en funcionament, és fonamental gestionar-lo adequadament. A continuació, es presenten algunes tasques de gestió clau:</p>
+<h3 id="monitoratge-del-cluster">Monitoratge del clúster</h3>
+<p>És important monitorar el rendiment i la salut del clúster de PostgreSQL. Això implica supervisar els recursos del sistema, com l' ús de CPU i memòria, així com també supervisar el rendiment de les consultes i l' estat de la replicació.
+Resolució de conflictes
+En alguns casos, es poden produir conflictes de replicació dins del clúster. Aquests conflictes han de ser identificats i resolts per garantir la integritat de les dades. Això pot implicar la intervenció manual per corregir els conflictes i restablir la sincronització.
+Gestió de l' alta disponibilitat
+Per garantir una alta disponibilitat, és important configurar correctament la detecció de fallades i la promoció automàtica d' un node secundari a primari en cas de fallada del primari. Això requereix configurar el clúster perquè els nodes secundaris monitoritzin constantment la disponibilitat del node primari.</p>
+<h3 id="actualitzacions-i-pegats">Actualitzacions i pegats</h3>
+<p>Igual que qualsevol altre sistema, cal aplicar actualitzacions i pegats a un clúster de PostgreSQL per corregir errors i millorar la seguretat. Això s' ha de fer amb cura i seguint bones pràctiques d' actualització, com fer còpies de seguretat abans d' aplicar els canvis.</p>
+<p>La configuració i gestió d' un clúster de PostgreSQL és una tasca complexa però cabdal per garantir el rendiment, l' alta disponibilitat i l' escalabilitat de les bases de dades. Amb el coneixement dels conceptes bàsics i els passos necessaris, podem implementar amb èxit un clúster de PostgreSQL i gestionar-lo de manera efectiva.
+Esperem que aquest tema t'hagi proporcionat els coneixements necessaris per començar a treballar amb clústers de PostgreSQL i aprofitar al màxim aquesta configuració avançada.</p>
+<h3 id="manteniment-i-optimitzacio-de-clusters-amb-postgres">Manteniment i optimització de clusters amb postgres</h3>
+<p>El manteniment i optimització de clusters amb PostgreSQL és una tasca essencial per garantir el rendiment i l' eficiència dels sistemes de base de dades distribuïdes. En aquest tema, explorarem les millors pràctiques i tècniques per mantenir i optimitzar clusters amb PostgreSQL.</p>
+<h4 id="monitoratge-del-rendiment-del-cluster">Monitoratge del rendiment del cluster</h4>
+<p>El primer pas per al manteniment i optimització de clusters amb PostgreSQL és monitorar de manera contínua el seu rendiment. Això implica supervisar mètriques clau com la utilització del CPU, l' ús de memòria, el trànsit de xarxa i la càrrega de treball de les consultes. En utilitzar eines de monitoratge adequades, els administradors de bases de dades poden detectar colls d' ampolla i problemes de rendiment, la qual cosa els permet prendre mesures correctives de manera oportuna.</p>
+<h4 id="planificacio-del-creixement-del-cluster">Planificació del creixement del cluster</h4>
+<p>A mesura que augmenta la quantitat de dades i la càrrega de treball en un cluster amb PostgreSQL, és important planificar-ne el creixement adequat. Això implica agregar nous nodes al cluster, redistribuir les dades i realitzar ajustos en la configuració per aprofitar al màxim els recursos disponibles. La planificació adequada del creixement ajuda a evitar problemes de capacitat i assegura un rendiment òptim del cluster.</p>
+<h4 id="backups-i-recuperacio-de-dades">Backups i recuperació de dades</h4>
+<p>El manteniment d'un cluster amb PostgreSQL també implica establir polítiques de recolzaments i recuperació de dades. Els recolzaments regulars són essencials per garantir la disponibilitat de dades en cas de fallades o desastres. S' han de definir estratègies de suport adequades, que considerin la freqüència, el tipus de suport i els mecanismes de restauració. Així mateix, és important provar periòdicament la capacitat de recuperació del cluster per garantir que les dades es puguin restaurar correctament.</p>
+<h4 id="actualitzacions-de-programari-i-pegats">Actualitzacions de programari i pegats</h4>
+<p>En mantenir un cluster amb PostgreSQL, és fonamental mantenir-lo actualitzat amb les últimes versions de programari i pegats de seguretat. Les actualitzacions de programari proporcionen millores de rendiment, solució d' errors i noves característiques. Per assegurar un procés d' actualització sense problemes, s' han de seguir pràctiques recomanades, com realitzar proves exhaustives en entorns de prova abans d' aplicar les actualitzacions en producció.</p>
+<h4 id="optimitzacio-de-consultes-i-rendiment">Optimització de consultes i rendiment</h4>
+<p>L' optimització del rendiment de les consultes és un altre aspecte crític del manteniment i optimització de clusters amb PostgreSQL. Els administradors de bases de dades han d' analitzar el rendiment de les consultes i realitzar ajustaments en els índexs, la configuració de l' optimitzador i les estratègies d' emmagatzematge segons sigui necessari. A mesura que el cluster creix, també és important considerar la partició de taules per millorar l' eficiència de les consultes.</p>
+<h4 id="ajust-de-la-configuracio-del-cluster">Ajust de la configuració del cluster</h4>
+<p>Finalment, però no menys important, realitzar ajustos adequats en la configuració del cluster és essencial per mantenir i optimitzar clusters amb PostgreSQL. Els paràmetres de configuració com la mida del búfer, el nombre màxim de connexions i els valors de llindar s' han d' ajustar segons la càrrega de treball i els recursos disponibles. El seguiment del comportament del cluster i la realització d' ajustaments periòdics assegura un rendiment òptim i una major estabilitat.
+En resum, el manteniment i l' optimització de clusters amb PostgreSQL són processos continus que requereixen atenció constant. Mitjançant el monitoratge del rendiment, la planificació del creixement, els suports i la recuperació, les actualitzacions de programari, l' optimització de consultes i l' ajust de la configuració, els administradors poden garantir el màxim rendiment i la disponibilitat dels clústers amb PostgreSQL.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

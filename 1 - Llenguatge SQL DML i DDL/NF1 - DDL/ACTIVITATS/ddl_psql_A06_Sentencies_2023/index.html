@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF1%20-%20DDL/ACTIVITATS/ddl_psql_A06_Sentencies_2023/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>A06 - Creació de taules, manipulació de dades i gestió de transaccions - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "A06 - Creaci\u00f3 de taules, manipulaci\u00f3 de dades i gesti\u00f3 de transaccions";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF1 - DDL\\ACTIVITATS\\ddl_psql_A06_Sentencies_2023.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF1%20-%20DDL/ACTIVITATS/ddl_psql_A06_Sentencies_2023/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">A06 - Creació de taules, manipulació de dades i gestió de transaccions</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="a06-creacio-de-taules-manipulacio-de-dades-i-gestio-de-transaccions">A06 - Creació de taules, manipulació de dades i gestió de transaccions</h1>
+<h2 id="descripcio-de-lactivitat">Descripció de l'activitat</h2>
+<p>Realitzar un dels següents exercicis que representen diferents supòsits a partir dels requeriments per a l'obtenció d'una base de dades relacional.</p>
+<p>L'elecció de l'exercici es realitzarà en funció del següents càlcul:
+- D són els dos darrers números del DNI de l'alumne.
+- A són els dos darrers números del vostre any de naixement.
+- M és el número que correspon al mes de la vostra data de naixement</p>
+<p>N = (D+A+M) mod 4</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>EXERCICI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>D</td>
+</tr>
+</tbody>
+</table>
+<p><strong>És molt important que especifiqueu el vostre DNI i la fórmula mitjançant la que heu obtingut el número d'exercici a resoldre.</strong></p>
+<pre><code class="language-text">Cal lliurar un sol fitxer .sql:
+- que genera la base de dades i les taules
+- que crea les files i actualitza les taules de la base de dades.
+- que elimina totes les taules de la base de dades.
+</code></pre>
+<p><strong>En cadascun dels exercicis has de crear en el SGBD Postgresql la base de dades a partir de l'esquema lògic proposat. Creeu una nova base de dades amb la sentencia Create Database \&lt;nom_base_dades&gt; amb l'usuari postgres.</strong> </p>
+<h2 id="resultats-daprenentatge">Resultats d'aprenentatge</h2>
+<p>RA1. Consulta i modifica la informació emmagatzemada en una base de dades emprant assistents, eines gràfiques i el llenguatge de manipulació de dades.
+- 1.a. Identifica les funcions, la sintaxi i les ordres bàsiques del llenguatge SQL (llenguatge d’interrogació estructurat) per consultar i modificar les dades de la base de dades de manera interactiva.
+- 1.b. Empra assistents, eines gràfiques i el llenguatge de manipulació de dades sobre un SGBDR corporatiu de manera interactiva i tenint en compte les regles sintàctiques.
+- 1.c. Realitza consultes simples de selecció sobre una taula (amb restricció i ordenació) per consultar les dades d’una base de dades.
+- 1.d. Realitza consultes utilitzant funcions afegides i valors nuls
+- 1.e. Realitza consultes amb diverses taules mitjançant composicions internes
+- 1.f. Realitza consultes amb diverses taules mitjançant composicions externes.
+- 1.g. Realitza consultes amb subconsultes
+- 1.h. <strong>Identifica eines i sentències per modificar el contingut de la base de dades</strong>
+- 1.i. <strong>Formula consultes per inserir, modificar i/o eliminar dades de la base de dades</strong>
+- 1.j. <strong>Insereix en una taula dades com a resultat de l’execució d’una consulta</strong>
+- 1.k. <strong>Identifica les transaccions i el seu funcionament</strong>ç+
+- 1.l. <strong>Controla els canvis produïts per una transacció: parcialment o totalment.</strong></p>
+<h2 id="tasques">Tasques</h2>
+<table>
+<thead>
+<tr>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Exercici-A">Exercici A</a></td>
+</tr>
+<tr>
+<td><a href="#Exercici-B">Exercici B</a></td>
+</tr>
+<tr>
+<td><a href="#Exercici-C">Exercici C</a></td>
+</tr>
+<tr>
+<td><a href="#Exercici-D">Exercici D</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="exercici-a"><a id="ExerciciA"></a>Exercici A</h3>
+<p>De cares a la propera temporada un club de futbol vol dissenyar una base de dades per tal de controlar tot el Club. La base de dades que dissenyeu haurà de tenir en compte els següents apartats:</p>
+<p>▪ El Club té molts de socis. De cada un d'ells a part de les seves dades personals ens interessa saber tota la informació dels rebuts que com a soci ha anat pagant. Periòdicament el club, per cada soci genera el corresponent rebut que ha de pagar. Per cada soci se li genera el rebut 1, el 2, el 3 i així successivament. A més ens interessa saber el seu import, la data en que s'ha de pagar i el seu estat (pagat, pendent, retornat,....).</p>
+<p>▪ Aquest club disposa de moltes seccions (futbol, bàsquet, handbol,...). Cada secció està perfectament identificada i també ens interessa saber el seu telèfon, número de fax, e- Mail...</p>
+<p>▪ Els socis poden estar abonats a una o més seccions, per exemple hi ha socis que solament ho estan a la secció de futbol, altres solament de la de la bàsquet i altres a totes les seccions. Ens interessa saber des de quina data un soci està abonat a una secció.</p>
+<p>▪ Cada secció té un representant a la Junta de Govern del Club. Aquesta Junta està formada per moltes més persones (no totes elles representants de seccions) i només ens interessa saber les dades personals dels membres que la formen.</p>
+<p>▪ Els diferents equips ho són d'una única secció i estan agrupats per categories (tenim per exemple les categories infantils, juvenils, sènior,....). De cada categoria poden tenir varis equips. Cada equip ens ve identificat per un codi i també ens interessa saber el seu nom i patrocinador.</p>
+<p>▪ Cada equip està format per un conjunt de jugadors. Cada jugador ho és d'un únic equip. Per qüestions del reglament que solament permet jugar un número concret de jugadors no comunitaris ens interessa saber les nacionalitats que té cada jugador i que poden ser més d'una. També ens interessa saber des de quina data té cada jugador una determinada nacionalitat</p>
+<p>▪ Cada equip pot tenir un o més entrenadors i un entrenador pot ser-ho de varis equips, especialment en les categories infantils. A cada equip un entrenador i fa una tasca concreta que ens interessa saber (per exemple, entrenador principal, entrenador de porters, preparador físic....).</p>
+<p><strong>MODEL RELACIONAL OBTINGUT:</strong></p>
+<ul>
+<li>SOCI( <strong>soci_nif</strong> , soci_nom, soci_cog1, soci_cog2, soci_adreça, soci_codipostal, soci_poblacio, soci_telefon)</li>
+<li>REBUT( <strong>numero_rebut</strong> , _ <strong>soci_nif</strong> _, data_rebut, estat_rebut, import)</li>
+<li>JUNTA( <strong>junta_nif</strong> , junta_nom, junta_cog1, junta_cog2, junta_adreça, junta_codi_postal, junta_poblacio, junta_telefon, junta_mobil)</li>
+<li>SECCIO( <strong>seccio_codi</strong> , seccio_nom, seccio_telefon, seccio_fax, seccio_e_mail, <em>junta_nif</em>)</li>
+<li>CATEGORIA( <strong>categoria_codi,</strong> nom_categoria)</li>
+<li>EQUIP( <strong>equip_codi,</strong> equip_nom, equip_patrocinador, <em>seccio_codi, categoria_codi</em> )</li>
+<li>JUGADOR( <strong>jug_id,</strong> jugador_nom, jug_cog1, jugador_cog2, jug_data_naixement, <em>equip_codi</em>)</li>
+<li>NACIONALITAT( <strong>nac_sigles_id</strong> , nac_nom)</li>
+<li>NACIONALITATS_JUGADORS(<em> <strong>jug_identificador, nac_sigles_id</strong> </em>, data_nacionalitat)</li>
+<li>ENTRENADOR( <strong>entrenador_id</strong> , entrenador_nom, entrenador_cognoms )</li>
+<li>ABONATS(_ <strong>soci_Nif</strong> _ , _ <strong>seccio_codi</strong> _ , data_soci_seccio)</li>
+<li>TASCA_ENTRENADOR(_ <strong>entrenador_id, equip_codi,</strong> _ tasca, data_inici_tasca)</li>
+</ul>
+<p><strong>NOTA:</strong></p>
+<p>▪ Un camp en <strong>negreta</strong> significa clau primària.</p>
+<p>▪ Un camp en <em>cursiva</em> significa clau forana.</p>
+<p>▪ Un camp en _ <strong>negreta i cursiva</strong> _ significa clau primària i clau forana.</p>
+<p><strong>Part I – Crear l'estructura de la base de dades (6 punts)</strong></p>
+<p>Per cada taula heu de:</p>
+<p>▪ Definir les claus primàries i foranes segons el model relacional.</p>
+<p>▪ Definir el tipus de dades i la mida d'aquests.</p>
+<p>▪ Definir quines dades no poden contenir valors NULL.</p>
+<p>▪ Indiqueu les següents restriccions:</p>
+<table>
+<thead>
+<tr>
+<th>TAULA</th>
+<th>CAMP</th>
+<th>RESTRICCIÓ</th>
+<th>VALOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REBUT</td>
+<td>DATA_REBUT</td>
+<td>DEFAULT</td>
+<td>Data del sistema</td>
+</tr>
+<tr>
+<td>REBUT</td>
+<td>ESTAT_REBUT</td>
+<td>DEFAULT</td>
+<td>'Pendent'</td>
+</tr>
+<tr>
+<td>SECCIO</td>
+<td>SECCIO_NOM</td>
+<td>CHECK</td>
+<td>Tot en majúscules</td>
+</tr>
+<tr>
+<td>SECCIO</td>
+<td>SECCIO_EMAIL</td>
+<td>CHECK</td>
+<td>Ha de contenir el símbol @ amb alguna dada a la part esquerra i alguna dada a la part dreta.</td>
+</tr>
+<tr>
+<td>CATEGORIA</td>
+<td>NOM_CATEGORIA</td>
+<td>CHECK</td>
+<td>Primera lletra en majúscules</td>
+</tr>
+<tr>
+<td>EQUIP</td>
+<td>EQUIP_NOM</td>
+<td>UNIQUE</td>
+<td>No pot haver valors duplicats</td>
+</tr>
+<tr>
+<td>NACIONALITAT_JUGADORS</td>
+<td>DATA_NACIONALITAT</td>
+<td>DEFAULT</td>
+<td>Data del sistema</td>
+</tr>
+<tr>
+<td>ABONATS</td>
+<td>DATA_SOCI_SECCIO</td>
+<td>DEFAULT</td>
+<td>Data d'inici de la temporada (inventeu-vos-la)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part II – Altres. (4 punts)</strong></p>
+<p>Les sentències DML que es demanen a continuació s'han d'executar dins d'una transacció, cada un dels apartats.</p>
+<ul>
+<li>Inserir per a cadascuna de les taules el número de files indicat en el següent quadre: (Inventeu les valors tot tenint en compte que han de complir les restriccions abans esmentades, les dates han de ser d'aquest any (excepte dates de naixement o nacionalitat), s'han de complir també totes les regles d'integritat) (2 punts)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>TAULA</th>
+<th>Nº Registres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOCI</td>
+<td>10</td>
+</tr>
+<tr>
+<td>REBUT</td>
+<td>2</td>
+</tr>
+<tr>
+<td>JUNTA</td>
+<td>3</td>
+</tr>
+<tr>
+<td>SECCIÓ</td>
+<td>3</td>
+</tr>
+<tr>
+<td>CATEGORIA</td>
+<td>6</td>
+</tr>
+<tr>
+<td>EQUIP</td>
+<td>6</td>
+</tr>
+<tr>
+<td>JUGADOR</td>
+<td>10</td>
+</tr>
+<tr>
+<td>NACIONALITAT</td>
+<td>5</td>
+</tr>
+<tr>
+<td>NACIONALITATS_JUGADORS</td>
+<td>12 (2 jugadors amb 2 nacionalitats)</td>
+</tr>
+<tr>
+<td>ENTRENADOR</td>
+<td>6</td>
+</tr>
+<tr>
+<td>ABONATS</td>
+<td>6</td>
+</tr>
+<tr>
+<td>TASCA_ENTRENADOR</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Realitza les següents actualitzacions a la base de dades: (2 punts)</p>
+</li>
+<li>
+<p>Modifica tots els rebuts del mes de novembre que estiguin pendents a l'estat 'Pagat'.</p>
+</li>
+<li>El soci número 2 ha retornat el rebut del mes d'octubre, modifica'l a l'estat 'Retornat'</li>
+<li>Un jugador acaba de rebre la nacionalitat 'Andorrana' en data 15/11/2021 (si la nacionalitat Andorrana no existeix a la taula Nacionalitat afegeix-la)</li>
+<li>Hem substituït a l'entrenador d'un dels equips, dona d'alta el nou entrenador i elimina l'entrenador existent, juntament amb les tasques que realitzava.</li>
+<li>Hem incrementat l'import de tots els rebuts de novembre en un 0,5%.</li>
+</ul>
+<hr />
+<h3 id="exercici-b"><a id="ExerciciB"></a>Exercici B</h3>
+<p>De cares a l'obertura de la propera temporada un parc d'atraccions vol dissenyar una base de dades per a controlar el manteniment de les seves instal·lacions. La base de dades que dissenyeu haurà de tenir en compte els següents apartats:</p>
+<ul>
+<li>
+<p>Per cada atracció es vol guardar un identificador, el nom, la data en que es va instal·lar, la periodicitat amb la que s'ha de revisar (mensual, bimensual, trimestral, semestral o anual), i la seva posició geogràfica (longitud i latitud).</p>
+</li>
+<li>
+<p>S'han estipulat uns requisits d'alçada i/o edat per als usuaris de les atraccions que estaran associats a cada atracció. (p.e.: Alçada mínima 90cm acompanyat d'un adult, o entre 3 i 12 anys). Dels requisits ens guardarem un identificador únic, l'alçada mínima, l'alçada màxima, l'edat mínima, l'edat màxima, apte per infants (Si o No) i si els infants han d'anar acompanyats d'un adult (Si o No).</p>
+</li>
+<li>
+<p>Les atraccions poden ser revisades per una o més empreses, de les que es guardarà el nom, el NIF (per poder facturar), el telèfon i un nom de contacte.</p>
+</li>
+<li>
+<p>Per a cada actuació d'una empresa en una atracció es guardarà només la data en que es va fer la darrera revisió, el temps que ha passat des de llavors i els empleats de l'empresa que la van fer.</p>
+</li>
+<li>
+<p>Per seguretat, és important mantenir la informació de cada treballador de les diferents empreses que intervenen en la revisió, de manera que es guardarà a la base de dades el seu nom i cognoms, el seu nif, que servirà com a identificador, i la data en que va entrar a treballar a l'empresa. També es guardarà quin és el seu superior.</p>
+</li>
+<li>
+<p>Per motius tècnics de manteniment necessitem saber determinades característiques d'alguns dels treballadors. Dels electricistes necessitem registrar si poden signar butlletins d'instal·lació (Si o No) i la data en la que es varen treure el títol que ho acredita, i dels electrònics necessitem saber quina és la seva especialització. Es pot donar la circumstància que un mateix treballador sigui electricista facultat per signar butlletins i electrònic.</p>
+</li>
+<li>
+<p>Per tal de realitzar un seguiment més acurat de l'estat de les atraccions, es vol guardar la valoració (valor entre 0 i 5) i comentaris que facin els diferents usuaris, dels que guardarem un identificador, el nom, cognoms, adreça de correu electrònic i data del comentari.</p>
+</li>
+</ul>
+<p><strong>MODEL RELACIONAL OBTINGUT:</strong></p>
+<ul>
+<li>ATRACCIO ( <strong>codi_atraccio</strong> , nom_atraccio, data_inauguracio, periodicitat_revisio, posicio_longitut, posicio_latitut, <em>Id_requisit</em>)</li>
+<li>REQUISIT_ATRACCIO( <strong>Id_requisit</strong> , edat_minima, edat_maxima, alçada_minima, alçada_maxima, apte_infant, acompanyat_adult)</li>
+<li>EMPRESA ( <strong>CIF</strong> , nom_empresa, telefon, nom_contacte)</li>
+<li>TREBALLADOR( <strong>NIF</strong> , nom_treballador, primer_cognom, segon_cognom, <em>nif_supervisor, CIF_empresa,</em> data_inici)</li>
+<li>ELECTRICISTA(<em> <strong>NIF</strong> </em>, signa_butlleti, data_titulacio)</li>
+<li>ELECTRONIC(<em> <strong>NIF</strong> </em>, titulacio)</li>
+<li>REVISIO (<em> <strong>codi_atraccio, CIF_empresa, NIF_treballador</strong> </em>, <strong>data_revisio</strong> )</li>
+<li>USUARI( <strong>Id_usuari</strong> , nom_usuari, cognoms_usuari, email)</li>
+<li>VALORACIÓ(<em> <strong>Id_usuari,</strong> _ <strong>data_hora_valoracio</strong> , valoracio, comentari, _codi_atraccio</em>)</li>
+</ul>
+<p><strong>NOTA:</strong></p>
+<p>▪ Un camp en <strong>negreta</strong> significa clau primària.</p>
+<p>▪ Un camp en <em>cursiva</em> significa clau forana.</p>
+<p>▪ Un camp en _ <strong>negreta i cursiva</strong> _ significa clau primària i clau forana.</p>
+<p><strong>Part I – Crear l'estructura de la base de dades (6 punts)</strong></p>
+<p>Per cada taula heu de:</p>
+<p>▪ Definir les claus primàries i foranes segons el model relacional.</p>
+<p>▪ Definir el tipus de dades i la mida d'aquests.</p>
+<p>▪ Definir quines dades no poden contenir valors NULL.</p>
+<p>▪ Indiqueu les següents restriccions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>TAULA</strong></th>
+<th><strong>CAMP</strong></th>
+<th><strong>RESTRICCIÓ</strong></th>
+<th><strong>VALOR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMPRESA</td>
+<td>NOM_EMPRESA</td>
+<td>CHECK</td>
+<td>Tot en majúscules</td>
+</tr>
+<tr>
+<td>ATRACCIÓ</td>
+<td>NOM_ATRACCIÓ</td>
+<td>UNIQUE</td>
+<td>No poden haver dues atraccions amb el mateix nom.</td>
+</tr>
+<tr>
+<td>REQUISIT_ATRACCIÓ</td>
+<td>APTE_INFANT, ACOMPANYAT_ADULT</td>
+<td>CHECK</td>
+<td>Només admetem valors 'Si', 'No'</td>
+</tr>
+<tr>
+<td>TREBALLADOR</td>
+<td>PRIMER_COGNOM, SEGON_COGNOM</td>
+<td>CHECK</td>
+<td>Primera lletra en majúscules</td>
+</tr>
+<tr>
+<td>ELECTRICISTA</td>
+<td>SIGNA_BUTLLETI</td>
+<td>CHECK</td>
+<td>Només admetem valors 'Si', 'No'</td>
+</tr>
+<tr>
+<td>REVISIO</td>
+<td>DATA_REVISIÓ</td>
+<td>DEFAULT</td>
+<td>Data del sistema</td>
+</tr>
+<tr>
+<td>USUARI</td>
+<td>EMAIL</td>
+<td>CHECK</td>
+<td>Ha de contenir el caràcter @ i ha d'haver un o més caràcters a dreta I esquerra de @.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VALORACIO</td>
+<td>VALORACIO</td>
+<td>CHECK</td>
+<td>La valoració ha de ser un valor numèric entre 0 i 5</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part II – Altres. (4 punts)</strong></p>
+<p>Les sentències DML que es demanen a continuació s'han d'executar dins d'una transacció, cada un dels apartats.</p>
+<ul>
+<li>Inserir per a cadascuna de les taules el número de files indicat en el següent quadre: (Inventeu les valors tot tenint en compte que han de complir les restriccions abans esmentades, les dates han de ser d'aquest, s'han de complir també totes les regles d'integritat) (2 punts)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>TAULA</strong></th>
+<th><strong>Nº REGISTRES</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ATRACCIO</td>
+<td>4</td>
+</tr>
+<tr>
+<td>REQUISIT_ATRACCIO</td>
+<td>4</td>
+</tr>
+<tr>
+<td>EMPRESA</td>
+<td>4</td>
+</tr>
+<tr>
+<td>TREBALLADOR</td>
+<td>10</td>
+</tr>
+<tr>
+<td>ELECTRICISTA</td>
+<td>6</td>
+</tr>
+<tr>
+<td>ELECTRONIC</td>
+<td>2</td>
+</tr>
+<tr>
+<td>REVISIO</td>
+<td>10</td>
+</tr>
+<tr>
+<td>USUARI</td>
+<td>5</td>
+</tr>
+<tr>
+<td>VALORACIÓ</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Realitza les següents actualitzacions a la base de dades: (2 punts)</p>
+</li>
+<li>
+<p>Actualitza la periodicitat de totes les atraccions de gener de 2021 i que tenen periodicitat 'Mensual' a periodicitat 'Bimensual'.</p>
+</li>
+<li>L'empresa amb CIF 'XXX' ha modificat el número de telèfon a 9999922, actualitza'l.</li>
+<li>L'empresa amb CIF 'XXX' ha contractat un nou treballador, dona'l d'alta (inventa la informació). A més aquest treballador és electricista i pot signar butlletins des de la data '01/01/2019'.</li>
+<li>Hem donat de baixa a l'usuari amb id = 1 perquè era un 'bot', elimina'l juntament amb tots els seus comentaris.</li>
+<li>Hem detectat un error en la data de revisió de les revisions fetes el mes de juny, aquestes s'haurien fet durant el mes de juliol, incrementa en 1 mes la data de revisió.</li>
+</ul>
+<hr />
+<h3 id="exercici-c"><a id="ExerciciC"></a>Exercici C</h3>
+<p>El propietari d'una important cadena de supermercats ens ha encarregat dissenyar una base de dades per portar el control i la gestió dels aspectes referents al seu negoci. La base de dades que dissenyeu haurà de tenir en compte els següents apartats:</p>
+<ul>
+<li>
+<p>Cadascun dels supermercats estarà perfectament identificat amb un codi, un nom i una adreça. A més, cada supermercat disposarà dels seus propis empleats. Naturalment, cada supermercat de la cadena tindrà molts empleats tot i que cadascun d'ells només treballarà en un determinat supermercat. Cada supermercat té un empleat que el dirigeix i volem que això també quedi reflectit.</p>
+</li>
+<li>
+<p>Dels empleats volem guardar el NIF, el nom i cognoms.</p>
+</li>
+<li>
+<p>Cada supermercat disposa de varies caixes. Per cada súper identifiquem les caixes de la mateixa manera: 1, 2, 3, etc. i guardarem també la data de la última revisió tècnica que es va fer a cada caixa.</p>
+</li>
+<li>
+<p>Els productes del supermercat estan perfectament identificats pel codi intern, un codi de barres i ens interessa saber també el seu nom i el preu de venda. També ens interessa saber la quantitat de producte (stock) que hi ha en cada supermercat i quina és la quantitat mínima que hi ha d'haver a cada supermercat abans de demanar-ne més als proveïdors.</p>
+</li>
+<li>
+<p>Quan falta algun producte, el supermercat el compra a qualsevol dels seus proveïdors. Volem guardar únicament la quantitat, el preu i la data en que es va realitzar la última compra de cada producte a cada proveïdor. Hem de tenir en compte que les productes es poden comprar a proveïdors diferents.</p>
+</li>
+<li>
+<p>Dels proveïdors coneixem el seu CIF, Nom, Adreça, email, Telèfon i persona de contacte.</p>
+</li>
+<li>
+<p>Els clients van al supermercat a realitzar les seves compres. Alguns dels clients els tenim identificats en el nostre sistema ja que han adquirit la targeta del súper per poder optar a descomptes. D'aquests clients en sabem el seu nom complert, DNI, telèfon, data de naixement i edat i número de targeta.</p>
+</li>
+<li>
+<p>Per cada compra que es realitza es genera un tiquet amb un codi únic, una data-hora i un import total que el calcularem a partir dels productes que s'han adquirit. De cada tiquet volem saber els productes que conté així com la quantitat i preu de cada producte, i en quina de les caixes del súper s'ha generat el tiquet.</p>
+</li>
+<li>
+<p>En cas que el client el tinguem registrat voldrem saber a quin client li hem fet el tiquet i quin descompte (import) li hem aplicat.</p>
+</li>
+</ul>
+<p><strong>MODEL RELACIONAL OBTINGUT:</strong></p>
+<ul>
+<li>SUPERMERCAT ( <strong>codi_super</strong> , nom_super, adreça_carrer, adreça_codipostal, adreça_poblacio, <em>NIF_director</em>)</li>
+<li>EMPLEAT ( <strong>NIF</strong> , nom_treballador, primer_cognom, segon_cognom, <em>codi_super</em>)</li>
+<li>PRODUCTE ( <strong>Codi_producte</strong> , descripció, codi_barres, pvp)</li>
+<li>PROVEIDOR ( <strong>CIF</strong> , nom_proveidor, adreça, email, telefon, persona_contacte)</li>
+<li>PROD_PROV (<em> <strong>Codi_producte, CIF_proveidor</strong> </em>, data_compra, preu_compra, quantitat_compra)</li>
+<li>STOCK_PROD (_ <strong>Codi_super, Codi_producte,</strong> _ stock, stock_minim)</li>
+<li>CAIXA (_ <strong>Codi_super,</strong> _ <strong>Num_caixa</strong> , data_revisio)</li>
+<li>
+<p>CLIENT ( <strong>DNI_client</strong> _ <strong>,</strong> _ nom, cognoms, telefon, data_neixement, num_targeta)</p>
+</li>
+<li>
+<p>TIQUET ( <strong>Id_tiquet</strong> , data_hora, <em>Codi_super, Num_caixa, DNI_client,</em> Descompte)</p>
+</li>
+<li>
+<p>DETALL_TIQUET (_ <strong>Id_tiquet, Codi_producte</strong> _ <strong>,</strong> preu, quantitat)</p>
+</li>
+</ul>
+<p><strong>NOTA:</strong></p>
+<p>▪ Un camp en <strong>negreta</strong> significa clau primària.</p>
+<p>▪ Un camp en <em>cursiva</em> significa clau forana.</p>
+<p>▪ Un camp en _ <strong>negreta i cursiva</strong> _ significa clau primària i clau forana.</p>
+<p><strong>Part I – Crear l'estructura de la base de dades (6 punts)</strong></p>
+<p>Per cada taula heu de:</p>
+<p>▪ Definir les claus primàries i foranes segons el model relacional.</p>
+<p>▪ Definir el tipus de dades i la mida d'aquests.</p>
+<p>▪ Definir quines dades no poden contenir valors NULL.</p>
+<p>▪ Indiqueu les següents restriccions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>TAULA</strong></th>
+<th><strong>CAMP</strong></th>
+<th><strong>RESTRICCIÓ</strong></th>
+<th><strong>VALOR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUPERMERCAT</td>
+<td>NOM_SUPER</td>
+<td>UNIQUE</td>
+<td>No poden haver dos supermercats amb el mateix nom</td>
+</tr>
+<tr>
+<td>PRODUCTE</td>
+<td>PVP</td>
+<td>CHECK</td>
+<td>No pot ser negatiu</td>
+</tr>
+<tr>
+<td>PRODUCTE</td>
+<td>CODI_BARRES</td>
+<td>CHECK</td>
+<td>La mida del codi de barres ha de ser de 13 caràcters ja que treballem amb EAN-13</td>
+</tr>
+<tr>
+<td>EMPLEAT</td>
+<td>PRIMER_COGNOM, SEGON_COGNOM</td>
+<td>CHECK</td>
+<td>Primera lletra en majúscules</td>
+</tr>
+<tr>
+<td>PROD_PROV</td>
+<td>QUANTITAT_COMPRA</td>
+<td>DEFAULT</td>
+<td>Per defecte ha de ser 1 unitat</td>
+</tr>
+<tr>
+<td>PROD_PROV</td>
+<td>DATA_COMPRA</td>
+<td>DEFAULT</td>
+<td>Data del sistema</td>
+</tr>
+<tr>
+<td>PROVEIDOR</td>
+<td>EMAIL</td>
+<td>CHECK</td>
+<td>Ha de contenir el caràcter @ i ha d'haver un o més caràcters a dreta I esquerra de @.</td>
+</tr>
+<tr>
+<td>STOCK_PROD</td>
+<td>STOCK_MINIM</td>
+<td>DEFAULT</td>
+<td>Tots els productes han de tenir un valor d'stock mínim, inventeu-vos-el.</td>
+</tr>
+<tr>
+<td>DETALL_TIQUET</td>
+<td>DESCOMPTE</td>
+<td>CHECK</td>
+<td>El valor del descompte ha d'estar comprès entre 0 i 1 (això també ho podeu controlar segons com definiu el tipus de dada i mida)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part II – Altres. (4 punts)</strong></p>
+<p>Les sentències DML que es demanen a continuació s'han d'executar dins d'una transacció, cada un dels apartats.</p>
+<ul>
+<li>Inserir per a cadascuna de les taules el número de files indicat en el següent quadre: (Inventeu les valors tot tenint en compte que han de complir les restriccions abans esmentades, les dates han de ser d'aquest, s'han de complir també totes les regles d'integritat) (2 punts)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>TAULA</strong></th>
+<th><strong>Nº REGISTRES</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUPERMERCAT</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EMPLEAT</td>
+<td>10</td>
+</tr>
+<tr>
+<td>PRODUCTE</td>
+<td>10</td>
+</tr>
+<tr>
+<td>PROVEIDOR</td>
+<td>4</td>
+</tr>
+<tr>
+<td>PROD_PROV</td>
+<td>10</td>
+</tr>
+<tr>
+<td>STOCK_PROD</td>
+<td>10</td>
+</tr>
+<tr>
+<td>CAIXA</td>
+<td>4</td>
+</tr>
+<tr>
+<td>CLIENT</td>
+<td>5</td>
+</tr>
+<tr>
+<td>TIQUET</td>
+<td>5</td>
+</tr>
+<tr>
+<td>DETALL_TIQUET</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Realitza les següents actualitzacions a la base de dades: (2 punts)</p>
+</li>
+<li>
+<p>Hem detectat que els tiquets del dia 20/04/2021 de la caixa 1 realment corresponien a la caixa 2, actualitza'ls.</p>
+</li>
+<li>El client amb NIF 'XXX' ha modificat el número de telèfon a 9999922, actualitza'l.</li>
+<li>Hem contractat un nou empleat, dona'l d'alta. Aquest empleat serà el nou director del supermercat 1.</li>
+<li>Hem d'eliminar el tiquet 3 de la caixa 2, elimina'l juntament amb el seu detall.</li>
+<li>El proveïdor amb id = 2 ha incrementat el preu dels seus producte un 0,5 %, actualitza'ls.</li>
+</ul>
+<hr />
+<h3 id="exercici-d"><a id="ExerciciD"></a>Exercici D</h3>
+<p>El propietari d'una important empresa de lloguer de cotxes ens ha encarregat dissenyar una base de dades per portar el control i la gestió dels aspectes referents al seu negoci. La base de dades que dissenyeu haurà de tenir en compte els següents apartats:</p>
+<p>• La cadena de lloguer de cotxes Gas pot tenir diversos establiments. De cada establiment volem enregistrar un codi d'establiment, nom i adreça.</p>
+<p>• Cada establiment tindrà un únic encarregat que s'ocuparà de la seva gestió. Dels encarregats volem guardar un codi d'encarregat, nom, cognom, email, nom d'usuari i contrasenya. Un encarregat només gestionarà un sol establiment.</p>
+<p>• Evidentment voldrem tenir les dades dels nostres clients. Per als clients guardarem un codi de client, nom, cognom, email. Els clients ho seran únicament d'un sol establiment.</p>
+<p>• Per a una correcta gestió de les adreces on viuen els nostres clients i encarregats crearem una estructura formada per països, ciutats i adreces.</p>
+<p>• Dels països guardarem un codi de país i nom.</p>
+<p>• De les ciutats guardarem un codi de ciutat i nom.</p>
+<p>• Les ciutats hauran de pertànyer a un únic país, els països tindran moltes ciutats.</p>
+<p>• Per les adreces guardarem un codi d'adreça, nom del carrer, districte o barri, codi postal i telèfon de contacte.</p>
+<p>• Una adreça haurà de pertànyer a una ciutat, evidentment en una mateixa ciutat podem tenir vàries adreces, per exemple les adreces de tots els clients de Barcelona.</p>
+<p>• Tant els establiments, com els clients i els encarregats tindran una adreça associada, una sola adreça.</p>
+<p>• Enregistrarem els vehicles que tenim en lloguer. Dels vehicles volem saber matrícula, marca, model, cilindrada, capacitat maleter m3, any de matriculació i preu del lloguer.</p>
+<p>• Els vehicles es classificaran en diferents categories ( Econòmic, Compactes, SUV, Familiars, Sedan, Monovolums, ... ). De les categories guardarem un codi de categoria i una descripció. Un vehicle només pot pertànyer a una sola categoria.</p>
+<p>• Els vehicles tindran una sèrie de característiques addicionals que compartiran, com són numero de portes, numero d'ocupants, canvi manual o automàtic, aire condicionat. D'aquestes característiques guardarem un identificador únic i una descripció ( ex: 5 portes, 5 – 7 ocupants, manual, aire condicionat )</p>
+<p>• Els clients lloguen vehicles, necessitem saber la data de lloguer, la data de devolució, si han tornat el vehicle amb el dipòsit ple i si han contractat assegurança.</p>
+<p>• Per acabar, volem registrar el pagament que fan els clients per el lloguer dels vehicles. Per tant un client paga per cada una dels vehicles que ha llogat. Dels pagaments volem saber l'import i la data de pagament. Un lloguer pot tenir més d'un pagament associat, aquests s'identificaran amb un número de pagament.</p>
+<p><strong>MODEL RELACIONAL OBTINGUT:</strong></p>
+<ul>
+<li>ESTABLIMENT ( <strong>codi_establiment</strong> , nom_establiment, <em>codi_adreça</em>, <em>codi_encarregat</em>)</li>
+<li>ENCARREGAT ( <strong>codi_encarregat</strong> , nom, primer_cognom, segon_cognom, <em>codi_adreça</em>)</li>
+<li>ADREÇA ( <strong>Codi_adreça</strong> , carrer, numero, codi_postal, <em>codi_ciutat</em>)</li>
+<li>CIUTAT ( <strong>Codi_ciutat</strong> , nom_ciutat, <em>codi_pais</em>)</li>
+<li>PAIS ( <strong>Codi_pais</strong> , nom_pais)</li>
+<li>CLIENT ( <strong>DNI_client</strong> _ <strong>,</strong> _ nom, primer_cognom, segon_cognom, <em>codi_adreça</em>, email, telefon, <em>codi_establiment</em>)</li>
+<li>VEHICLE ( <strong>Matrícula</strong> , marca, model, cilindrada, capacitat, data_matriculacio, preu_lloguer, <em>codi_categoria</em>)</li>
+<li>CATEGORIA ( <strong>Codi_categoria</strong> , descripcio)</li>
+<li>CARACTERISTIQUES ( <strong>Codi</strong> , descripcio)</li>
+<li>CARACTERISTIQUES_VEHICLE(<em> <strong>Matrícula, Codi_caracteristica</strong> </em>)</li>
+<li>LLOGUER ( <strong>Id_lloguer</strong> , data_lloguer, data_devolució, contr_assegurança, contr_diposit_ple, <em>matrícula</em>, <em>dni_client</em>)</li>
+<li>PAGAMENT (_ <strong>Num_pagament, Id_lloguer,</strong> _ data_pagament, import)</li>
+</ul>
+<p><strong>NOTA:</strong></p>
+<p>▪ Un camp en <strong>negreta</strong> significa clau primària.</p>
+<p>▪ Un camp en <em>cursiva</em> significa clau forana.</p>
+<p>▪ Un camp en _ <strong>negreta i cursiva</strong> _ significa clau primària i clau forana.</p>
+<p><strong>Part I – Crear l'estructura de la base de dades (6 punts)</strong></p>
+<p>Per cada taula heu de:</p>
+<p>▪ Definir les claus primàries i foranes segons el model relacional.</p>
+<p>▪ Definir el tipus de dades i la mida d'aquests.</p>
+<p>▪ Definir quines dades no poden contenir valors NULL.</p>
+<p>▪ Indiqueu les següents restriccions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>TAULA</strong></th>
+<th><strong>CAMP</strong></th>
+<th><strong>RESTRICCIÓ</strong></th>
+<th><strong>VALOR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESTABLIMENT</td>
+<td>NOM_ESTABLIMENT</td>
+<td>UNIQUE</td>
+<td>No poden haver dos supermercats amb el mateix nom</td>
+</tr>
+<tr>
+<td>VEHICLE</td>
+<td>DATA_MATRICULACIO</td>
+<td>DEFAULT</td>
+<td>Data del sistema</td>
+</tr>
+<tr>
+<td>VEHICLE</td>
+<td>PREU_LLOGUER</td>
+<td>DEFAULT</td>
+<td>Tots els lloguers tenen el mateix preu per defecte. Inventeu-vos-el.</td>
+</tr>
+<tr>
+<td>VEHICLE</td>
+<td>PREU_LLOGUER</td>
+<td>CHECK</td>
+<td>No pot ser inferior a 0</td>
+</tr>
+<tr>
+<td>LLOGUER</td>
+<td>DATA_LLOGUER</td>
+<td>DEFAULT</td>
+<td>Data del sistema</td>
+</tr>
+<tr>
+<td>LLOGUER</td>
+<td>DATA_DEVOLUCIO</td>
+<td>CHECK</td>
+<td>No pot ser anterior a la data de lloguer</td>
+</tr>
+<tr>
+<td>LLOGUER</td>
+<td>CONTR_ASSEGURANÇA, CONTR_DIPOSITPLE</td>
+<td>CHECK</td>
+<td>Només es pot introduïr els valors 'Si' o 'No'</td>
+</tr>
+<tr>
+<td>CLIENT</td>
+<td>EMAIL</td>
+<td>CHECK</td>
+<td>Ha de contenir el caràcter @ i ha d'haver un o més caràcters a dreta I esquerra de @.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part II – Altres. (4 punts)</strong></p>
+<p>Les sentències DML que es demanen a continuació s'han d'executar dins d'una transacció, cada un dels apartats.</p>
+<ul>
+<li>Inserir per a cadascuna de les taules el número de files indicat en el següent quadre: (Inventeu les valors tot tenint en compte que han de complir les restriccions abans esmentades, les dates han de ser d'aquest, s'han de complir també totes les regles d'integritat) (2 punts)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>TAULA</strong></th>
+<th><strong>Nº REGISTRES</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESTABLIMENT</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ENCARREGAT</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CLIENT</td>
+<td>8</td>
+</tr>
+<tr>
+<td>ADREÇA</td>
+<td>10</td>
+</tr>
+<tr>
+<td>CIUTAT</td>
+<td>5</td>
+</tr>
+<tr>
+<td>PAIS</td>
+<td>4</td>
+</tr>
+<tr>
+<td>VEHICLE</td>
+<td>5</td>
+</tr>
+<tr>
+<td>CATEGORIA</td>
+<td>3</td>
+</tr>
+<tr>
+<td>CARACTERISTIQUES</td>
+<td>5</td>
+</tr>
+<tr>
+<td>CARACTERISTIQUES_VEHICLE</td>
+<td>10</td>
+</tr>
+<tr>
+<td>LLOGUER</td>
+<td>10</td>
+</tr>
+<tr>
+<td>PAGAMENT</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Realitza les següents actualitzacions a la base de dades: (2 punts)</p>
+</li>
+<li>
+<p>Volem canviar la categoria dels vehicles de la categoria 'SEDANE' i que tenen la característica '7 places' per la categoria 'FAMILIAR'.</p>
+</li>
+<li>El client amb NIF 'XXX' ha modificat el número de telèfon a 9999922, actualitza'l.</li>
+<li>Hem contractat un nou encarregat per a l'establiment 1, dona'l d'alta (inventa les dades). L'anterior encarregat d'aquest establiment ha plegat, elimina'l. Elimina qualsevol altra informació vinculada a ell.</li>
+<li>Hem detectat un error en el lloguer amb identificador 5, elimina'l juntament amb tots els pagaments associats..</li>
+<li>Volem incrementar el preu de lloguer un 0,5 % de tots els vehicles de la marca 'BMV', actualitza'ls.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

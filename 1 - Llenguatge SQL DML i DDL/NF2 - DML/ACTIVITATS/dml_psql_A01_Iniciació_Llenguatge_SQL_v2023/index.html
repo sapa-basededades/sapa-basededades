@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A01_Iniciaci%C3%B3_Llenguatge_SQL_v2023/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>A01 – Conèixer entorn PostgreSQL i primeres sentències SQL - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "A01 \u2013 Con\u00e8ixer entorn PostgreSQL i primeres sent\u00e8ncies SQL";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\ACTIVITATS\\dml_psql_A01_Iniciaci\u00f3_Llenguatge_SQL_v2023.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A01_Iniciaci%C3%B3_Llenguatge_SQL_v2023/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">A01 – Conèixer entorn PostgreSQL i primeres sentències SQL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="a01-coneixer-entorn-postgresql-i-primeres-sentencies-sql">A01 – Conèixer entorn PostgreSQL i primeres sentències SQL</h1>
+<h2 id="descripcio-de-lactivitat">Descripció de l'activitat</h2>
+<ul>
+<li>Treballarem amb l'eina psql de PostgreSQL i amb la base de dades HR. </li>
+<li>Pots consultar els esquemes de la Base de Dades en el següent link: <a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></li>
+<li>Format d'entrega en pdf.</li>
+</ul>
+<h2 id="resultats-daprenentatge">Resultats d'aprenentatge</h2>
+<p>RA1. Consulta i modifica la informació emmagatzemada en una base de dades emprant assistents, eines gràfiques i el llenguatge de manipulació de dades.
+- 1.a. Identifica les funcions, la sintaxi i les ordres bàsiques del llenguatge SQL (llenguatge d’interrogació estructurat) per consultar i modificar les dades de la base de dades de manera interactiva.
+- 1.b. Empra assistents, eines gràfiques i el llenguatge de manipulació de dades sobre un SGBDR corporatiu de manera interactiva i tenint en compte les regles sintàctiques.</p>
+<h2 id="tasques">Tasques</h2>
+<h3 id="part-1-coneixer-lentorn">Part 1: Conèixer l'entorn</h3>
+<p>Aquesta primera part és per fer-se amb l'entorn, simplement heu de seguir les instruccions que s'indiquen (part no puntuable).</p>
+<ol>
+<li>
+<p>Inicieu una sessió i coneixeu l'entorn. Executeu les següents comandes (mostreu una captura de pantalla de les comandes executades en l'entorn psql):</p>
+<p><code>bash
+su postgres
+psql
+\l                          ' per veure les base de dades
+\c hr                       ' connectem a hr
+\dt                         ' per veure les taules
+\du                         ' per veure els usuaris</code></p>
+</li>
+<li>
+<p>La següent sentencia SELECT s'executa correctament (mostreu una captura de pantalla):</p>
+<p><code>sql
+SELECT last\_name, job\_id, salary as sal
+FROM employees;</code></p>
+</li>
+<li>
+<p>La següent sentencia SELECT s'executa correctament (mostreu una captura de pantalla):</p>
+<p><code>sql
+SELECT *
+FROM jobs;</code></p>
+</li>
+</ol>
+<h3 id="part-2-primeres-sentencies-sql">Part 2: Primeres sentències SQL</h3>
+<ol>
+<li><strong>Mostreu l'estructura</strong> de la taula DEPARTMENTS.</li>
+<li><strong>Seleccioneu</strong> totes les dades de la taula DEPARTMENTS.</li>
+<li><strong>Mostreu l'estructura</strong> de la taula EMPLOYEES.</li>
+<li><strong>Creeu una consulta</strong> per a mostrar el cognom, el codi de càrrec (job_id), la data de contractació (hire_date) i el número d'empleat per a cada empleat, amb el número d'empleat en primer lloc. Proporcioneu un alies, <em>STARTDATE</em>, per a la columna HIRE_DATE.</li>
+<li><strong>Creeu una consulta</strong> per a mostrar codis de càrrec <strong>únics</strong> (job_id) de la taula EMPLOYEES.</li>
+<li><strong>Creeu una consulta</strong> on mostreu el cognom concatenat amb el codi de càrrec, separats per una coma i un espai i anomeneu la columna com _Employee and title.</li>
+<li><strong>Creeu una consulta</strong> per a mostrar totes les dades de la taula EMPLOYEES. Separeu cada columna amb una coma. Anomeneu la columna com <em>THE_OUTPUT</em>.</li>
+<li><strong>Creeu una consulta</strong> per mostrar el salari mensual dels EMPLOYEES, tenint en compte que a la taula teniu el salari anual.</li>
+<li><strong>Creeu una consulta</strong> per mostrar el "street address", "postal code" , "city " i "State_province" de la taula LOCATIONS tot concatenat amb un espai entre elles. Renombreu la columna com Adreca Postal.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

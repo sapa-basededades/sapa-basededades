@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/0%20-%20Introducci%C3%B3%20a%20les%20Bases%20de%20Dades/NF2%20-%20Disseny%20conceptual%20-%20model%20ER/EXERCICIS/NF2-exercicis-Mini-DiagramesER/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Exercicis - Mini diagrames ER/ERE - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercicis - Mini diagrames ER/ERE";
+        var mkdocs_page_input_path = "0 - Introducci\u00f3 a les Bases de Dades\\NF2 - Disseny conceptual - model ER\\EXERCICIS\\NF2-exercicis-Mini-DiagramesER.md";
+        var mkdocs_page_url = "/0%20-%20Introducci%C3%B3%20a%20les%20Bases%20de%20Dades/NF2%20-%20Disseny%20conceptual%20-%20model%20ER/EXERCICIS/NF2-exercicis-Mini-DiagramesER/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exercicis - Mini diagrames ER/ERE</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercicis-mini-diagrames-erere">Exercicis - Mini diagrames ER/ERE</h1>
+<h2 id="empresa-alimentaria">EMPRESA ALIMENTÀRIA</h2>
+<h3 id="apartat-0">Apartat 0</h3>
+<ul>
+<li>Volem guardar les diferents fàbriques que té l'empresa. Aquestes fàbriques s'identificaran amb un nom i ens guardarem a on estan localitzades mitjançant l'adreça, el codi postal i la població.</li>
+<li>Cada fàbrica pot elaborar 1 o més tipus de productes. Aquests productes s'idenfiquen mitjançant un codi, però també cal guardar-nos el nom, una descripció i un cost.</li>
+</ul>
+<h3 id="apartat-1-empleats">Apartat 1 (empleats)</h3>
+<ul>
+<li>En aquestes fàbriques hi treballen operaris. Per cada operari hem de guardar-ne el dni, nom complert (nom i cognoms) i aquina fàbrica està assignat.</li>
+<li>Per cada operari també ens interessa guardar una llista de les seves especialitats en el treball (sistems de refrigeració,  manteniment de serveis, manteniment maquinària,...), si les té. Quan aquestes existeixin estaran qualificades de 1 a 5. Tenint en compte que un 1=poca expertesa i un 5=molta expertesa.</li>
+</ul>
+<h3 id="apartat-2-clients">Apartat 2 (clients)</h3>
+<ul>
+<li>Els clients fan les seves comandes de diferents productes a l'esmentada empresa, però no ens cal guardar la informació d'aquestes comandes. Dels clients ens cal saber el seu nom_fiscal i adreça electrònica i postal per poder enviar-li les factures i el nom comercial. Per poder diferenciar els clients uns dels altres els codifiquem mitjançant un string composat per 3 lletres i 5 dígits.</li>
+<li>L'empresa disposa de magatzems per poder distribuir els productes i a cada client se l'hi assigna el magatzem més proper a casa seva. Els magatzems els hem de tenir localitzats geogràficament perquè una persona serà l'encarregada d'assingar cada client al magatzem més proper.</li>
+</ul>
+<p><strong>Nota:</strong> No ens cal saber el tipus de producte que es guarda a cada magatzem i tampoc quina persona fa l'assignació del magatzem al client.</p>
+<h2 id="immdd-internet-movie-database">IMMDd (Internet Movie Database)</h2>
+<p>Un cinèfil expert en base de dades es vol crear una Base de Dades que reculli informació sobre el món cinematogràfic</p>
+<h3 id="apartat-0_1">Apartat 0</h3>
+<ul>
+<li>Les pel·lícules que es volen tenir classificades vindran identificades per un codi. Guardarem també el títol de la pel·lícula, l'any de l'estrena, el pressupost i el director. A més, volem conèixer els actors que hi van intervenir així com el paper que interpretaven (principal, secundari, de repartiment, figurant o cameo)</li>
+<li>Dels actors  i actrius en volem guardar el seu nom complet (nom i cognoms), nom artístic si el tenen i sobretot la data de naixement juntament amb la seva edat. Utilitzarem el nom complet per poder diferenciar els diferents actors i actrius</li>
+</ul>
+<h3 id="apartat-1-generes">Apartat 1 (gèneres)</h3>
+<ul>
+<li>Les pel·lícules estan catalogades per diferents gèneres (comèdia, romàntica, thriller, acció,...)</li>
+<li>Els actors solen ser especialistes en un gènere, tot i que poden fer interpretacions en qualsevol d'ells amb diferents valoracions ( 1-10).  La valoració de 1=Molt poca puntuació, 10=Molt bona puntuació sense ser especialista del gènere.</li>
+<li>Cal guardar-nos les especialitats de cada actor en cada gènere així com la puntuació que té en altres gèneres.</li>
+</ul>
+<h3 id="apartat-2-companyies">Apartat 2 (companyies)</h3>
+<ul>
+<li>Els actors estan contractats per una companyia que en sabem el nom. Aquestes companyies són les que produeixen les pel·licules. O sigui posa els diners perquè aquella pel·lícula es pugui fer.</li>
+<li>Cap pel·lícula es co-produïda per dues o més companyies i un actor no pot treballar simultàniament en més d'una companyia.</li>
+</ul>
+<h3 id="apartat-3-dobes-dactors">Apartat 3 (dobes d'actors)</h3>
+<ul>
+<li>Ens interessa saber quins actors són semblants a altres i quin grau de similitut tenen per si cal buscar 'dobles' a les pel·lículues que interpreten.</li>
+<li>També ens interessa saber quins actors són incompatibles, o sigui que no haurien de treballa junts en cap pel·lícula per les desavinences que hi ha entre ells.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

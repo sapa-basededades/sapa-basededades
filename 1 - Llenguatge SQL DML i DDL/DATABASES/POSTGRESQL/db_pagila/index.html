@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL/db_pagila/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Pagila - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pagila";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\POSTGRESQL\\db_pagila\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL/db_pagila/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Pagila</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pagila">Pagila</h1>
+<p>Pagila is a "DVD Rental Store" type example database for PostgreSQL. It provides sample schema and data for use in instructional materials, articles, and demonstrations, and is specifically designed to show case features within PostgreSQL. It is currently maintained via github at https://github.com/xzilla/pagila.</p>
+<h2 id="release-notes">RELEASE NOTES</h2>
+<p>Version 13.a
+* Add complex JSONB example via rental_report view 
+* Add non-identity generated column example film.revenue_projection</p>
+<h2 id="installation">INSTALLATION</h2>
+<p>To install the pagila database, first create an empty database named pagila, and then feed in the schema file, followed by the data file. Using psql that would look like this:</p>
+<p>psql -c "CREATE DATABASE pagila;"
+psql -d pagila -f pagila-schema.sql
+psql -d pagila -f pagila-data.sql</p>
+<p>The pagila-data.sql file and the pagila-insert-data.sql both contain the same
+data, the former using COPY commands, the latter using INSERT commands, so you 
+only need to install one of them. Both formats are provided for those who have
+trouble using one version or another.</p>
+<h2 id="partitioned-tables">PARTITIONED TABLES</h2>
+<p>The payment table is designed as a partitioned table with a ~6 month timespan for the date range. In order to take full advantage of table partitioning, you need to make sure constraint_exclusion is set to either 'partition' (the default) or 'on' in your database. You can do this by setting "constraint_exclusion = partition" in your postgresql.conf, or by issuing the command "ALTER DATABASE pagila SET constraint_exclusion = partition" (substitute pagila for your database name if installing into a database with a different name). Note, constraint_exclusion should be on by default in modern postgres releases.</p>
+<h2 id="articles">ARTICLES</h2>
+<p>The following articles make use of pagila to showcase various PostgreSQL features:</p>
+<ul>
+<li>
+<p>Sample Applications - Pagila (PostgreSQL)
+https://codeontime.com/learn/sample-applications/pagila-postgresql</p>
+</li>
+<li>
+<p>Showcasing REST in PostgreSQL - The PreQuel
+http://www.postgresonline.com/journal/archives/32-Showcasing-REST-in-PostgreSQL-The-PreQuel.html</p>
+</li>
+<li>
+<p>PostgreSQL 8.3 Features: Enum Datatype
+http://xzilla.net/blog/2007/Sep/PostgreSQL-8.3-Features-Enum-Datatype.html</p>
+</li>
+<li>
+<p>Email Validation with pl/PHP
+http://xzilla.net/blog/2006/Sep/Re-inventing-Gregs-method-to-prevent-re-inventing.html</p>
+</li>
+<li>
+<p>RATIO_TO_REPORT in PostgreSQL
+http://xzilla.net/blog/2006/Jul/RATIOTOREPORT-in-PostgreSQL.html</p>
+</li>
+<li>
+<p>Building Rails to Legacy Applications :: Take Control of Active Record
+http://xzilla.net/blog/2006/Jun/Building-Rails-to-Legacy-Applications-Take-Control-of-Active-Record.html</p>
+</li>
+<li>
+<p>Building Rails to Legacy Applications :: Masking the Database
+http://xzilla.net/blog/2006/Jun/Building-Rails-to-Legacy-Applications-Masking-the-Database.html</p>
+</li>
+</ul>
+<h2 id="port-info">PORT INFO</h2>
+<p>Pagila is a port of the Sakila example database originally created for MySQL by Mike Hillyer of the MySQL AB documentation team. Like other example databases, it provides a hypothetical "DVD Rental Store" schema and data to be used for examples in books, tutorials, articles, samples, etc...</p>
+<p>For those interested in the original porting information, all tables, data, views, and functions have been ported, which resulted in some schema changes, including:</p>
+<ul>
+<li>Changed char(1) true/false fields to true boolean fields</li>
+<li>The last_update columns were set with triggers to update them</li>
+<li>Added foreign keys</li>
+<li>Removed 'DEFAULT 0' on foreign keys since it's pointless with real FK's</li>
+<li>Used PostgreSQL built-in fulltext searching for fulltext indexing, removing the need for the film_text table.</li>
+<li>In the original port, the rewards_report function was ported to a simple SRF. It is now a stored procedure that returns multiple cursor references.</li>
+</ul>
+<p>The schema and data for the Sakila database were made available under the BSD license which can be found at http://www.opensource.org/licenses/bsd-license.php.</p>
+<h2 id="license">LICENSE</h2>
+<p>Pagila is made available under The PostgreSQL License (https://opensource.org/licenses/PostgreSQL)</p>
+<p>Note: Versions of Pagila prior to and including 0.10.1 were also made available under the same BSD license as Sakila.</p>
+<h2 id="version-history">VERSION HISTORY</h2>
+<p>Version 12.a
+ * Use := for assignment in last_updated function
+ * Make nicer_but_slower_film_list view a little nicer
+ * Add DEFAULT and MAXVALUE partitions for payment table
+ * Rebuild data for payment table</p>
+<p>Version 11.a
+* Re-dump schema and data using newer pg_dump. This forces schema qualification of all objects within the database 
+* Convert reward_report from set-returning function to refcusor based stored procedure 
+* Drop obsolete payment date handler and supporting triggers
+* Add covering columns to actor primary key index 
+* Rewrite staff_list view using JOIN ... USING syntax </p>
+<p>Version 10.a 
+* Rebuild payments table using native partitioning 
+* Add function, rule, triggers for handling updates to partitoned payments table
+* Fix numerous bugs with inserts data file   </p>
+<p>Version 9.6.a
+* Change versioning to track Postgres Major Releases
+* Update articles section to current links (where available)
+* Wordsmithing on README doc </p>
+<p>Version 0.10.1
+* Add pagila-data-insert.sql file, added articles section</p>
+<p>Version 0.10
+* Support for built-in fulltext. Add enum example </p>
+<p>Version 0.9
+* Add table partitioning example </p>
+<p>Version 0.8 
+* First release of pagila</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

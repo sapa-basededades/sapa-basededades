@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF1%20-%20DDL/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>NF1: DDL (Data Definition Language) - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "NF1: DDL (Data Definition Language)";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF1 - DDL\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF1%20-%20DDL/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">NF1: DDL (Data Definition Language)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="nf1-ddl-data-definition-language">NF1: DDL (Data Definition Language)</h1>
+<ul>
+<li><a href="#nf1-ddl-data-definition-language">NF1: DDL (Data Definition Language)</a></li>
+<li><a href="#books-continguts">:books: Continguts</a><ul>
+<li><a href="#slides-postgresql-dml">Slides PostgreSQL DML</a></li>
+</ul>
+</li>
+<li><a href="#notebook-exercicis---bd-postgresql">:notebook: Exercicis - BD PostgreSQL</a></li>
+<li><a href="#notebook-exercicis---bd-mysql">:notebook: Exercicis - BD MySQL</a></li>
+<li><a href="#pencil-activitats">:pencil: Activitats</a></li>
+<li><a href="#linkenllaços-dinterès">:link:Enllaços d'interès</a></li>
+</ul>
+<hr />
+<h2 id="books-continguts"><a id="continguts"></a>:books: Continguts</h2>
+<ul>
+<li>Introducció</li>
+<li>Definició de taules i restriccions</li>
+<li>Creació de taules</li>
+<li>Modificació de taules</li>
+<li>Eliminar l'estructura de taules</li>
+<li>Esborrar contingut d'una taula</li>
+<li>Restriccions</li>
+<li>Creació de restriccions</li>
+<li>Afegir i treure restriccions</li>
+<li>Definició de vistes</li>
+<li>Introducció</li>
+<li>Creació de vistes</li>
+<li>Modificació i esborrat de vistes</li>
+<li>Creació de vistes actualitzables</li>
+<li>Definició d'índex</li>
+<li>Introducció</li>
+<li>
+<p>Creació d'índexs</p>
+</li>
+<li>
+<p>📚:<a href="CONTINGUTS/M02-UF2.pdf">Continguts DDL-MySQL</a></p>
+</li>
+</ul>
+<h3 id="slides-postgresql-dml">Slides PostgreSQL DML</h3>
+<ul>
+<li>:blue_book:<a href="CONTINGUTS/M02_UF2_NF2_DOC00_Creacio_i_gestio_de_taules_v2023.pdf">Creació i gestió de taules</a></li>
+<li>:blue_book:<a href="CONTINGUTS/M02_UF2_NF2_DOC01_Restricciones_v2023.pdf">Restriccions</a></li>
+<li>:blue_book:<a href="CONTINGUTS/M02_UF2_NF2_DOC03_Creacio_Vistes_v2023.pdf">Creació de vistes</a></li>
+<li>:blue_book:<a href="CONTINGUTS/M02_UF2_NF2_DOC02_Creacio_Index_v2023.pdf">Creació de indexs</a></li>
+</ul>
+<hr />
+<h2 id="notebook-exercicis-bd-postgresql"><a id="exercicis-pgsql"></a>:notebook: Exercicis - BD PostgreSQL</h2>
+<ul>
+<li><a href="EXERCICIS/08-dml_ddl_pagila/">Exercicis amb la base de dades <strong>Pagila</strong></a></li>
+</ul>
+<hr />
+<h2 id="notebook-exercicis-bd-mysql"><a id="exercicis-mysql"></a>:notebook: Exercicis - BD MySQL</h2>
+<ul>
+<li>Exercicis</li>
+<li>Exercici 2</li>
+</ul>
+<hr />
+<h2 id="pencil-activitats"><a id="activitats"></a>:pencil: Activitats</h2>
+<ul>
+<li>:pencil: <a href="ACTIVITATS/ddl_psql_A06_Sentencies_2023/">A06 Llenguatge DML</a></li>
+</ul>
+<hr />
+<h2 id="linkenllacos-dinteres"><a id="links"></a>:link:Enllaços d'interès</h2>
+<ul>
+<li>:link: <a href="https://goalkicker.com/PostgreSQLBook/">Goalkicker PostgreSQL Notes for Professionals</a></li>
+<li>:link: <a href="https://goalkicker.com/OracleDatabaseBook/">Goalkicker Oracle Notes for Professionals</a></li>
+<li>:link: <a href="https://goalkicker.com/MicrosoftSQLServerBook/">Goalkicker SQLServer Notes for Professionals</a></li>
+<li>:link: <a href="https://goalkicker.com/MySQLBook/">Goalkicker MySQL Notes for Professionals</a></li>
+<li>:link: <a href="https://goalkicker.com/MongoBook/">Goalkicker Mongo Notes for Professionals</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

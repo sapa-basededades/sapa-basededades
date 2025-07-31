@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/4%20-%20Bases%20de%20dades%20NOSQL/INSTALACIO/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>MongoDB - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MongoDB";
+        var mkdocs_page_input_path = "4 - Bases de dades NOSQL\\INSTALACIO.md";
+        var mkdocs_page_url = "/4%20-%20Bases%20de%20dades%20NOSQL/INSTALACIO/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">MongoDB</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mongodb">MongoDB</h1>
+<h2 id="mongodb-on-premise">MongoDB "on premise"</h2>
+<p>MongoDB es pot instal·lar sobre plataforma Windows / Linux encara que es preferible utilitzar Linux. El procediment d'instal·lació per distribució Linux/Debian el podeu consultar en la <a href="https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-debian/">documentació oficial de MongoDB</a></p>
+<h2 id="mongodb-saas-cloud">MongoDB SaaS "cloud"</h2>
+<p>MongoDB pot ser utilitzada desplegant la base de dades al cloud i connectant-nos des del nostre ordinador/aplicació. És un servei gratuit per una base de dades simple, i de pagament quan volem fer definicions més complexes.</p>
+<p>Per poder desplegar una base de dades en Cloud, utilitzarem el servei <a href="https://www.mongodb.com/atlas">Mongo Atlas</a>. Els passos que haurem de fer per poder-la crear son:</p>
+<ul>
+<li>Registrar-nos dintre de Mongo Atlas (És aconsellable utilitzar el compte de Google o Github)</li>
+<li>Crear una organització.</li>
+<li>Crear un projecte. (per agrupar les bases de dades/Aplicacions que creem)</li>
+<li>Definir un cluster (Database Deployment). Un cluster es un conjunt de servidors que executarà la teva base de dades. Amb la opció gratuita només podem seleccionar l'opció més simple, pero podriem tenir una base de dades replicada en diferents llocs, backups, polítiques de contingència,etc.
+    <img alt="Tabla" src="https://github.com/fbarraga/Python/blob/master/master/assets/mongodb_inst00.png?raw=true" /></li>
+<li>Escollim el nom de la base de dades i la ubicació. (Per exemple Parking i Europa)</li>
+<li>Assignem usuari i password a la base de dades.</li>
+<li>Especifiquem des d'on ens connectarem. Podem aplicar filtres de IPs. Revisem quina es la nostra IP i l'afegim dintre de les IPs validades.</li>
+</ul>
+<p>Una vegada desplegat la Base de dades, podem administrar-la des del nostre ordinador amb el <strong>Mongo Shell</strong></p>
+<p>Per executar-ho fem mitjançant la següent comanda: </p>
+<pre><code class="language-console">mongosh &quot;mongodb+srv://&lt;el vostre servidor&gt;.mongodb.net/&lt;base dades&gt;&quot; --apiVersion 1 --username &lt;el vostre usuari&gt;
+</code></pre>
+<h2 id="eines-per-la-gestio-de-la-base-de-dades">Eines per la gestió de la base de dades</h2>
+<h3 id="mongodb-shell">MongoDB Shell</h3>
+<p>Es pot descarregar l'eina des d'aquest <a href="https://www.mongodb.com/try/download/shell">link</a>
+MongoShell es una aplicació en mode comanda que ens permet executar comandes en el nostre MongoDB. Es l'eina recomanada quan utilitzem scripts que interactuen amb la base de dades. 
+Actua de la mateixa manera que el psql de Postgresql o el sqlplus d'Oracle. Podeu consultar més informació en el següent <a href="https://www.mongodb.com/docs/mongodb-shell/">link</a></p>
+<h3 id="mongodb-compass-gui">MongoDB Compass (GUI)</h3>
+<p>Es pot descarregar l'eina des d'aquest <a href="https://www.mongodb.com/try/download/compass">link</a></p>
+<p>Es una eina GUI que permet administrar la base de dades des d'una interfície gràfica. Inclou adintre la solució el MongoShell. Es correspondria al PGAdmin4 de Postgresql o al Enterprise Manager d'Oracle. Podeu consultar més informació en aquest <a href="https://www.mongodb.com/docs/compass/master/">link</a></p>
+<h2 id="ordres-basiques-a-mongodb">Ordres bàsiques a MongoDB</h2>
+<ul>
+<li><code>help</code>: Mostra informació sobre l'ajuda</li>
+<li><code>db</code>: Mostra la base de dades en ús</li>
+<li><code>db.stats</code>: Mostra informació sobre la base de dades en ús</li>
+<li><code>use &lt;database&gt;</code>: Crea una base de dades (si el nom indicat existeix, fa la connexió a aquesta bd)</li>
+<li><code>show dbs</code>: Mostra les bases de dades amb contingut (no buides)</li>
+<li><code>db.dropdatabase()</code>: Borra la base de dades en ús</li>
+<li><code>db.createCollection()</code>: Crea una col·lecció (equivalent a una taula SQL)</li>
+<li><code>show collections</code>: Mostra les col·leccions en ús</li>
+<li><code>db.&lt;collection&gt;.drop</code>: Borra la col·lecció de la base de dades en ús</li>
+<li><code>db.&lt;collection&gt;.insertOne</code>: Insereix un document dintre de la col·lecció</li>
+</ul>
+<h3 id="creacio-de-bd-i-colleccions">Creació de BD i col·leccions</h3>
+<pre><code class="language-console">&gt; use biblioteca
+&gt; db
+biblioteca
+&gt; db.createCollection(&quot;autors&quot;)
+&gt; db.createCollection(&quot;llibres&quot;)
+&gt; show collections
+autors
+llibres
+&gt; db.autors.insertOne( { id: &quot;1&quot;, cognoms: &quot;rodoreda i gurguí&quot;, nom: &quot;mercè&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;)
+}
+&gt;
+</code></pre>
+<h3 id="crud-create-read-update-delete">CRUD (Create Read Update Delete)</h3>
+<ul>
+<li><code>db.collection.insertMany()</code>: Insereix n documents dintre de la col·lecció</li>
+</ul>
+<pre><code class="language-console">&gt; db.autors.insertMany([
+... { id: &quot;2&quot;, cognoms: &quot;oller y moragas&quot;, nom: &quot;narcís&quot;},
+... { id: &quot;3&quot;, cognoms: &quot;carner i puig-oriol&quot;, nom: &quot;josep&quot;},
+... { id: &quot;4&quot;, cognoms: &quot;català&quot;, nom: &quot;víctor&quot;}
+... ]);
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedIds&quot; : [
+ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;),
+ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;),
+ObjectId(&quot;605c75912e50ebf3923f1b40&quot;)
+]
+}&gt;
+</code></pre>
+<ul>
+<li><code>db.collection.find()</code>:Buscar els elements d'una col·lecció</li>
+</ul>
+<pre><code class="language-console">&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;català&quot;, &quot;nom&quot; : &quot;víctor&quot; }
+&gt; db.autors.find({ id: {$eq: &quot;1&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+&gt; db.autors.find({ id: {$eq: &quot;3&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+&gt; db.autors.find({ nom: {$eq: &quot;víctor&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;català&quot;, &quot;nom&quot; : &quot;víctor&quot; }
+&gt; db.autors.find({ id: {$lte: &quot;3&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+&gt; db.autors.find({ id: {$gte: &quot;2&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;català&quot;, &quot;nom&quot; : &quot;víctor&quot; }
+&gt;
+&gt; db.autors.find({ nom: {$regex: /^m/}})
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+</code></pre>
+<ul>
+<li><code>db.collection.find().pretty()</code>: Mostra el resultat en un format amigable</li>
+<li><code>db.collection.update()</code>: Actualitza un document d’una col·lecció</li>
+</ul>
+<pre><code class="language-console">&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;català&quot;, &quot;nom&quot; : &quot;víctor&quot; }
+&gt; db.autors.update({&quot;id&quot;: &quot;4&quot;},{$set : {&quot;nom&quot;: &quot;Caterina&quot;}})
+WriteResult({ &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 })
+&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;català&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+&gt; db.autors.update({&quot;id&quot;: &quot;4&quot;},{$set : {&quot;cognoms&quot;: &quot;albert i paradis&quot;}})
+WriteResult({ &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 })
+&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+&gt;
+</code></pre>
+<ul>
+<li><code>db.collection.deleteOne()</code>: Elimina un document d’una col·lecció</li>
+</ul>
+<pre><code class="language-console">&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3f&quot;), &quot;id&quot; : &quot;3&quot;, &quot;cognoms&quot; : &quot;carner i puig-oriol&quot;, &quot;nom&quot; : &quot;josep&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;català&quot;, &quot;nom&quot; : &quot;víctor&quot; }
+&gt; db.autors.deleteOne({&quot;nom&quot; : &quot;josep&quot;})
+{ &quot;acknowledged&quot; : true, &quot;deletedCount&quot; : 1 }
+&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+&gt;
+</code></pre>
+<ul>
+<li><code>db.collection.deleteMany()</code>: Elimina varis documents d’una col·lecció</li>
+</ul>
+<pre><code class="language-console">&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+&gt; db.autors.insertOne( { id: &quot;1&quot;, cognoms: &quot;rodoreda i gurguí&quot;, nom: &quot;mercè&quot; });
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;605dc6e489603c835a1a6fb4&quot;)
+}
+&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c6c1d2e50ebf3923f1b3d&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605dc6e489603c835a1a6fb4&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;rodoreda i gurguí&quot;, &quot;nom&quot; : &quot;mercè&quot; }
+&gt; db.autors.deleteMany({&quot;nom&quot; : &quot;mercè&quot;})
+{ &quot;acknowledged&quot; : true, &quot;deletedCount&quot; : 2 }
+&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+&gt;
+</code></pre>
+<ul>
+<li><code>db.collection.distinct</code>: Retorna els documents únics</li>
+</ul>
+<pre><code class="language-console">&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+&gt; db.autors.insertOne( { id: &quot;1&quot;, cognoms: &quot;oller y moragas&quot;, nom: &quot;narcís&quot; });
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;605dc7e789603c835a1a6fb5&quot;)
+}
+&gt; db.autors.find()
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b3e&quot;), &quot;id&quot; : &quot;2&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605c75912e50ebf3923f1b40&quot;), &quot;id&quot; : &quot;4&quot;, &quot;cognoms&quot; : &quot;albert i paradis&quot;, &quot;nom&quot; : &quot;Caterina&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;605dc7e789603c835a1a6fb5&quot;), &quot;id&quot; : &quot;1&quot;, &quot;cognoms&quot; : &quot;oller y moragas&quot;, &quot;nom&quot; : &quot;narcís&quot; }
+&gt; db.autors.distinct(&quot;nom&quot;)
+[ &quot;Caterina&quot;, &quot;narcís&quot; ]
+&gt; db.autors.distinct(&quot;id&quot;)
+[ &quot;1&quot;, &quot;2&quot;, &quot;4&quot; ]
+</code></pre>
+<p>Per construir sentències més complexes com aggregats, etc podem mirar la <a href="https://www.mongodb.com/docs/manual/aggregation/">pàgina</a> oficial de MongoDB.</p>
+<hr />
+<p><a href="../../../README.md">Index</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

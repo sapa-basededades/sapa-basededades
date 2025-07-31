@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/2a%20-%20Llenguatge%20SQL%20DCL%20i%20extensi%C3%B3%20procedimental/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Llenguatge SQL: DCL i extensió procedimental - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Llenguatge SQL: DCL i extensi\u00f3 procedimental";
+        var mkdocs_page_input_path = "2a - Llenguatge SQL DCL i extensi\u00f3 procedimental\\README.md";
+        var mkdocs_page_url = "/2a%20-%20Llenguatge%20SQL%20DCL%20i%20extensi%C3%B3%20procedimental/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Llenguatge SQL: DCL i extensió procedimental</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="llenguatge-sql-dcl-i-extensio-procedimental">Llenguatge SQL: DCL i extensió procedimental</h1>
+<h2 id="introduccio">Introducció</h2>
+<ul>
+<li>:blue_book:<a href="NF2 - DML/CONTINGUTS/M02_UF2_NF1_DOC01A_Introducció%20als%20SGBD%20Relacionals_v2023.pdf">Introducció als SGBD Relacionals</a></li>
+<li>:blue_book:<a href="NF2 - DML/CONTINGUTS/M02_UF2_NF1_DOC01B_Introducció%20al%20SQL_v2023.pdf">Introducció al SQL</a></li>
+<li>:blue_book:<a href="NF2 - DML/CONTINGUTS/M02_UF2_NF1_DOC01C_Instroducció_Postgresql_v2023.pdf">Introducció a PostgreSQL</a></li>
+<li>:blue_book:<a href="NF2 - DML/CONTINGUTS/M02_UF2_NF1_DOC01D_Instal.lació_Postgresql_v2023.pdf">Instal·lació de PostgreSQL</a></li>
+</ul>
+<h2 id="1-nf1-ddl-data-definition-language"><a href="NF1 - DDL/README.md">1. NF1 DDL (Data Definition Language)</a></h2>
+<p><img src="./assets/sql.png"
+     alt="SQL"
+     style="float: left; margin-right: 10px; width:50px" /></p>
+<p>En aquest apartat treballarem el llenguatge de creació i modificació de l'esquema d'una base de dades relacional mitjançant el llenguatge SQL. Veurem com creem taules,camps, vistes, índexs, restriccions de clau primària, de clau forana, etc..
+Tot això ho farem mitjançant els SGBD MySQL i PostgreSQL</p>
+<ul>
+<li><a href="NF1 - DDL/README.md#continguts">:books: Continguts</a></li>
+<li><a href="NF1 - DDL/README.md#links">:link: Enllaços d'interès</a></li>
+<li><a href="NF1 - DDL/README.md#exercicis-pgsql">:notebook: Exercicis - BD PostgreSQL</a></li>
+<li><a href="NF1 - DDL/README.md#exercicis-mysql">:notebook: Exercicis - BD MySQL</a></li>
+<li><a href="NF1 - DDL/README.md#activitats">:pencil: Activitats</a></li>
+</ul>
+<h2 id="2-nf2-dml-data-manipulation-language"><a href="NF2 - DML/README.md">2. NF2 DML (Data Manipulation Language)</a></h2>
+<p><img src="./assets/sql.png"
+     alt="SQL"
+     style="float: left; margin-right: 10px; width:50px" /></p>
+<ul>
+<li>
+<p>En aquest apartat treballarem el llenguatge de manipulació de dades (DML) en l'àmbit SQL. Es veuen les principals instruccions CRUD (<em>Create, Read, Update i Delete</em>) que són: <em>INSERT UPDATE DELETE i SELECT</em>.</p>
+</li>
+<li>
+<p>Principalment ens centrarem amb l'instrucció <em>SELECT</em> començant amb consultes senzilles d'una sola taula per arribar fins a les Window Functions i les CTE (Common Table Expressions).</p>
+</li>
+<li>
+<p>Les instruccions treballades es basan amb els estàndards <strong>ANSI-SQL(SQL-92,SQL-2003)</strong> mitjançant els SGBD MySQL i PostgreSQL.</p>
+</li>
+<li>
+<p>En aquest apartat també veurem les propietats ACID (<em>Atomicity, Consistency, Isolation, Durability</em>) en un SGBD, el concepte de concurrència, bloqueig de registres i els diferents nivells d'aïllament.</p>
+</li>
+<li>
+<p><a href="NF2 - DML/README.md#continguts">:books: Continguts</a></p>
+</li>
+<li><a href="NF2 - DML/README.md#links">:link: Enllaços d'interès</a></li>
+<li><a href="NF2 - DML/README.md#exercicis">:notebook: Exercicis</a></li>
+<li><a href="NF2 - DML/README.md#activitats">:pencil: Activitats</a></li>
+</ul>
+<hr />
+<h2 id="bases-de-dades">Bases de dades</h2>
+<p>En aquest apartat trobareu diferents esquemes de bases de dades i jocs de dades  pels següents SGBD:</p>
+<p><a href="DATABASES/POSTGRESQL/README.md"><img alt="PostreSQL Logo" src="../assets/postgresql-horizontal.svg" /></a>
+<a href="DATABASES/MYSQL/README.md"><img alt="MySQL Logo" src="../assets/mysql-horizontal.svg" /></a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

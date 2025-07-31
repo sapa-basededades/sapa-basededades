@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/2b%20-%20Assegurament%20de%20la%20informaci%C3%B3/CONTINGUTS/H%20-%20EXTENSIONS/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Extensions de PostgreSQL - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Extensions de PostgreSQL";
+        var mkdocs_page_input_path = "2b - Assegurament de la informaci\u00f3\\CONTINGUTS\\H - EXTENSIONS\\README.md";
+        var mkdocs_page_url = "/2b%20-%20Assegurament%20de%20la%20informaci%C3%B3/CONTINGUTS/H%20-%20EXTENSIONS/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Extensions de PostgreSQL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="extensions-de-postgresql">Extensions de PostgreSQL</h1>
+<p>Les extensions són llibreries que s'afegeixen a PostgreSQL per agregar funcionalitats especifiques. La versatilitat de PostgreSQL pot fer que un cop tenim el nostre Servidor PostgreSQL instal·lat, aquest no disposi de totes les funcionalitats que necessitem. Per això, existeixen unes petites extensions que implementen aquestes funcionalitats i/o ens fan la feina més senzilla. Depenent de les extensions que requerim es poden trobar de tres formes diferents.</p>
+<h2 id="extensions-disponibles-per-defecte-al-servidor-postgresql">Extensions disponibles per defecte al servidor PostgreSQL.</h2>
+<p>Aquest grup d'extensions són un grup d'extensions habilitades en el nostre servidor, estan llestes per poder ser instal·lades i utilitzades quan així ho necessitem.</p>
+<p>Quan executem aquesta sentència, veiem quines són les extensió que tenim habilitades al nostre Servidor i que podem instal·lar per fer-ne ús.</p>
+<pre><code class="language-sql">SELECT *  FROM pg_available_extensions ORDER BY name;
+</code></pre>
+<p>Disposem d'unes 43 funcions ja compilades i que podem utilitzar en cada Base de Dades del nostre Servidor PostgreSQL.</p>
+<h2 id="extensions-addicionals-installables-a-postgresql">Extensions addicionals instal·lables a PostgreSQL</h2>
+<h3 id="extensions-postgresql-del-web-oficial">Extensions PostgreSQL del web oficial.</h3>
+<p>Existeixen altres extensions a més de les que tenim disponibles al nostre Servidor PostgreSQL. Aquestes extensions les podem trobar a la <a href="https://www.postgresql.org/download/products/6-postgresql-extensions/">Web oficial de PostgreSQL</a>, en programari catalogue – postgresql extensions i s'implementen amb uns senzills passos. Totes les extensions que disposem al web oficial són Open Source.</p>
+<p>Aquestes són algunes de les extensions que podem trobar al web oficial de PostgreSQL:</p>
+<ul>
+<li>
+<p>OpenFTS : Un motor de cerca avançat basat en PostgreSQL que permet indexar dades i classificar-les segons la seva rellevància. Està totalment integrat amb la base de dades i permet utilitzar metadades per restringir els resultats de cerca.</p>
+</li>
+<li>
+<p>PL/Proxy</p>
+</li>
+<li>PostGIS</li>
+<li>PostPIC</li>
+<li>Prefix</li>
+<li>TexCaller</li>
+</ul>
+<p>De totes aquestes extensions del web oficial de Postgres, la que més s'utilitza és l'extensió PostGIS. Amb aquesta extensió li afegim al Servidor la funcionalitat de disposar d'una Base de Dades espacial per recollir dades geomètriques. És molt útil per realitzar treballs geogràfics i topogràfics. Val a dir que aquesta és una de les extensions més utilitzades i més conegudes en el món professional.</p>
+<h3 id="extensions-del-repositori-pgxnorg">Extensions del repositori pgxn.org</h3>
+<p>Dintre de la <a href="https://pgxn.org/">PostgreSQL Extension Network</a> podem trobar el repositori més gran de extensions de Postgresql. Es troben agregades per tags i com a principals trobem tota una col·lecció de foreign data wrappers que ens permeten interconnectar PostgreSQL amb qualsevol altre sistema gestor de base s de dades.</p>
+<p>Exemples son: </p>
+<ul>
+<li>clerk_fdw: A foreign data wrapper for Clerk</li>
+<li>couchdb_fdw: PostgreSQL SQL/MED FDW for CouchDB</li>
+<li>db2_fdw:  PostgreSQL Data Wrappper to DB2 databases</li>
+<li>file_textarray_fdw: Access to text files where each row is returned as an array of text</li>
+<li>firebird_fdw: A PostgreSQL foreign data wrapper (FDW) for Firebird</li>
+<li>jdbc_fdw: jdbc FDW for PostgreSQL 9.1+</li>
+<li>json_fdw: Foreign Data Wrapper for JSON files</li>
+<li>mongo_fdw: Foreign Data Wrapper for MongoDB</li>
+<li>mysql_fdw: MySQL FDW for PostgreSQL 9.3+</li>
+<li>neo4j-fdw: PostgreSQL foreign data wrapper for Neo4j Graph Database</li>
+<li>odbc_fdw: PostgreSQL SQL/MED FDW for ODBC API</li>
+<li>oracle_fdw: A Foreign Data Wrapper for Oracle</li>
+<li>osm_fdw:Openstreetmap PBF foreign data wrapper</li>
+<li>prometheus_fdw: Postgres Foreign Data Wrapper for Prometheus Data</li>
+<li>redis_fdw: Redis FDW for PostgreSQL 9.1+</li>
+<li>sqlite_fdw: Foreign Data Wrapper for SQLite databases</li>
+<li>tds_fdw: TDS Foreign data wrapper (SQLServer)</li>
+</ul>
+<h3 id="extensions-postgresql-trobades-a-internet">Extensions PostgreSQL trobades a Internet.</h3>
+<p>Hi ha moltes altres extensions disponibles a internet. De totes les disponibles hi ha unes extensions Open Source que són força útils. Aquestes extensions són aportacions d' un usuari que utilitza i adora Postgres. La font d'aquestes aportacions estan disponibles a la seva pàgina web.</p>
+<ul>
+<li>db_info: Amb aquesta extensió obtenim informació sobre la Base de Dades.</li>
+<li>jx_io: Si volem importar o exportar dades del tipus JSON o dades del tipus XML, tenim l'extensió</li>
+<li>msmov: aquesta extensió és molt útil per recollir dades des d'un Servidor MS Server SQL.</li>
+<li>vacuum_utils: Aquesta extensió conté unes funcions útils per portar un manteniment del Servidor.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

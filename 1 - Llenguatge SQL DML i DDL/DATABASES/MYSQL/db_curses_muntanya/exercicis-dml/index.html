@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_curses_muntanya/exercicis-dml/" />
+      <link rel="shortcut icon" href="../../../../../img/favicon.ico" />
+    <title>Exercicis DML BD Curses de Muntanya - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercicis DML BD Curses de Muntanya";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\MYSQL\\db_curses_muntanya\\exercicis-dml.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_curses_muntanya/exercicis-dml/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exercicis DML BD Curses de Muntanya</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercicis-dml-bd-curses-de-muntanya">Exercicis DML BD Curses de Muntanya</h1>
+<p>Tags:#FpInfor #ICA0 #ICB0 #ICC0 #Administració de Sistemes Informàtics i Xarxes #Desenvolupament d'Aplicacions Multiplataforma #Desenvolupament d'Aplicacions Web #ICA0MP02 #ICB0MP02 #ICC0MP02</p>
+<hr />
+<h2 id="apartat-a-insert-update-delete">APARTAT A (INSERT, UPDATE, DELETE)</h2>
+<ol>
+<li>Afegeix-te com a ciclista i participant en 10 curses de la temporada_id = 1.</li>
+<li>Afegeix la temporada d'enguany(inventa't les dates). Per inicialitzar aquesta temporada introdueix totes les curses i sortides de la temporada_id=1.</li>
+<li>El ciclista Pere Pi no s'inscriurà a la cursa de ROCACORBA d'enguany</li>
+<li>Degut als incidents de l'any anterior els ciclistes de l'equip BREAKING BIKES no participaran a la cursa de LA VALL DE NURIA.</li>
+<li>Els ciclistes de l'equip BLANES BIKES han aconseguit un nou espònsor anomenat BIANCHI i aquest els hi ha proporcionat noves bicicletes per tots els integrants de l'equip.</li>
+<li>Inventa't 2 noves curses per aquest any i afegeix-les a la BD.</li>
+<li>Degut a un cas de dopping s'ha de realitzar una penalització de 3 minuts i 2 punts a tots els ciclistes de l'equip "sense mans".</li>
+<li>Diuen que aquest any la curs de SANT POL DE MAR allarguen el recorregut llarg amb 4Kms i el recorregut curt amb 1Km.</li>
+<li>Tots els equips han augmentat el pressupost amb un 10% respecte l'any anterior excepte els equips de l'espònsor "INDITECH" que l'augmenten amb un 20%.</li>
+<li>Introdueix a la taula de guanyadors els ciclistes que han guanyat a cada cursa de la temporada anterior. Només cal introduir els guanyadors de la ruta llarga. </li>
+</ol>
+<h2 id="apartat-b-select">APARTAT B (SELECT)</h2>
+<ol>
+<li>Quin nom i quina bici tenen els ciclistes que han aconseguit més de 350 punts a la temporada_id = 1?</li>
+<li>Quines són els equips dels quals no en coneixem el pressupost. Volem saber-ne el codis i els noms d'aquests equips.</li>
+<li>Com es diu el director de l'equip amb major pressupost.</li>
+<li>Com es diu i quina edat té el ciclista(o ciclistes) que no han participat mai en cap cursa.</li>
+<li>Quantes bicicletes hi ha de cada marca?</li>
+<li>Quin és el nom dels ciclistes que no tenen espònsor.</li>
+<li>Quin és el nom i el director dels equips que tenen més de 2 corredors.</li>
+<li>Quin és el nom i la data de la cursa(o curses) on la Isabel no hi ha participat.</li>
+<li>Quants ciclistes hi ha de cada sexe.</li>
+<li>Quants minuts ha pedalejat cada ciclista(codi del ciclista i nombre de minuts).</li>
+<li>Diga'm el nom dels diferents espònsors incloent els d'equips i els personals.</li>
+<li>Quantes sortides tenim documentades (dins de la BD)?</li>
+<li>Llista alfabèticament el nom de cada equip i el dels seus ciclistes(ascendent).</li>
+<li>Quin és el nom del(s) ciclista(es) que han abandonat en més d'una cursa.</li>
+<li>Quin és el director de l'equip amb menys pressupost.</li>
+<li>Quants minuts de mitjana pedaleja cada ciclista(individualment).</li>
+<li>Quin és el codi i el nom dels ciclistes que no tenen equip.</li>
+<li>Quin és l'espònsor del(s) ciclista(es) que no han participat en cap cursa.</li>
+<li>Quin (o quins) és el codi del ciclista que ha trigat més temps en una sortida.</li>
+<li>De quins pobles són les curses que han tingut més de 5 participants.</li>
+<li>Quin és el nombre de ciclistes que tenim a la base de dades.</li>
+<li>Quants punts ha obtingut cada ciclista (codi del ciclista, nom i nombre de punts en total).</li>
+<li>Quins ciclistes tenen el mateix espònsor que el seu equip.</li>
+<li>A quin poble es celebra la cursa amb la ruta llarga més llarga.</li>
+<li>Si el pressupost d'un equip es reparteix entre els ciclistes que el formen, quin pressupost li toca a cada un. Es demana el nom de l'equip i el pressupost per ciclista.</li>
+<li>Quins són els espònsors dels ciclistes femenins. Ordena'ls alfabèticament.</li>
+<li>Llista les parelles formades pel nom del director amb el nom de cada un dels ciclistes de l'equip. (tot ordenat alfabèticament).</li>
+<li>Quants ciclistes han anat a més de 3 sortides.</li>
+<li>Quins pobles tenen algun SANT O SANTA al seu nom.</li>
+<li>En quins pobles no s'ha fet cap sortida.</li>
+<li>Si suposem que un ciclista fa 5 pedalades per segon, quantes pedalades haurà fet cada ciclista que ha acabat la curs del poble d'Olot.</li>
+<li>Quines són les diferents marques de bicicleta que tenim documentades.</li>
+<li>Quants minuts de mitjana ha pedalat cada ciclista al llarg de la seva carrera professional.</li>
+<li>Com es diuen els directors dels equips que tenen un pressupost inferior a la mitjana.</li>
+<li>Quins espònsors patrocinen a més d'un equip.</li>
+<li>Quin és el nom de la ciclista que ha sumat més punts comptant totes les curses de la temporada anterior.</li>
+<li>Hi ha algun equip que tingui un espònsor amb un nom semblant a "Cola"</li>
+<li>Quina és la ruta més curta i quins són els noms dels ciclistes que hi han participat de la temporada passada. </li>
+<li>Quin(s) són el nom , el poble i la data de les curses amb més de 5 participants.</li>
+<li>Quin és el nom dels ciclistes de l'equip "Sense Mans"</li>
+<li>Quants punts han acumulats tots els ciclistes junts en totes les curses durant la temporada anterior.</li>
+<li>Quants punts han acumulat els diferents equip?Si un ciclista no pertany a cap equip cal que es mostri com si ell fos un equip.</li>
+<li>Fes una classificació (rànquing) total dels acumulats de cada un dels espònsors personals. Interessa veure el nom de l'espònsor, els punts i els minuts que han sumat cada un d'ells.</li>
+<li>Quin és el nom i el sexe dels ciclistes que tenen una bici de la marca "Trek".</li>
+<li>Quin és el codi, el nom i l'edat dels ciclistes que no han participat a cap sortida.</li>
+<li>Quina és la ruta més curta de la temporada passada.</li>
+<li>Llista una classificació d'arribada de cada cursa: nom de la curs, nom del corredor i temps.</li>
+<li>Quin és el temps mitjà que triguen LES ciclistes en cada una de les curses.</li>
+<li>Quins equips tenen el mateix pressupost. Indica el nom i el pressupost.</li>
+<li>Hi ha algun ciclista que també sigui director d'algun equip?</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../../..";</script>
+    <script src="../../../../../js/theme_extra.js"></script>
+    <script src="../../../../../js/theme.js"></script>
+      <script src="../../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

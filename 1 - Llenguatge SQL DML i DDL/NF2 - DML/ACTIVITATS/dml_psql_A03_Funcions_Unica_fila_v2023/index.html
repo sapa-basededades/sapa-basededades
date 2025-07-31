@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A03_Funcions_Unica_fila_v2023/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>A03 – Ús de funcions de fila única en instruccions SQL simples - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "A03 \u2013 \u00das de funcions de fila \u00fanica en instruccions SQL simples";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\ACTIVITATS\\dml_psql_A03_Funcions_Unica_fila_v2023.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A03_Funcions_Unica_fila_v2023/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">A03 – Ús de funcions de fila única en instruccions SQL simples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="a03-us-de-funcions-de-fila-unica-en-instruccions-sql-simples">A03 – Ús de funcions de fila única en instruccions SQL simples</h1>
+<h2 id="descripcio-de-lactivitat">Descripció de l'activitat</h2>
+<ul>
+<li>Treballarem amb PostGreSQL i base de dades <strong>HR</strong> i <strong>PAGILA</strong>. </li>
+<li>Pots consultar els esquemes de la Base de Dades en el següent link: <a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></li>
+<li>Pots consultar els model relacionals en els següents links:</li>
+<li><a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL/08%20-%20Pagila/pagila-erm.png">Pagila</a></li>
+<li><a href="">HR</a></li>
+<li>Abans de començar l'activitat intenta entendre el model</li>
+<li>Format d'entrega en pdf</li>
+<li>No adjunteu captures de pantalla ni de la consulta ni amb els resultats.</li>
+<li>Les imatges son orientatives</li>
+<li>Només vull la sentencia SQL escrita (així en cas de dubte la puc copiar-enganxar i executar-la)</li>
+</ul>
+<h2 id="resultats-daprenentatge">Resultats d'aprenentatge</h2>
+<p>RA1. Consulta i modifica la informació emmagatzemada en una base de dades emprant assistents, eines gràfiques i el llenguatge de manipulació de dades.
+- 1.a. Identifica les funcions, la sintaxi i les ordres bàsiques del llenguatge SQL (llenguatge d’interrogació estructurat) per consultar i modificar les dades de la base de dades de manera interactiva.
+- 1.b. Empra assistents, eines gràfiques i el llenguatge de manipulació de dades sobre un SGBDR corporatiu de manera interactiva i tenint en compte les regles sintàctiques.
+- 1.c. Realitza consultes simples de selecció sobre una taula (amb restricció i ordenació) per consultar les dades d’una base de dades.
+- 1.d. <strong>Realitza consultes utilitzant funcions afegides i valors nuls</strong></p>
+<h2 id="tasques">Tasques</h2>
+<h3 id="part-1-bdd-hr">Part 1: BDD HR</h3>
+<ol>
+<li>Escriu una consulta per a mostrar la data actual. Etiqueta la columna com Date.(1 punt)</li>
+<li>
+<p>Per a cada empleat, mostra el número d'empleat, el cognom, el salari i el salari amb un augment del 15.5% i expressat amb número enter, etiqueteu-lo com <strong>nou salari</strong>. (1 punt)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im2.png?raw=true" /></p>
+</li>
+<li>
+<p>Modifica la consulta anterior per afegir una columna que resti el salari antic al nou. Etiqueteu la columna com <strong>Increment</strong>. (1 punt)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im3.png?raw=true" /></p>
+</li>
+<li>
+<p>Escriviu una consulta que mostri de tots els empleats els cognoms dels quals comencin per J, A o M, el cognom de l'empleat, el email amb la primera lletra en majúscules així com la longitud del cognom. Ordeneu els resultats alfabèticament per el cognom de l'empleat. (2 punts)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im4.png?raw=true" /></p>
+</li>
+<li>
+<p>Per a cada empleat, mostreu el seu cognom i calculeu el número de mesos entre el dia d'avui i la data de contractació. Etiqueteu la columna com <strong>mesos treballats</strong> , ordeneu els resultats segons el número de mesos treballats. Arrodoniu el número de mesos cap amunt fins el número enter més proper. (2 punts)</p>
+</li>
+<li>
+<p>Creeu una consulta per a mostrar el cognom i el salari de tots els empleats. Formateu el salari per a que tingui 15 caràcters de longitud, ompliu a l'esquerra amb $. Etiqueteu la columna <strong>SALARY</strong>. (2 punts)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im6.png?raw=true" /></p>
+</li>
+<li>
+<p>Mostreu el cognom de cada empleat, així com la data de contractació i la data de revisió del primer salari, que va ser el primer dilluns després de sis mesos de servei. Etiqueteu la columna <strong>REVIEW.</strong> Formateu les dates per a que aparegui en un format com el de la imatge. (2 punts)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im7.png?raw=true" /></p>
+</li>
+<li>
+<p>Crea una consulta que mostri el cognom i les comissions dels empleats. Si un empleat no cobra comissió, poseu "No Commission". Etiqueteu la columna <strong>COMM</strong>.(1 punt)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im8.png?raw=true" /></p>
+</li>
+</ol>
+<h3 id="part-2-bdd-pagila">Part 2. BDD PAGILA</h3>
+<ol>
+<li>
+<p>Crea una consulta que mostri el títol de les pel·lícules, l'any de publicació i que indiqui la durada de lloguer (rental_duration) amb asteriscos. Cada asterisc significa un dia. Ordeneu les dades per any de publicació en ordre ascendent. Etiqueteu la columna <strong>FILMS_AND_THEIR_DURATION</strong>. (1 punt)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im9.png?raw=true" /></p>
+</li>
+<li>
+<p>Utilitzant la funció CASE, escriviu una consulta que mostri el grau de totes les categories basant-se en el valor de la columna <strong>NAME</strong> segons les següents dades: (1 punt)</p>
+<table>
+<thead>
+<tr>
+<th>CATEGORY NAME</th>
+<th>GRADE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Drama</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Comedy</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>D</td>
+</tr>
+<tr>
+<td>Animation</td>
+<td>E</td>
+</tr>
+<tr>
+<td>Cap dels anteriors</td>
+<td>U</td>
+</tr>
+</tbody>
+</table>
+<p>Mostreu el codi de categoria, el nom, grau i ordeneu per grau.</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im10.png?raw=true" /></p>
+</li>
+<li>
+<p>Volem formatar els EMAILS dels clients canviant els punts per guions. Això ha de funcionar independentment de on estiguin els punts. (2 punts)</p>
+<p><img alt="Tabla" src="../assets/m02_A03_im11.png?raw=true" /></p>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

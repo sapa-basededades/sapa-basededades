@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/06-sql_rrhh/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>1.2 Base de dades Recursos Humans (RRHH) - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1.2 Base de dades Recursos Humans (RRHH)";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\EXERCICIS\\06-sql_rrhh.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/06-sql_rrhh/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1.2 Base de dades Recursos Humans (RRHH)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="12-base-de-dades-recursos-humans-rrhh">1.2 Base de dades Recursos Humans (RRHH)</h1>
+<ul>
+<li><a href="#12-base-de-dades-recursos_humans">1.2 Base de dades Recursos Humans</a></li>
+<li><a href="#121-model-relacional">1.2.1 Model relacional</a></li>
+<li><a href="#122-scripts-de-creació-de-la-base-de-dades">1.2.2 Scripts de creació de la base de dades</a></li>
+<li><a href="#123-consultes-sobre-una-taula-amb-funcions">1.2.3 Consultes sobre una taula amb funcions</a></li>
+<li><a href="#124-consultes-sobre-una-taula-utilitzant-agrupaments">1.2.4 Consultes sobre una taula utilitzant agrupaments</a></li>
+<li><a href="#125-consultes-multitaula-joins">1.2.5 Consultes multitaula (JOINs)</a>  </li>
+<li><a href="#126-subconsultes">1.2.6 Subconsultes</a><ul>
+<li><a href="#1271-amb-operadors-bàsics-de-comparació">1.2.6.1 Amb operadors bàsics de comparació</a></li>
+<li><a href="#1272-subconsultes-amb-all-i-any">1.2.6.2 Subconsultes amb ALL i ANY</a></li>
+<li><a href="#1273-subconsultes-amb-in-i-not-in">1.2.6.3 Subconsultes amb IN i NOT IN</a></li>
+<li><a href="#1274-subconsultes-amb-exists-i-not-exists">1.2.6.4 Subconsultes amb EXISTS i NOT EXISTS</a></li>
+</ul>
+</li>
+<li><a href="#127-window-functions">1.2.7 Window Functions</a></li>
+</ul>
+<h2 id="121-model-relacional">1.2.1 Model relacional</h2>
+<p><img alt="Tabla" src="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_rrhh/db_rrhh_model.png" /></p>
+<h2 id="122-scripts-de-creacio-de-la-base-de-dades">1.2.2 Scripts de creació de la base de dades</h2>
+<p>Crea la base de dades gestio-empleats descarregant els scripts des de Github.</p>
+<ul>
+<li><a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_rrhh">Esquema de la base de dades per MySQL</a></li>
+</ul>
+<h2 id="123-consultes-sobre-una-taula-amb-funcions">1.2.3 Consultes sobre una taula amb funcions</h2>
+<ol>
+<li>Llista totes les columnes de la taula empleats.</li>
+<li>Llista els cognoms de tots els empleats.</li>
+<li>Llista els cognoms dels empleats eliminant els cognoms que estiguin repetits.</li>
+<li>Llista el nom i els cognoms de tots els empleats.</li>
+<li>Mostra els cognoms i nom dels empleats concatenats amb una coma i un
+espai en blanc.</li>
+<li>Volem una columna on estigui tot en majúscules i l’altre tot en minúscules. Anomena les columnes com a "nom_majuscules" i "nom_minuscules" respectivament.</li>
+<li>Mostra les 6 primeres lletres dels cognoms dels empleats</li>
+<li>Quins són els empleats que tenen la longitud del cognoms major a 6? (Mostra els cognoms i la longitud)</li>
+<li>Substitueix totes les 'a' dels cognoms dels empleats per 'e'. Ordena pel nou valor dels cognoms</li>
+<li>Mostra tots els empleats que tenen en la segona posició dels cognoms una 'a'. (Sense utilitzar l’operador LIKE, ni REGEXP)</li>
+<li>Per cada empleat mostra el codi d’empleat, cognom i el salari amb un augment del 15% expressat com un número enter, etiqueta la columna amb el nom "nou_salari".</li>
+<li>Partint de la consulta anterior, afegeix una nova columna que mostri la diferencia salarial entre el nou salari i l’antic. Etiqueta la columna com a "increment"</li>
+<li>Fes una consulta on mostri el cognom de l’empleat en majúscules i la longitud del cognom dels empleats on el seu cognom comenci per J, A o M. Ordena els resultats per cognom d’empleat.</li>
+<li>Fes una consulta on mostri el codi, nom i cognoms dels empleats que van ser contractats un dilluns o un divendres.</li>
+<li>Mostra l’import de comissió dels empleats. Etiqueta la columna com a "import_comissio" i arrodoneix el valor a 2 decimals. Si un empleat no té assignada comissió fes el que calgui per tal que el resultat de l’operació surti zero en comptes de NULL. Mostra també el cognom i el salari en Ptes despreciant els decimals (truncar)</li>
+<li>Utilitzant alguna de les funcions de dates, obté el nom, cognom i data de contractació dels empleats contractats durant el 1997.</li>
+<li>Utilitzant alguna de les funcions de data, mostra tots els empleats que van ser contractats entre els mesos de juny i novembre, independentment de l’any.</li>
+<li>El nostre departament de recursos humans s’aborreix molt i per justificar el seu sou està elaborant tot d’estadístiques extranyes. Ara volen saber quins empleats varen ser contractats en un dia parell.</li>
+<li>Mostra el cognom, la data de contractació i el dia de la setmana en el que va començar l’empleat a treballar. Etiqueta la columna com a dia. Ordena els resultats per dia de la setmana.</li>
+<li>Mostra el codi d’empleat, cognoms i la data de contractació en format AAAAMM. El dia no ens interessa ara en el nostre estudi estadístic. Ordena per aquest nou format de data.</li>
+<li>Per cada empleat, mostra el cognom, la data de contractació i el número de mesos entre el dia d’avui i la data de contractació. Etiqueta la columna com a "mesos_treballats" i arrodoneix sense decimals. Ordena el resultat segons els mesos treballats de més a menys.</li>
+<li>Mostra el nom, cognom i anys d’antiguitat dels empleats que tenen una antiguitat superior o igual a 20 anys a l’empresa.</li>
+<li>Crea una consulta per mostrar el cognom i salari de tots els empleats que guanyen més de 10.000 a l’any. Dona format al camp salari per a que tingui 15 caràcters de longitud, omplint per l’esquerra amb $. Etiqueta la columna com a salari.</li>
+<li>Mostra el cognom, salari i percentatge de comissió dels empleats. Afegeix una nova columna en que si un empleat no té assignada comissió, posi "SenseComissió". Etiqueta la columna amb nom "no_comissio"</li>
+<li>Mostra el cognom, salari i utilitzant la funció CASE, mostra el següent en
+funció del valor del salari</li>
+<li>Si el salari està entre 0 i 3000 -&gt; "Mig"</li>
+<li>Si el salari està entre 12000 i 24000 -&gt; "Alt"</li>
+<li>Qualsevol altre valor posa "Altres"</li>
+<li>Anomena la columna com a "poder_adquisitiu" i ordena per salari de menor a major</li>
+<li>Llista el codi dels departaments dels empleats que apareixen a la taula empleats.</li>
+<li>Partint de la consulta anterior elimina els codis de departament repetits.</li>
+<li>Calcula el nombre d'empleats que <strong>no tenen</strong> comissió assignada.</li>
+</ol>
+<h2 id="124-consultes-sobre-una-taula-utilitzant-agrupaments">1.2.4 Consultes sobre una taula utilitzant agrupaments</h2>
+<ol>
+<li>Quants empleats van ser contractats l'any passat.</li>
+<li>Quin és el treballador (nº d’anys no el nom del treballador) amb més anys d'antiguitat.</li>
+<li>Quin és el treballador(nº d’anys no el nom del treballador) amb menys anys d'antiguitat.</li>
+<li>Quin és el salari mig de l'empresa</li>
+<li>Mostra el salari més alt i el més baix dels empleats. Anomena les columnes com a "salari_max" i "salari_min" respectivament.</li>
+<li>Mostra la mitjana dels salaris i el número d’empleats que tenim. Arrodoneix la mitjana al número enter més pròxim i anomena les columnes com a salari_mig i num_empleats respectivament.</li>
+<li>Mostra, per cada tipus de treball, la mitjana dels salaris. Ordena la informació per tipus de treball.</li>
+<li>Quants empleats tenim assignats a cada tipus de treball? Ordena la informació per número d’empleats.</li>
+<li>Quants empleats tenim assignats a cada departament? Mostra el  codi de departament i el número d’empleats que té. Ordena la informació per número d’empleats.</li>
+<li>Partint de la consulta anterior, volem saber també quants empleats no tenen departament assignat. Mostra el text "No assignat" com a identificador del departament.</li>
+<li>Quants directors (caps) diferents tenim? Anomena la columna com a "numero_de_directors"</li>
+<li>Fes una consulta per calcular la diferència que hi  ha entre el salari màxim i el mínim dels empleats. Anomena la columna com a "diferencia".</li>
+<li>Mostra, per cada cap, el número identificador de l’empleat (com a cap) i el salari de l’empleat pitjor pagat per a aquest cap. Exclou els empleats  que no tinguin assignat cap.</li>
+<li>Partint de la consulta anterior, exclou també aquells caps en què el salari mínim sigui inferior o igual a 6.000.</li>
+<li>Obté el número d’empleats contractats per cada any. Ordena la informació per any.</li>
+<li>Mostra els codis de departament que tenen 3 o més empleats. Mostra només el codi del departament.</li>
+<li>Mostra el nombre d'empleats que cobren més de 9.000 euros.</li>
+</ol>
+<h2 id="125-consultes-multitaula-joins">1.2.5 Consultes multitaula (JOINs)</h2>
+<ol>
+<li>Mostra de cada empleat, el nom del departament, cognoms i nom de l’empleat. Ordena les dades per nom departament, cognoms i nom de forma ascendent.</li>
+<li>Mostra de cada departament,  el codi, el nom de departament, l’adreça, el codi postal i el nomde la ciutat</li>
+<li>Mostra del departament de 'Marketing', el codi, el nom de departament, l'adreça,  el codi postal i el nom de la  ciutat.</li>
+<li>De les localitzacions amb codi 1400, 1700 i 2500, ens interessa saber el seu codi, el nom de la ciutat, el nom  de l’estat/província, el nom del país i el nom de la regió. Ordena per codi localització.</li>
+<li>Escriu una consulta per mostrar el nom de cada departament,  la ciutat on està localitzat el departament, el número d’empleats i el salari mig per tots els empleats d’aquell departament. Anomena les columnes com Nom, Ciutat, Num_Empleats i Salari_Mig respectivament. Arrodoneix el salari mig a dos decimals. Ordena la informació per nom de departament.  Intenta de mostrar els punts de miler i la coma com a símbol separador dels valors decimals.</li>
+<li>Partint de l’historial de treballs, volem saber els empleats que han treballat en més d’una feina. Volem saber el codi d’empleat, el seu nom i cognoms i  el número de feines que ha tingut. Anomena la columna id_empleat com a CodiEmpl i el numero de feines com a  Num_feines. Ordena la informació per nom i cognoms d’empleat.</li>
+<li>Obtenir el codi d’empleat, nom i cognoms, nom de departament  i salari del primer empleat que té el salari més baix.</li>
+<li>Volem saber, dels empleats que van ser contractats abans del 1999 i que tenen un salari entre 10000 i 20000, quins pertanyen al departament de Vendes  o de Comptes. Mostrar el codi empleat, nom i cognoms, salari, l’any de la data de contractació i el nom de departament.</li>
+<li>Mostra el nom del departament, cognoms i nom de tots els empleats ( encara que no tinguin assignat cap departament ). Ordena les dades per nom departament, cognom i nom</li>
+<li>Volem saber, de cada departament, els empleats que té assignats. Mostra el codi de departament, nom del departament, cognoms i nom de l’empleat ( mostra tots els departaments encara que no tinguin assignat cap empleat ). Ordena les dades per nom departament, cognoms i nom d’empleat</li>
+</ol>
+<hr />
+<ol>
+<li></li>
+<li>Calcula el nombre d' empleats que treballen en cadascun dels departaments. El resultat d' aquesta consulta també ha d' incloure aquells departaments que no tenen cap empleat associat.</li>
+<li>----Retorna un llistat amb els empleats i les dades dels departaments on treballa cadascú.</li>
+<li>Retorna un llistat amb els empleats i les dades dels departaments on treballa cadascú. Ordena el resultat, en primer lloc pel nom del departament (en ordre alfabètic) i en segon lloc pels cognoms i el nom dels empleats.</li>
+<li>Retorna un llistat amb el codi i el nom del departament, només d' aquells departaments que tenen empleats.</li>
+<li>Retorna un llistat amb el codi, el nom del departament i el valor del pressupost actual de què disposa, només d' aquells departaments que tenen empleats. El valor del pressupost actual el pot calcular restant al valor del pressupost inicial (columna pressupost) el valor de les despeses que ha generat (columna despeses).</li>
+<li>Retorna el nom del departament on treballa l' empleat que té el nif 38382980M.</li>
+<li>Retorna el nom del departament on treballa l'empleat Pepe Ruiz Santana.</li>
+<li>Retorna un llistat amb les dades dels empleats que treballen al departament d' R + D. Ordena el resultat alfabèticament.</li>
+<li>Retorna un llistat amb les dades dels empleats que treballen al departament de Sistemes, Comptabilitat o R + D. Ordena el resultat alfabèticament.</li>
+<li>Retorna una llista amb el nom dels empleats que tenen els departaments que <strong>no</strong> tenen un pressupost entre 100000 i 200000 euros.</li>
+<li>Retorna un llistat amb el nom dels departaments on hi ha algun empleat el segon cognom del qual sigui NULL. Tingui en compte que no ha de mostrar noms de departaments que estiguin repetits.</li>
+<li>Mostra el nombre d'empleats que hi ha a cada departament. Has de retornar dues columnes, una amb el nom del departament i una altra amb el nombre d'empleats que té assignats.</li>
+</ol>
+<hr />
+<ol>
+<li>Retorna un llistat amb <strong>tots els empleats</strong> juntament amb les dades dels departaments on treballen. Aquest llistat també ha d' incloure els empleats que no tenen cap departament associat.</li>
+<li>Retorna un llistat on només apareguin aquells empleats que no tenen cap departament associat.</li>
+<li>Retorna un llistat on només apareguin aquells departaments que no tenen cap empleat associat.</li>
+<li>Retorna un llistat amb tots els empleats juntament amb les dades dels departaments on treballen. El llistat ha d' incloure els empleats que no tenen cap departament associat i els departaments que no tenen cap empleat associat. Ordeni el llistat alfabèticament pel nom del departament.</li>
+<li>Retorna un llistat amb els empleats que no tenen cap departament associat i els departaments que no tenen cap empleat associat. Ordeni el llistat alfabèticament pel nom del departament.</li>
+</ol>
+<h2 id="126-subconsultes">1.2.6 Subconsultes</h2>
+<h3 id="1261-amb-operadors-basics-de-comparacio">1.2.6.1 Amb operadors bàsics de comparació</h3>
+<ol>
+<li>Retorna un llistat amb tots els empleats que té el departament de Sistemes. (Sense utilitzar INNER JOIN).</li>
+<li>Retorna el nom del departament amb major pressupost i la quantitat que té assignada.</li>
+<li>Retorna el nom del departament amb menor pressupost i la quantitat que té assignada.</li>
+</ol>
+<h3 id="1262-subconsultes-amb-all-i-any">1.2.6.2 Subconsultes amb ALL i ANY</h3>
+<ol>
+<li>Retorna el nom del departament amb major pressupost i la quantitat que té assignada. Sense fer ús de MAX, ORDER BY ni LIMIT.</li>
+<li>Retorna el nom del departament amb menor pressupost i la quantitat que té assignada. Sense fer ús de MIN, ORDER BY ni LIMIT.</li>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant ALL o ANY).</li>
+<li>Retorna els noms dels departaments que no tenen empleats associats. (Utilitzant ALL o ANY).</li>
+</ol>
+<h3 id="1263-subconsultes-amb-in-i-not-in">1.2.6.3 Subconsultes amb IN i NOT IN</h3>
+<ol>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant IN o NOT IN).</li>
+<li>Retorna els noms dels departaments que no tenen empleats associats. (Utilitzant IN o NOT IN).</li>
+</ol>
+<h3 id="1264-subconsultes-amb-exists-i-not-exists">1.2.6.4 Subconsultes amb EXISTS i NOT EXISTS</h3>
+<ol>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant EXISTS o NOT EXISTS).</li>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant EXISTS o NOT EXISTS).</li>
+</ol>
+<h2 id="127-window-functions">1.2.7 Window Functions</h2>
+<ol>
+<li>Per cada empleat volem mostrar una columna a on hi hagi el número  total d’empleats del seu departament.</li>
+<li>Per cada empleat volem mostrar la mitjana de salari del seu departament, el salari més alt, el salari més baix i les diferències del seu salari entre el més alt i el més baix</li>
+<li>Volem obtenir els tres sous més alts dins de cada departament. Mostra el nom del departament, el nom i cognoms de l'empleat, el salari i la classificació/ranking dins del departament.</li>
+<li>Modifica la consulta anterior per tal de només mostrar aquells departaments amb que tinguem tres sous.</li>
+<li>Mostra els empleats que han estat contractats durant 3 dies consecutius.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

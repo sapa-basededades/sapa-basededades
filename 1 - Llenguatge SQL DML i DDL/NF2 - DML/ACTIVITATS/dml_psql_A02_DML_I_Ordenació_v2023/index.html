@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A02_DML_I_Ordenaci%C3%B3_v2023/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>A02 – Us de restricció i ordenació de dades en sentències SQL simples - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "A02 \u2013 Us de restricci\u00f3 i ordenaci\u00f3 de dades en sent\u00e8ncies SQL simples";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\ACTIVITATS\\dml_psql_A02_DML_I_Ordenaci\u00f3_v2023.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/ACTIVITATS/dml_psql_A02_DML_I_Ordenaci%C3%B3_v2023/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">A02 – Us de restricció i ordenació de dades en sentències SQL simples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="a02-us-de-restriccio-i-ordenacio-de-dades-en-sentencies-sql-simples">A02 – Us de restricció i ordenació de dades en sentències SQL simples</h1>
+<h2 id="descripcio-de-lactivitat">Descripció de l'activitat</h2>
+<ul>
+<li>Treballarem amb PostGreSQL i base de dades <strong>HR</strong></li>
+<li>Pots consultar els esquemes de la Base de Dades en el següent link: <a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></li>
+<li>Format d'entrega en pdf</li>
+<li>No adjunteu captures de pantalla ni de la consulta ni amb els resultats</li>
+<li>Les imatges son orientatives</li>
+<li>Només vull la sentencia SQL escrita (així en cas de dubte la puc copiar-enganxar i executar-la)</li>
+<li>
+<p>Exemple:</p>
+<p>Mostra totes les columnes dels empleats.</p>
+<pre><code>```sql
+SELECT * FROM EMPLOYEES; 
+```
+</code></pre>
+<p>Per saber de quina taula i camps es demana la informació de cada consulta acostumeu-vos primer abans de preguntar-me a:</p>
+</li>
+<li>
+<p>Fer servir el propi entorn d'execució de consultes per veure aquesta informació amb la comanda <em>\d \&lt;nom de la taula&gt;</em></p>
+</li>
+<li>Utilitzant l'entorn gràfic pgAdmin4:</li>
+</ul>
+<p><img alt="Tabla" src="../assets/pgadmin.png?raw=true" /></p>
+<h2 id="resultats-daprenentatge">Resultats d'aprenentatge</h2>
+<p>RA1. Consulta i modifica la informació emmagatzemada en una base de dades emprant assistents, eines gràfiques i el llenguatge de manipulació de dades.
+- 1.a. Identifica les funcions, la sintaxi i les ordres bàsiques del llenguatge SQL (llenguatge d’interrogació estructurat) per consultar i modificar les dades de la base de dades de manera interactiva.
+- 1.b. Empra assistents, eines gràfiques i el llenguatge de manipulació de dades sobre un SGBDR corporatiu de manera interactiva i tenint en compte les regles sintàctiques.
+- 1.c. Realitza consultes simples de selecció sobre una taula (amb restricció i ordenació) per consultar les dades d’una base de dades.</p>
+<h2 id="tasques">Tasques</h2>
+<h3 id="part-1-consultes-diverses-a-la-bd-20-punts">Part 1: Consultes diverses a la BD (20 punts)</h3>
+<ol>
+<li>Mostrar el cognom, nom i salari dels empleats que guanyen <strong>més</strong> de 12000. (1punt)</li>
+<li>Mostra tota la informació dels països ordenada per nom de país. (1punt)</li>
+<li>Volem saber el cognom, número de departament i e-mail de l'empleat 176. (1punt)</li>
+<li>Mostra totes les dades dels empleats contractats a partir del 1996. (1 punt)</li>
+<li>Mostrar el codi d'empleat, nom, cognoms i salari dels empleats que tenen un sou menor de 9000 o bé superior o igual a 17000. Ordena les dades segons el salari de menor a major. (1 punt)</li>
+<li>Mostra el nom, cognoms i salari dels empleats on el seu sou no estigui entre 8000 ni 10000. (1 punt)</li>
+<li>Mostra el codi d'empleat, nom, cognom i el número de departament de tots els empleats que pertanyen al departament 2 o al departament 5. Ordena alfabèticament per cognom, nom. (1 punt)</li>
+<li>Mostra el codi d'empleat, cognom, el número de departament i el salari de tots els empleats que guanyen entre 5000 i 12000 i estan en el departament 2 o 5. Anomena les columnes codi empleat com a IDEMPL i el salari com a SALARI_MENSUAL. (2 punts)</li>
+<li>Mostra el cognom i càrrec ( <strong>job_id</strong> ) de tots els empleats <strong>que no</strong> tenen assignat manager(<strong>manager_id)</strong>. (1 punt)</li>
+<li>Mostra el cognom de tots els empleats que tinguin una 'a' i una 'e' en el cognom. (1 punt)</li>
+<li>Volem fer un llistat amb el codi d'empleat, cognoms i telèfon dels empleats amb número de telèfon que comença per 590 i ordenat per cognoms. En la columna telèfon volem posar el següent text: "El telf. es: ". Tal com mostra la figura. (2 punts)
+    <img alt="Tabla" src="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/master/activitats/m02_A02_im1.png?raw=true" /></li>
+<li>Mostra el cognom, càrrec i salari de tots els empleats on el seu salari no sigui ni 3000, 7000 ni 10000. (1 punts)</li>
+<li>Mostra el cognom, salari i càrrec dels empleats que tenen un sou entre 10000 i 20000 o bé tenen com a codi de càrrec 9 (2 punts)</li>
+<li>Mostra el cognom, salari i càrrec dels empleats que guanyen més de 10000 anuals i tenen com a càrrec el codi 9 o bé 5. (2 punts)</li>
+<li>Mostra l'adreça, codi postal i ciutat de les localitzacions on el codi postal comença per 9, són de la ciutat de Seattle i pertanyen a Estats Units (codi país US) (2 punts)</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/08-sql_northwind/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Exercicis Northwind - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercicis Northwind";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\EXERCICIS\\08-sql_northwind.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/08-sql_northwind/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exercicis Northwind</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercicis-northwind">Exercicis Northwind</h1>
+<p>Exercicis relacionats amb la base de dades Northwind.</p>
+<p>Abans de començar mira el conjunt de taules i l'esquema de la base de  dades.</p>
+<h2 id="exercicis-amb-una-taula">Exercicis amb una taula</h2>
+<ul>
+<li>Quants clients hi ha registrats?</li>
+<li>Quantes comandes?</li>
+<li>Quins clients viuen a Londes i el seu nom (CustomerName) comença per A?</li>
+<li>Quants clients hi ha que són de Londres?</li>
+<li>Quants clients hi ha a cada ciutat?</li>
+<li>Quants empleats van néixer després de l'1 de juny del 1965?</li>
+<li>Fes-me un informe que digui «L'empleat N nació el N», sent N, nom (FirstName i Last Name) i dia de naixement (BirthDate)</li>
+<li>Fes-me l'informe anterior, però només per als empleats amb id 8, 7, 3 i 10</li>
+<li>Digues-me els països que tinguin més de 5 clients, ordenats pel nom de país</li>
+</ul>
+<h2 id="exercicis-amb-mes-duna-taula">Exercicis amb més d'una taula</h2>
+<ul>
+<li>Digues-me el nom del client de la comanda 10360</li>
+<li>Digues-me el nom complet dels clients amb les comandes 10360, 10253 i 10440</li>
+<li>Digues-me les ciutats i nombre de comandes de clients en aquesta ciutat</li>
+<li>Quines són les ciutats des de les quals hi ha més de 7 comandes?</li>
+<li>Quins són els tres països des dels quals tinc més comandes?</li>
+<li>Necessito un informe amb el Nom complet dels Empleats i el nombre de comandes que van registrar</li>
+<li>A l'informe anterior, només necessito els empleats el nom dels quals comenci per M</li>
+<li>Vull saber el número de comanda, quin empleat (només el nom) el va registrar i el client.</li>
+<li>Hi ha algun client que hagi fet més d'una comanda registrada pel mateix empleat?</li>
+<li>Vull saber els clients que hagin fet més d'una comanda i que hagin estat registrats per un Empleat el nom del qual sigui Margaret.</li>
+</ul>
+<h2 id="exercicis-amb-subconsultes">Exercicis amb Subconsultes</h2>
+<ul>
+<li>Quin és el producte amb el preu mínim més baix? (usant subconsultes)</li>
+<li>Quin és el producte el preu del qual sigui almenys 10 vegades la comanda mínima (quantity) de les comandes (OrderDetails)?</li>
+<li>Quins són els registres de productes (Products) el preu dels quals (price) sigui més gran que el màxim dels preus dels productes l'id dels quals sigui 3, 6, 9 i 10?</li>
+<li>Quins són els registres de productes (Products) el ProductID dels quals sigui un valor que estigui a Shippers.ShipperID?</li>
+<li>Quins clients (Customers) tenim registrats, que estiguin a ciutats dels nostres proveïdors (Suppliers)?</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

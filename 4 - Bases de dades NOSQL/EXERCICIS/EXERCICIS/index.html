@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/4%20-%20Bases%20de%20dades%20NOSQL/EXERCICIS/EXERCICIS/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>UF3: Persistència en BD Natives XML - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "UF3: Persist\u00e8ncia en BD Natives XML";
+        var mkdocs_page_input_path = "4 - Bases de dades NOSQL\\EXERCICIS\\EXERCICIS.md";
+        var mkdocs_page_url = "/4%20-%20Bases%20de%20dades%20NOSQL/EXERCICIS/EXERCICIS/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">UF3: Persistència en BD Natives XML</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="uf3-persistencia-en-bd-natives-xml">UF3: Persistència en BD Natives XML</h1>
+<h2 id="activitat-1-treball-amb-base-de-dades">Activitat 1: Treball amb Base de Dades</h2>
+<h3 id="explicacio">Explicació</h3>
+<ul>
+<li>
+<p>Aquesta pràctica s'haurà d'explicar al professor i s'haurà de fer funcionar amb Linux.</p>
+</li>
+<li>
+<p>L’elecció del bloc d’exercicis es realitzarà en funció del següents càlcul:
+    D   són els dos darrers números del DNI de l’alumne.
+    A   són els dos darrers números del vostre any de naixement.
+    M   és el número que correspon al mes de la vostra data de naixement</p>
+</li>
+</ul>
+<p>N = (D+A+M) mod 3</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>BLOC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-gestor-dun-aparcament-public">A GESTOR D’UN APARCAMENT PÚBLIC</h2>
+<p>Crear un programa, amb Python i PyMongo, que permeti gestionar les dades referents a l’ús d’un 
+aparcament públic.
+El programa permetrà les següents operacions:
+* Obtenir el número de places disponibles.
+* Obtenir el número de places ocupades.
+* Donades una data i una hora, el número de places ocupades.
+* Donat el número de matrícula d’un vehicle, l’historial d’estacionaments.
+* Donat el número d’una plaça d’aparcament, l’historial d’estacionaments.
+* Donada una data, llistat de les deu places més ocupades durant la data, indicant el número d’ocupacions i ordenat de més a menys.</p>
+<p>L’usuari interactuarà amb el programa mitjançant menús i l’introducció de dades a través del teclat.</p>
+<h2 id="b-gestor-de-comptes-bancaris">B GESTOR DE COMPTES BANCARIS</h2>
+<p>Crear un programa, amb Python i PyMongo, que permeti gestionar les dades referents als comptes corrents dels clients d’una entitat bancària.
+El programa permetrà les següents operacions:
+* Llistar les dades personals de tots els clients.
+* Llistar les dades personals dels clients amb una edad inferior a N anys.
+* Llistar les dades personals dels clients amb una edad superior a N anys.
+* Llistar els comptes corrents dels que disposa una persona.
+* Llistar el saldo dels comptes corrents del que disposa una persona.
+* Ingressar diners a un compte corrent.
+* Retirar diners d’un compte corrent.
+* Realitzar un traspàs de diners entre dos comptes corrents d’una mateixa persona.
+* Realitzar una transferència de diners d’un compte corrent d’una persona a un compte corrent d’una 
+altre persona.
+* Llistar l’historial d’operacions d’un compte corrent.</p>
+<p>L’usuari interactuarà amb el programa mitjançant menús i l’introducció de dades a través del teclat.</p>
+<h2 id="c-gestor-del-transport-municipal">C GESTOR DEL TRANSPORT MUNICIPAL</h2>
+<p>Crear un programa, amb Python i PyMongo, que permeti gestionar les dades referents al transport municipal 
+(bus urbà) d’una població.
+El programa permetrà les següents operacions:
+* Llistar les dades personals de les persones de la plantilla de l’empresa municipal de transport urbà 
+(persones que venen bitllets a l’estació, persones que condueixen un bus urbà i persones que 
+s’encarreguen del manteniment).
+* Llistar les línies disponibles.
+* Llistar l’històric de preus.
+* Llistar les línies ordenades de més a menys utilitzada.
+* Donada una data i una línia, els passatgers que han utilitzat la línia durant la data indicada.
+* Donada una data i una línia, el número de passatgers que han utilitzat la línia durant la data indicada.
+* Donades dues dates, els ingressos de les diferents línies durant les dates indicades.</p>
+<p>L’usuari interactuarà amb el programa mitjançant menús i l’introducció de dades a través del teclat</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

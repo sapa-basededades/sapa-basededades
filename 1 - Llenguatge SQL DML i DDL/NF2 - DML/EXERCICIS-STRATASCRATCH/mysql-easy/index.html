@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS-STRATASCRATCH/mysql-easy/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>MySQL - Easy - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MySQL - Easy";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\EXERCICIS-STRATASCRATCH\\mysql-easy.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS-STRATASCRATCH/mysql-easy/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">MySQL - Easy</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mysql-easy">MySQL - Easy</h1>
+<p>Exercicis de tipus <strong>Easy</strong> resolts de la plataforma <a href="https://www.stratascratch.com">StrataScratch</a>.
+Les solucions presentades poden diferir de les proposades per la plataforma, ja que l'alumnat no disposava d'accés a les solucions oficials. En alguns casos, la diversitat d'interpretacions dels enunciats pot donar lloc a variacions en les respostes proposades.</p>
+<p><a href="../">← Tornar a l'índex d'exercicis Strata Scratch MySQL</a></p>
+<h2 id="question-10153-find-the-number-of-yelp-businesses-that-sell-pizza"><a href="https://platform.stratascratch.com/coding/10153-find-the-number-of-yelp-businesses-that-sell-pizza?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10153 -Find the number of Yelp businesses that sell pizza</a></h2>
+<p>Tags: #Yelp</p>
+<p>Tables: <strong>#yelp_business</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT COUNT(*)
+  FROM yelp_business
+WHERE categories LIKE &quot;%Pizza%&quot;;
+</code></pre>
+<p>Altres possibles solucions serien incloure l'ús de la funció LOWER o UPPER al camp categories.</p>
+<h2 id="question-10356-finding-doctors"><a href="https://platform.stratascratch.com/coding/10356-finding-doctors?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10356 -Finding Doctors</a></h2>
+<p>Tags: #Google</p>
+<p>Tables: <strong>#employee_list</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT first_name, last_name
+  FROM employee_list
+WHERE last_name = &quot;Johnson&quot; and profession = &quot;Doctor&quot;
+</code></pre>
+<h2 id="question-100057-find-the-number-of-5-star-reviews-earned-by-lo-los-chicken-waffles"><a href="https://platform.stratascratch.com/coding/10356-finding-doctors?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 100057 - Find the number of 5-star reviews earned by Lo-Lo's Chicken &amp; Waffles</a></h2>
+<p>Tags: #Yelp</p>
+<p>Tables: <strong>#yelp_reviews</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT COUNT(*)
+  FROM yelp_reviews
+WHERE stars = 5 AND business_name = &quot;Lo-Lo's Chicken &amp; Waffles&quot;;
+</code></pre>
+<h2 id="question-10027-find-the-number-of-us-based-wineries-that-have-expensive-wines-price-200"><a href="https://platform.stratascratch.com/coding/10027-find-the-number-of-us-based-wineries-that-have-expensive-wines-price-200?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10027 - Find the number of US-based wineries that have expensive wines (price &gt;= 200)</a></h2>
+<p>Tags: #Wine Magazine</p>
+<p>Tables: <strong>#winemag_p1</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT COUNT(*)
+    FROM winemag_p1
+WHERE price &gt;= 200 AND country=&quot;US&quot;;
+</code></pre>
+<h2 id="question-10001-find-the-cost-per-customer-for-advertising-via-public-transport"><a href="https://platform.stratascratch.com/coding/10001-find-the-cost-per-customer-for-advertising-via-public-transport?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10001 - Find the cost per customer for advertising via public transport</a></h2>
+<p>Tags: #Uber</p>
+<p>Tables: <strong>#uber_advertising</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT  advertising_channel, year,    
+        (money_spent / customers_acquired) AS cost_per_customer
+FROM uber_advertising
+  WHERE LOWER(advertising_channel) LIKE &quot;%bus%&quot;;
+</code></pre>
+<p>Amb l'enunciat no sabem si volen la suma de la quantitat de diners respecte els clients aconseguits i fer el GROUP BY per canal.</p>
+<pre><code class="language-MySQL">SELECT   advertising_channel,year,    
+        SUM(money_spent) / SUM(customers_acquired) AS cost_per_customer
+FROM uber_advertising
+  WHERE LOWER(advertising_channel) LIKE '%bus%'
+GROUP BY advertising_channel,year
+</code></pre>
+<h2 id="question-10020-find-prices-for-spanish-italian-and-french-wines"><a href="https://platform.stratascratch.com/coding/10020-find-prices-for-spanish-italian-and-french-wines?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10020 - Find prices for Spanish, Italian, and French wines</a></h2>
+<p>Tags: #Wine Magazine</p>
+<p>Tables: <strong>#winemag_p1</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT  country,price
+  FROM winemag_p1
+WHERE country IN ('Spain', 'Italy', 'France') AND price IS NOT NULL;
+</code></pre>
+<h2 id="question-10021-find-all-top-rated-wineries-based-on-points"><a href="https://platform.stratascratch.com/coding/10021-find-all-top-rated-wineries-based-on-points?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10021 - Find all top-rated wineries based on points</a></h2>
+<p>Tags: #Wine Magazine</p>
+<p>Tables: <strong>#winemag_p1</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT  DISTINCT winery
+  FROM winemag_p1
+WHERE points &gt;= 95
+ORDER BY points;
+</code></pre>
+<h2 id="question-9934-london-olympic-swimmers"><a href="https://platform.stratascratch.com/coding/9934-london-olympic-swimmers?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9934 - London Olympic Swimmers</a></h2>
+<p>Tags:</p>
+<p>Tables: <strong>#olympics_athletes_events</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT *
+  FROM olympics_athletes_events
+WHERE city = 'London' AND sport = 'Swimming';
+</code></pre>
+<h2 id="question-9995-top-10-ranked-songs"><a href="https://platform.stratascratch.com/coding/9995-top-10-ranked-songs?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9995 - Top 10 Ranked Songs</a></h2>
+<p>Tags: #Spotify</p>
+<p>Tables: <strong>#spotify_worldwide_daily_song_ranking</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT trackname, position
+    FROM spotify_worldwide_daily_song_ranking
+ORDER BY position ASC, trackname ASC;
+</code></pre>
+<h2 id="question-10277-find-all-inspections-which-are-part-of-an-inactive-program"><a href="https://platform.stratascratch.com/coding/10277-find-all-inspections-which-are-part-of-an-inactive-program?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10277 - Find all inspections which are part of an inactive program</a></h2>
+<p>Tags: #City of Los Angeles</p>
+<p>Tables: <strong>#los_angeles_restaurant_health_inspections</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT *
+  FROM los_angeles_restaurant_health_inspections
+WHERE program_status = 'INACTIVE';
+</code></pre>
+<h2 id="question-2002-submission-types"><a href="https://platform.stratascratch.com/coding/2002-submission-types?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2002 - Submission Types</a></h2>
+<p>Tags: #Interview Question Date: January 2021</p>
+<p>Tables: <strong>#loans</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT user_id
+    FROM loans
+WHERE type IN ('Refinance', 'InSchool');
+</code></pre>
+<h2 id="question-10183-total-cost-of-orders"><a href="https://platform.stratascratch.com/coding/10183-total-cost-of-orders?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10183 - Total Cost Of Orders</a></h2>
+<p>Tags: #Interview Question Date: January 2021</p>
+<p>Tables: <strong>#customers, #orders</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT c.id, c.first_name, SUM(o.total_order_cost) total_order_cost 
+  FROM customers c
+  INNER JOIN orders o ON o.cust_id = c.id
+GROUP BY c.id
+ORDER BY first_name ASC;
+</code></pre>
+<h2 id="question-10000-find-the-year-that-uber-acquired-more-than-2000-customers-through-celebrities"><a href="https://platform.stratascratch.com/coding/10000-find-the-year-that-uber-acquired-more-than-2000-customers-through-celebrities?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10000 - Find the year that Uber acquired more than 2000 customers through celebrities</a></h2>
+<p>Tags: #Uber</p>
+<p>Tables: <strong>#uber_advertising</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT year
+  FROM uber_advertising
+WHERE customers_acquired &gt; 2000 AND advertising_channel = 'celebrities';
+</code></pre>
+<h2 id="question-10127-calculate-samanthas-and-lisas-total-sales-revenue"><a href="https://platform.stratascratch.com/coding/10127-calculate-samanthas-and-lisas-total-sales-revenue?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10127 - Calculate Samantha's and Lisa's total sales revenue</a></h2>
+<p>Tags: #Salesforce, #Amazon, #Groupon</p>
+<p>Tables: <strong>#sales_performance</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT SUM(sales_revenue)
+    FROM sales_performance
+WHERE salesperson IN ('Samantha','Lisa');
+</code></pre>
+<h2 id="question-9999-find-songs-that-are-ranked-between-8-10"><a href="https://platform.stratascratch.com/coding/9999-find-songs-that-are-ranked-between-8-10?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9999 - Find songs that are ranked between 8-10</a></h2>
+<p>Tags: #Spotify</p>
+<p>Tables: <strong>#spotify_worldwide_daily_song_ranking</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT trackname, position
+    FROM spotify_worldwide_daily_song_ranking
+WHERE position BETWEEN 8 AND 10
+ORDER BY position ASC;
+</code></pre>
+<h2 id="question-10007-average-cost-of-each-request"><a href="https://platform.stratascratch.com/coding/10007-average-cost-of-each-request?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10007 - Average Cost Of Each Request</a></h2>
+<p>Tags: #Uber</p>
+<p>Tables: <strong>#uber_ride_requests</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT request_status,AVG(monetary_cost)
+    FROM uber_ride_requests
+WHERE request_status IN ('success','fail')
+GROUP BY request_status;
+</code></pre>
+<h2 id="question-10132-highest-crime-rate"><a href="https://platform.stratascratch.com/coding/10132-highest-crime-rate?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10132 - Highest Crime Rate</a></h2>
+<p>Tags: #City of San Francisco</p>
+<p>Tables: <strong>#sf_crime_incidents_2014_01</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT COUNT(incidnt_num), day_of_week
+    FROM sf_crime_incidents_2014_01
+GROUP BY day_of_week;
+</code></pre>
+<h2 id="question-9688-churro-activity-date"><a href="https://platform.stratascratch.com/coding/9688-churro-activity-date?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9688 - Churro Activity Date</a></h2>
+<p>Tags: #City of Los Angeles</p>
+<p>Tables: <strong>#los_angeles_restaurant_health_inspections</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT pe_description, activity_date
+    FROM los_angeles_restaurant_health_inspections
+WHERE facility_name = &quot;STREET CHURROS&quot; AND score &lt; 95;
+</code></pre>
+<h2 id="question-10168-number-of-records-by-variety"><a href="https://platform.stratascratch.com/coding/10168-number-of-records-by-variety?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10168 - Number Of Records By Variety</a></h2>
+<p>Tags: #Microsoft, #Linux</p>
+<p>Tables: <strong>#iris</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT variety, COUNT(*)
+    FROM iris
+GROUP BY variety
+ORDER BY variety ASC;
+</code></pre>
+<h2 id="question-10137-even-numbered-ids-hired-in-june"><a href="https://platform.stratascratch.com/coding/10137-find-workers-with-an-even-number-for-worker-id?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10137 - Even-numbered IDs Hired in June</a></h2>
+<p>Tags: #Amazon, #Bosch</p>
+<p>Tables: <strong>#worker</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT *
+  FROM worker
+WHERE MONTH(joining_date) = 6 AND worker_id % 2 = 0;
+</code></pre>
+<h2 id="question-10184-order-all-countries-by-the-year-they-first-participated-in-the-olympics"><a href="https://platform.stratascratch.com/coding/10184-order-all-countries-by-the-year-they-first-participated-in-the-olympics?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10184 - Order all countries by the year they first participated in the Olympics</a></h2>
+<p>Tags: #ESPN</p>
+<p>Tables: <strong>#olympics_athletes_events</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT noc, MIN(year) AS year
+    FROM olympics_athletes_events
+GROUP BY noc
+ORDER BY year ASC, noc ASC;
+</code></pre>
+<h2 id="question-2159-april-may-sign-ups"><a href="https://platform.stratascratch.com/coding/2159-april-may-sign-ups?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2159 - April &amp; May Sign Up's</a></h2>
+<p>Tags: #Amazon</p>
+<p>Tables: <strong>#transactions</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT signup_id
+  FROM transactions
+WHERE MONTH(transaction_start_date ) IN (4,5);
+</code></pre>
+<h2 id="question-10164-total-adwords-earnings"><a href="https://platform.stratascratch.com/coding/10164-total-adwords-earnings?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10164 - Total AdWords Earnings</a></h2>
+<p>Tags: #Google</p>
+<p>Tables: <strong>#google_adwords_earnings</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT business_type, SUM(adwords_earnings)
+    FROM google_adwords_earnings
+GROUP BY business_type;
+</code></pre>
+<h2 id="question-2156-unique-employee-logins"><a href="https://platform.stratascratch.com/coding/2156-unique-employee-logins?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2156 - Unique Employee Logins</a></h2>
+<p>Tags: #Meta</p>
+<p>Tables: <strong>#worker_logins</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT worker_id
+  FROM worker_logins
+WHERE login_timestamp BETWEEN &quot;2021-12-13&quot; AND &quot;2021-12-19&quot;;
+</code></pre>
+<h2 id="question-2129-post-likes"><a href="https://platform.stratascratch.com/coding/2129-post-likes?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2129 - Post Likes</a></h2>
+<p>Tags: #Meta</p>
+<p>Tables: <strong>#fb_posts</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT AVG(no_of_likes) 
+  FROM fb_posts;
+</code></pre>
+<h2 id="question-9648-drafted-into-nfl"><a href="https://platform.stratascratch.com/coding/9648-drafted-into-nfl?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9648 - Drafted Into NFL</a></h2>
+<p>Tags: #ESPN</p>
+<p>Tables: <strong>#nfl_combine</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT COUNT(*)
+  FROM nfl_combine
+WHERE pickround &gt; 0 AND year = 2013;
+</code></pre>
+<h2 id="question-9830-first-name-with-right-whitespace-removed"><a href="https://platform.stratascratch.com/coding/9830-print-the-first-name-after-removing-white-spaces-from-the-right-side?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9830 - First Name with Right Whitespace Removed</a></h2>
+<p>Tags: #Stripe, #Amazon</p>
+<p>Tables: <strong>#worker_ws</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT RTRIM(first_name)
+  FROM worker_ws;
+</code></pre>
+<h2 id="question-10004-find-all-lyft-rides-which-happened-on-rainy-days-before-noon"><a href="https://platform.stratascratch.com/coding/10004-find-all-lyft-rides-which-happened-on-rainy-days-before-noon?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10004 - Find all Lyft rides which happened on rainy days before noon</a></h2>
+<p>Tags: #Lyft</p>
+<p>Tables: <strong>#lyft_rides</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT * 
+    FROM lyft_rides
+WHERE weather = 'rainy' AND hour &lt; 12;
+</code></pre>
+<h2 id="question-10367-aggregate-listening-data"><a href="https://platform.stratascratch.com/coding/10367-aggregate-listening-data?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10367 - Aggregate Listening Data</a></h2>
+<p>Tags: #Spotify</p>
+<p>Tables: <strong>#listening_habits</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT user_id,
+       ROUND(SUM(listen_duration),0) AS total_listen_duration,
+       COUNT(DISTINCT song_id) 
+  FROM listening_habits
+GROUP BY user_id;
+</code></pre>
+<h2 id="question-10360-movie-duration-match"><a href="https://platform.stratascratch.com/coding/10360-movie-duration-match?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10360 - Movie Duration Match</a></h2>
+<p>Tags: #Amazon</p>
+<p>Tables: <strong>#entertainment_catalog, #flight_schedule</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT f.flight_id, e.movie_id, e.duration AS movie_duration
+  FROM entertainment_catalog e
+  CROSS JOIN flight_schedule f
+WHERE f.flight_id = 101 AND e.duration &lt;= f.flight_duration;
+
+# Sense Utliitzar la clàusula específica CROSS JOIN
+
+SELECT f.flight_id, e.movie_id, e.duration AS movie_duration
+  FROM entertainment_catalog e
+      ,flight_schedule f
+WHERE f.flight_id = 101 AND e.duration &lt;= f.flight_duration;
+</code></pre>
+<h2 id="question-9840-first-names-containing-the-letter-a"><a href="https://platform.stratascratch.com/coding/9840-find-all-workers-whose-first-name-contains-the-letter-a?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9840 - First Name's Containing the Letter 'a'</a></h2>
+<p>Tags: #Amazon, #Oracle</p>
+<p>Tables: <strong>#worker</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">-- Utilitzant RLIKE
+SELECT *
+    FROM worker
+WHERE first_name RLIKE '^a';
+
+-- Utilitzant LIKE
+SELECT *
+    FROM worker
+WHERE first_name LIKE 'a%';
+</code></pre>
+<h2 id="question-9828-first-three-characters-of-first-name"><a href="https://platform.stratascratch.com/coding/9828-print-the-first-three-characters-of-the-first-name?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9828 - First Three Characters of First Name</a></h2>
+<p>Tags: #Amazon, #Oracle</p>
+<p>Tables: <strong>#worker</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT SUBSTRING(first_name,1,3) as first_three
+    FROM worker;
+
+SELECT left(first_name,3) as first_three
+    FROM worker;
+</code></pre>
+<h2 id="question-9974-benefits-of-employees-called-patrick"><a href="https://platform.stratascratch.com/coding/9974-benefits-of-employees-called-patric?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9974 - Benefits Of Employees Called Patrick</a></h2>
+<p>Tags: #City of San Francisco</p>
+<p>Tables: <strong>#sf_public_salaries</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT employeename, benefits
+    FROM sf_public_salaries
+WHERE employeename  RLIKE &quot;^Patrick&quot;;
+
+SELECT employeename, benefits
+    FROM sf_public_salaries
+WHERE employeename LIKE &quot;Patrick%&quot;;
+
+-- Mirem substring que queda abans del primer espai.
+SELECT employeename,benefits
+    FROM sf_public_salaries
+WHERE  SUBSTRING_INDEX(employeename, &quot; &quot;, 1) =&quot;Patrick&quot;
+</code></pre>
+<h2 id="question-9972-captain-base-pay"><a href="https://platform.stratascratch.com/coding/9972-find-the-base-pay-for-police-captains?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9972 - Captain Base Pay</a></h2>
+<p>Tags: #City of San Francisco</p>
+<p>Tables: <strong>#sf_public_salaries</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT employeename, basepay
+    FROM sf_public_salaries
+WHERE jobtitle RLIKE &quot;captain&quot; AND jobtitle RLIKE &quot;police&quot;;
+</code></pre>
+<h2 id="question-9863-first-record-without-limit-or-order-by"><a href="https://platform.stratascratch.com/coding/9863-find-the-first-record-of-the-dataset-without-using-limit-or-order-by?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9863 - First Record Without LIMIT or ORDER BY</a></h2>
+<p>Tags: #Google , #Amazon
+Tables: <strong>#worker</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT *
+  FROM worker
+WHERE worker_id = (SELECT MIN(worker_id)
+                     FROM worker);
+</code></pre>
+<h2 id="question-2006-users-activity-per-month-day"><a href="https://platform.stratascratch.com/coding/2006-users-activity-per-month-day?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2006 - Users Activity Per Month Day</a></h2>
+<p>Tags: #Meta</p>
+<p>Tables: <strong>#facebook_posts</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT poster, post_date,
+       COUNT(*) AS activity_count
+  FROM facebook_posts
+GROUP BY poster, post_date
+</code></pre>
+<p>Per cada dia del mes entenc qeue és post_date. Si el que volen és agrupar per 1 de gener de tots els anys
+hauríem de fer DATE_FORMAT (post_date, "%m-%d")</p>
+<pre><code class="language-MySQL">SELECT poster, DATE_FORMAT (post_date, &quot;%m-%d&quot;),
+       COUNT(*) AS activity_count
+FROM facebook_posts
+GROUP BY poster, DATE_FORMAT (post_date, &quot;%m-%d&quot;)
+</code></pre>
+<h2 id="question-2039-products-report-summary"><a href="https://platform.stratascratch.com/coding/2039-products-report-summary?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2039 - Products Report Summary</a></h2>
+<p>Tags: #Interview Question Date: June 2021</p>
+<p>Tables: <strong>#wfm_transactions, #wfm_products</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT  p.product_category,
+        COUNT(DISTINCT t.transaction_id) AS transactiones_unicas,
+        SUM(t.sales) AS ventas_totales
+  FROM wfm_transactions t
+  INNER JOIN wfm_products p ON t.product_id = p.product_id
+WHERE YEAR(t.transaction_date) = 2017
+GROUP BY p.product_category
+HAVING ventas_totales &gt; 0
+ORDER BY ventas_totales DESC;
+</code></pre>
+<h2 id="question-2056-number-of-shipments-per-month"><a href="https://platform.stratascratch.com/coding/2056-number-of-shipments-per-month?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 2056 - Number of Shipments Per Month</a></h2>
+<p>Tags: #Amazon</p>
+<p>Tables: <strong>#amazon_shipment</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DATE_FORMAT(shipment_date, '%Y-%m') AS fecha,
+      COUNT( CONCAT(shipment_id, '-', sub_id)) AS numero_envios
+  FROM amazon_shipment
+GROUP BY DATE_FORMAT(shipment_date, '%Y-%m');
+</code></pre>
+<h2 id="question-10051-find-the-number-of-open-businesses"><a href="https://platform.stratascratch.com/coding/10051-find-the-number-of-open-businesses?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10051 - Find the number of open businesses</a></h2>
+<p>Tags: #Yelp</p>
+<p>Tables: <strong>#yelp_business</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT COUNT(*) AS negocis_oberts
+    FROM yelp_business
+WHERE is_open = 1;
+</code></pre>
+<h2 id="question-10024-wine-varieties-tasted-by-roger-voss"><a href="https://platform.stratascratch.com/coding/10024-wine-varieties-tasted-by-roger-voss?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10024 - Wine varieties tasted by 'Roger Voss'</a></h2>
+<p>Tags: #Wine Magazine</p>
+<p>Tables: <strong>#winemag_p2</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT variety
+    FROM winemag_p2
+WHERE taster_name = 'Roger Voss' AND region_1 IS NOT NULL;
+</code></pre>
+<h2 id="question-10022-find-all-wine-varieties-which-can-be-considered-cheap-based-on-the-price"><a href="https://platform.stratascratch.com/coding/10022-find-all-wine-varieties-which-can-be-considered-cheap-based-on-the-price?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10022 - Find all wine varieties which can be considered cheap based on the price</a></h2>
+<p>Tags: #Wine Magazine</p>
+<p>Tables: <strong>#winemag_p1</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT variety
+    FROM winemag_p1
+WHERE price BETWEEN 5 AND 20;
+</code></pre>
+<h2 id="question-9973-find-job-titles-which-had-0-hours-of-overtime"><a href="https://platform.stratascratch.com/coding/10022-find-all-wine-varieties-which-can-be-considered-cheap-based-on-the-price?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9973 - Find job titles which had 0 hours of overtime</a></h2>
+<p>Tags: #City of San Francisco</p>
+<p>Tables: <strong>#sf_public_salaries</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT jobtitle
+    FROM sf_public_salaries
+WHERE overtimepay = 0
+</code></pre>
+<h2 id="question-10087-find-all-posts-which-were-reacted-to-with-a-heart"><a href="https://platform.stratascratch.com/coding/10087-find-all-posts-which-were-reacted-to-with-a-heart?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 10087 - Find all posts which were reacted to with a heart</a></h2>
+<p>Tags: #Meta</p>
+<p>Tables: <strong>#facebook_reactions, #facebook_posts</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT DISTINCT fp.*
+    FROM facebook_reactions fr
+    INNER JOIN facebook_posts fp ON fp.post_id = fr.post_id
+WHERE fr.reaction = 'heart';
+</code></pre>
+<h2 id="question-9674-find-the-top-5-longest-us-flights-by-distance"><a href="https://platform.stratascratch.com/coding/9674-find-the-top-5-longest-us-flights-by-distance?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9674 - Find the top 5 longest US flights by distance</a></h2>
+<p>Tags: #Virgin , #Delta Airlines , #American Airlines</p>
+<p>Tables: <strong>#us_flights</strong></p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT origin, dest, distance
+    FROM us_flights
+WHERE unique_carrier = 'US'
+ORDER BY distance DESC
+LIMIT 5;
+</code></pre>
+<h2 id="question-9997-top-100-ranked-songs"><a href="https://platform.stratascratch.com/coding/9997-top-100-ranked-songs?code_type=3">𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 9997 - Top 100 Ranked Songs</a></h2>
+<p>Tags: #Spotify</p>
+<p>Tables: <strong>#spotify_worldwide_daily_song_ranking</strong></p>
+<p>Hem tingut en compte que el cam position és el camp per calificar o valorar la canço.
+També hem agrupat per nom de canço i artista ja que si només agrupem per nom de canço podria ser que hi haguéssin dues cançons ambm el mateix nom, però artistes diferents.</p>
+<p>#### Solutions</p>
+<pre><code class="language-MySQL">SELECT  artist,
+        trackname,
+        SUM(streams) AS total_streams
+  FROM spotify_worldwide_daily_song_ranking
+GROUP BY artist,trackname
+ORDER BY position DESC
+LIMIT 100;
+</code></pre>
+<hr />
+<p><a href="../">← Tornar a l'índex d'exercicis Strata Scratch MySQL</a></p>
+<p><a href="../mysql-medium/">Medium</a></p>
+<p><a href="../mysql-hard/">Hard</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

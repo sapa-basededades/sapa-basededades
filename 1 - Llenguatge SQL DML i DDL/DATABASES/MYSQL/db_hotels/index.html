@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_hotels/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Hotels Sample Database - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Hotels Sample Database";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\MYSQL\\db_hotels\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_hotels/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Hotels Sample Database</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="hotels-sample-database">Hotels Sample Database</h1>
+<p>Aquest document descriu la base de dades Hotels</p>
+<p>hotels és una base de dades creada per <a href="https://www.linkedin.com/in/robertvallllovera/" title="Perfil LinkedIn Robert Ventura Vall-llovera">Robert Ventura Vall-llovera</a>, professor de Cicles Formatius d'Informàtica per la Generalitat de Catalunya .
+Aquesta base de dades va ser creada amb dades aleatòries i destinada a usos didàctics en assignatures com gestió de base de dades i administració de base de dades.</p>
+<p>Aquesta base de dades vol simular una BD de reserves d'hotels de 4/5 estrelles situats a Catalunya. Les seves taules principals són:</p>
+<ul>
+<li>Paisos (~19 registres)</li>
+<li>Poblacions (~100 registres)</li>
+<li>Hotels (~340 registres)</li>
+<li>Habitacions (~32.700 registres)</li>
+<li>Clients (~17.900 registres)</li>
+<li>Reserves (~182.000 registres)</li>
+</ul>
+<blockquote>
+<p>Aquesta base de dades no conté cap índex que no sigui procedent d'una clau primària o forana.</p>
+<p>Tampoc conté cap control d'entrada de dades excepte les contraints d'integritat referencial proporcionades per les claus foranes i les contraints d'unicitats proporcionades per les claus primàries de cada taula.</p>
+</blockquote>
+<h2 id="taules">Taules</h2>
+<h3 id="paisos">Paisos</h3>
+<p>La taula de paisos conté el codi i el nom de paisos. Aquesta taula s'utilitza per emmagatzemar el nom dels diferents paisos dels clients.</p>
+<h3 id="poblacions">Poblacions</h3>
+<p>La taula de poblacions conté les poblacions d'on estan situtats els hotels. Tal i com hem dit anteriorment són poblacions dins de Catalunya.</p>
+<h3 id="hotels">Hotels</h3>
+<p>La taula hotels conté un subconjunt de tots els hotels de 4 i 5 estrelles de Catalunya extrets d'un llistat a l'any 2017. Cosa que aquests poden estar desactualitzats a data d'avui.</p>
+<h3 id="habitacions">Habitacions</h3>
+<p>La taula d'habitacions conté la informació de cadascuna de les habitacions dels diferents hotels</p>
+<h3 id="clients">Clients</h3>
+<p>La taula clients conté la informació de cadascun dels clients que realitza reserves en els hotels.
+Degut a que les dades s'han generat de forma aleatòria pot ser que un mateix client tingui dues reserves en habitacions diferents dins del mateix periode.</p>
+<h3 id="reserves">Reserves</h3>
+<p>La taula de reserves conté reserves dels anys compresos entre 2014 i 2016 </p>
+<p>Si es vol controlar l'entrada de reserves per tal de que aquestes siguin consistents es pot fer és del següent disparador/trigger a la taula reserves</p>
+<pre><code class="language-sql">-- -----------------------------------
+-- Trigger que controla el solapament 
+-- de les reserves en la mateixa habitació 
+-- alhora de fer l'INSERT
+-- -----------------------------------
+CREATE TRIGGER trg_ReservesInsert BEFORE INSERT ON reserves
+FOR EACH ROW
+BEGIN
+
+   SELECT COUNT(*) INTO @vCount
+      FROM reserves r
+   WHERE r.hab_id = NEW.hab_id 
+    AND NEW.data_inici &lt;= r.data_fi AND NEW.data_fi &gt;= r.data_inici;
+
+   IF @vCount &gt; 0 THEN
+      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = &quot;Error: Hi ha reserves solapades&quot;;
+   END IF;
+
+END
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

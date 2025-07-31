@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/4%20-%20Bases%20de%20dades%20NOSQL/PYMONGO/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>MongoDB i Python - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MongoDB i Python";
+        var mkdocs_page_input_path = "4 - Bases de dades NOSQL\\PYMONGO.md";
+        var mkdocs_page_url = "/4%20-%20Bases%20de%20dades%20NOSQL/PYMONGO/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">MongoDB i Python</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mongodb-i-python">MongoDB i Python</h1>
+<h2 id="preparar-python-per-connectar-a-mongodb">Preparar python per connectar a MongoDB</h2>
+<p>PyMongo és una biblioteca de Python que permet interactuar amb bases de dades MongoDB.</p>
+<p>Per instal·lar-ho ho farem mitjançant la comanda pip</p>
+<pre><code class="language-console">regular@debian:~$ pip3 install pymongo
+</code></pre>
+<h2 id="exemple-basic-amb-mongodb-on-premise-creacio-de-la-bd">Exemple bàsic amb mongodb on premise. Creació de la BD</h2>
+<p>Crearem una base de dades "personal" que ens servirà per anar introduint mongo amb Python.
+Totes les opcions de pymongo les podeu trobar a la <a href="https://www.mongodb.com/docs/drivers/pymongo/">documentació oficial</a></p>
+<ul>
+<li>Pas 1: Creem la base de dades i les col·leccions</li>
+</ul>
+<pre><code class="language-console">regular@debian:~$ mongo --quiet -u adminbdd
+Enter password: 
+&gt; db
+test
+&gt; use personal
+switched to db personal
+&gt; db
+personal
+&gt; db.createCollection(&quot;dades_persones&quot;)
+{ &quot;ok&quot; : 1 }
+&gt; db.createCollection(&quot;telefons&quot;)
+{ &quot;ok&quot; : 1 }
+&gt; db.createCollection(&quot;codis_postals&quot;)
+{ &quot;ok&quot; : 1 }
+</code></pre>
+<ul>
+<li>Pas 2: Introduim dades de mostra</li>
+</ul>
+<pre><code class="language-console">&gt; db.codis_postals.insertOne( { cp: &quot;17300&quot;, poblacio: &quot;blanes&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814ef462735bfd9cfc898b&quot;)
+}
+&gt; db.codis_postals.insertOne( { cp: &quot;17310&quot;, poblacio: &quot;lloret&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814f0e62735bfd9cfc898c&quot;)
+}
+&gt; db.codis_postals.insertOne( { cp: &quot;17320&quot;, poblacio: &quot;tossa de mar&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814f2562735bfd9cfc898d&quot;)
+}
+
+&gt; db.dades_persones.insertOne( { dni: &quot;42542836w&quot;, nom: &quot;joan&quot;, cognoms: &quot;garcia sanchez&quot;, codpos: &quot;17320&quot;, dnaix: &quot;17/03/1996&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814f3e62735bfd9cfc898e&quot;)
+}
+&gt; db.dades_persones.insertOne( { dni: &quot;43728117m&quot;, nom: &quot;laura&quot;, cognoms: &quot;sanchez perez&quot;, codpos: &quot;17300&quot;, dnaix: &quot;24/07/1984&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814f5062735bfd9cfc898f&quot;)
+}
+&gt; db.dades_persones.insertOne( { dni: &quot;34657111j&quot;, nom: &quot;marta&quot;, cognoms: &quot;arnau mesa&quot;, codpos: &quot;17300&quot;, dnaix: &quot;19/12/1974&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814fde415cbde041c25b79&quot;)
+}
+&gt; db.telefons.insertOne( { dni: &quot;42542836w&quot;, num: &quot;972342175&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60814ffd415cbde041c25b7a&quot;)
+}
+&gt; db.telefons.insertOne( { dni: &quot;3728117m&quot;, num: &quot;972335784&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;6081502c415cbde041c25b7b&quot;)
+}
+&gt; db.telefons.insertOne( { dni: &quot;34657111j&quot;, num: &quot;972335611&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60815043415cbde041c25b7c&quot;)
+}
+&gt; db.telefons.insertOne( { dni: &quot;3728117m&quot;, num: &quot;650584721&quot; } );
+{
+&quot;acknowledged&quot; : true,
+&quot;insertedId&quot; : ObjectId(&quot;60815067415cbde041c25b7d&quot;)
+}
+&gt; exit
+</code></pre>
+<h2 id="exemple-basic-amb-mongodb-programar-amb-python-accedint-a-la-bd">Exemple bàsic amb MongoDB. Programar amb python accedint a la BD</h2>
+<ul>
+<li>Exemple 1: Creem un petit programa en python per cercar documents</li>
+</ul>
+<pre><code class="language-python"># cerca-nom.py
+import pymongo
+
+client = pymongo.MongoClient(host=&quot;localhost&quot;,
+                             port=27017,
+                             username=&quot;adminbd&quot;,
+                             password=&quot;12345678&quot;)
+# El primer que fem es seleccionar la base de dades escollint-la desde la connexió. En aquest cas la bd es personal
+base_de_dades = client.personal
+# De la base de dades &quot;personal&quot; agafem la colecció &quot;dades_persones&quot; i busquem un document on el nom sigui Joan
+document = base_de_dades[&quot;dades_persones&quot;].find_one({&quot;nom&quot;:&quot;joan&quot;})
+print(document)
+print()
+print(document[&quot;dni&quot;])
+print(document[&quot;nom&quot;])
+print(document[&quot;cognoms&quot;])
+print()
+client.close()
+</code></pre>
+<ul>
+<li>Exemple 2: Creem un programa en python per llistar documents</li>
+</ul>
+<pre><code class="language-python"># llistar-cp.py
+import pymongo
+client = pymongo.MongoClient(host=&quot;localhost&quot;,
+                             port=27017,
+                             username=&quot;adminbdd&quot;,
+                            password=&quot;12345678&quot;)
+base_de_dades = client.personal
+# Si no especifiquem cap clàusula en el find() retorna tots els registres en format llista, que després podem recorrer amb unfor
+for doc in base_de_dades[&quot;codis_postals&quot;].find():
+    print(doc)
+print()
+for doc in base_de_dades[&quot;codis_postals&quot;].find():
+    print(f&quot;{doc['cp']} {doc['poblacio']}&quot;)
+client.close()
+</code></pre>
+<ul>
+<li>Exemple 3: Crear un programa que retorni el cp en funció de la població</li>
+</ul>
+<pre><code class="language-python">
+# llistar_cp_pob.py
+import sys
+import pymongo
+
+pob = sys.argv[1]
+client = pymongo.MongoClient(host=&quot;localhost&quot;,
+                             port=27017,
+                             username=&quot;adminbdd&quot;,
+                             password=&quot;12345678&quot;)
+base_de_dades = client.personal
+doc = base_de_dades[&quot;codis_postals&quot;].find_one({&quot;poblacio&quot;:pob})
+if not doc:
+ print(f&quot;No existeix {pob} a la base de dades!&quot;)
+else:
+ print(doc['cp']
+</code></pre>
+<ul>
+<li>Exemple 4: Llistar edat</li>
+</ul>
+<pre><code class="language-python">import pymongo
+import datetime
+import math
+
+client = pymongo.MongoClient(host=&quot;localhost&quot;,
+                             port=27017,
+                             username=&quot;adminbdd&quot;,
+                             password=&quot;12345678&quot;)
+base_de_dades = client.personal
+for doc in base_de_dades[&quot;dades_persones&quot;].find():
+    avui = datetime.date.today()
+    data_naixament = datetime.datetime.strptime(doc['dnaix'],&quot;%d/%m/%Y&quot;).date()
+    dies = (avui - data_naixament).days
+    anys = math.floor(dies / 365)
+    print(f&quot;{doc['dnaix']} {doc['cognoms']} {doc['nom']} {anys}&quot;)
+client.close()
+
+</code></pre>
+<ul>
+<li>Exemple 5: Llista Ordenada</li>
+</ul>
+<pre><code class="language-python">import pymongo
+import datetime
+import math
+client = pymongo.MongoClient(host=&quot;localhost&quot;,
+                            port=27017,
+                            username=&quot;adminbdd&quot;,
+                            password=&quot;12345678&quot;)
+base_de_dades = client.personal
+for doc in base_de_dades[&quot;dades_persones&quot;].find().sort(&quot;cognoms&quot;):
+    print(f&quot;{doc['cognoms']}, {doc['nom']}&quot;)
+client.close()
+</code></pre>
+<ul>
+<li>Exemple 6: Consulta el numero de documents en una col·lecció</li>
+</ul>
+<pre><code class="language-python">   # Connexió a MongoDB Atlas
+    client = pymongo.MongoClient(host=&quot;localhost&quot;,
+                             port=27017,
+                             username=&quot;adminbdd&quot;,
+                             password=&quot;12345678&quot;)
+
+    db=conn.get_database('personal')
+    records = db.atopic
+    print(records.count_documents({}))
+</code></pre>
+<h2 id="exemple-amb-connexio-a-una-base-de-dades-en-cloud-mongo-atlas">Exemple amb connexió a una base de dades en cloud (Mongo Atlas)</h2>
+<p>Per connectar a una base de dades en Mongo Atlas l'unic que canvia es la cadena de connexió que informem quan executem el pymongo.MongoClient. La cadena de connexió la podem consultar directament a la web de Mongo Atlas:</p>
+<ol>
+<li>
+<p>Anem a la part de connect:</p>
+<pre><code>![Tabla](https://github.com/fbarraga/Python/blob/master/master/assets/mongodb_conn.png?raw=true)
+</code></pre>
+</li>
+<li>
+<p>Seleccionem drivers:</p>
+<pre><code>![Tabla](https://github.com/fbarraga/Python/blob/master/master/assets/mongodb_conn2.png?raw=true)
+</code></pre>
+</li>
+<li>
+<p>Copiem la cadena de connexió:</p>
+<pre><code>![Tabla](https://github.com/fbarraga/Python/blob/master/master/assets/mongodb_conn3.png?raw=true)
+</code></pre>
+</li>
+</ol>
+<p>Una cadena de connexió a una bd en cloud tindria el següent format:</p>
+<pre><code class="language-python">conn = pymongo.MongoClient(&quot;mongodb+srv://xxxxx:xxxxxx@cluster0.xxxxxx.mongodb.net/?retryWrites=true&amp;w=majority&quot;)
+</code></pre>
+<hr />
+<h2 id="parsejar-les-dates-amb-mongo-y-python">Parsejar les dates amb mongo y python</h2>
+<p>Si guardem les dates dintre de mongo amb format "data" i no en format string, després haurem de fer servir una llibreria que ens ajudi a formatejar la data de la consulta amb el mateix format que Mongo utilitza per guardar la data (afegeix el Timezone). Per ajudar-nos podem fer servir la llibreria <code>dateutil</code></p>
+<pre><code class="language-python">import datetime
+import dateutil.parser
+
+# the date
+now = datetime.datetime.now()
+anyo = now.year
+mes = now.month
+dia = now.day
+date_str  = str(anyo) + &quot;-&quot; + str(mes) + &quot;-&quot; + str(dia)
+date = dateutil.parser.parse(date_str)
+# Si tinguessim una colecció autors amb un atribut fecha podriem comparar de la següent manera
+db.autors.find({ fecha: {$eq: date}})
+
+</code></pre>
+<hr />
+<p><a href="../../../README.md">Index</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_acb/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Base de dades de la Lliga ACB - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Base de dades de la Lliga ACB";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\MYSQL\\db_acb\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/db_acb/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Base de dades de la Lliga ACB</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="base-de-dades-de-la-lliga-acb">Base de dades de la Lliga ACB <img src='recursos/logo_acb_1982-1987.png' width='50'><img src='recursos/logo_acb_1987-1990.png' width='70'><img src='recursos/logo_acb_1990-2003.png' width='50'><img src='recursos/logo_acb_2003-2019.png' width='50'><img src='recursos/logo_acb_2019-current.png' width='80'></h1>
+<hr />
+<p>Aquest repositori conté les dades dels diferents <strong>partits</strong> que s'ha disputat a la lliga ACB a partir de l'any 2000 juntament amb els <strong>jugadors</strong> que han participat a les diferents competicons d'aquests anys.
+L'origen de les dades s'ha extret de la web oficial de l'<a href="http://acb.com/">ACB</a>. Per aquest motiu hi ha dades en castellà. Per exemple: El nom dels llocs de naixement o les nacionalitats dels jugadors, entre altres.</p>
+<p>S'ha importat les dades tant de les competicions de la lliga regular i de la copa del rei. La finalitat d'aquesta base de dades és per usos didàctics.</p>
+<h2 id="descripcio-de-la-base-de-dades">Descripció de la base de dades</h2>
+<p>Base de dades de MongoDB amb dues col·leccions:
+* <strong>partits</strong>: 7.103 documents
+* <strong>jugadors</strong>: 2.246 documents</p>
+<p>Per la quantiat de documents de la col·lecció de partits s'ha dividit la col·lecció en fitxers de 1.000 documents cada un.</p>
+<h2 id="format-jugadors">Format <strong>Jugadors</strong></h2>
+<pre><code class="language-json">{
+  &quot;_id&quot;:{&quot;$oid&quot;:&quot;63f342429b5ebb433a6f5653&quot;},
+  &quot;codi_acb&quot;:&quot;20201682&quot;,
+  &quot;nom_curt&quot;:&quot;Marc Gasol&quot;,
+  &quot;url&quot;:&quot;https://www.acb.com/jugador/temporada-a-temporada/id/20201682&quot;,
+  &quot;dorsal&quot;:&quot;33&quot;,
+  &quot;posicio&quot;:&quot;PIVOT&quot;,
+  &quot;alcada&quot;:&quot;2.15&quot;,
+  &quot;xarxes_socials&quot;:[{ &quot;nom&quot;:&quot;instagram&quot;,
+                      &quot;url&quot;:&quot;https://www.instagram.com/marcgasol&quot;,
+                      &quot;usuari&quot;:&quot;marcgasol&quot;},
+                    { &quot;nom&quot;:&quot;twitter&quot;,
+                      &quot;url&quot;:&quot;https://twitter.com/marcgasol&quot;,
+                      &quot;usuari&quot;:&quot;marcgasol&quot;}],
+  &quot;nom_complet&quot;:&quot;Marc  Gasol Saez&quot;,
+  &quot;lloc_naixement&quot;:&quot;Barcelona&quot;,
+  &quot;pais_naixement&quot;:&quot;España&quot;,
+  &quot;data_naixement&quot;:&quot;1985-01-29T00:00:00.000+00:00&quot;,
+  &quot;nacionalitat&quot;:&quot;España&quot;,
+  &quot;llicencia&quot;:&quot;JFL&quot;
+}
+</code></pre>
+<h2 id="format-de-partits">Format de <strong>Partits</strong></h2>
+<pre><code class="language-json">{
+  &quot;_id&quot;:{&quot;$oid&quot;:&quot;63dbea491ab15cae765ea0bf&quot;},
+   &quot;temporada&quot;:&quot;2021-2022&quot;,
+   &quot;competicio&quot;:&quot;Lliga Regular 2021-2022&quot;,
+   &quot;url&quot;:&quot;https://www.acb.com/partido/estadisticas/id/102722&quot;,
+   &quot;codi_acb&quot;:&quot;102722&quot;,
+   &quot;jornada&quot;:&quot;JORNADA 1&quot;,
+   &quot;data_hora&quot;:&quot;2021-09-18T18:00:00.000+00:00&quot;,
+   &quot;lloc&quot;:&quot;Palau Municipal D´Esports de Badalona&quot;,
+   &quot;aforament&quot;:2362,
+   &quot;arbitre1&quot;:&quot;Antonio Conde&quot;,
+   &quot;arbitre2&quot;:&quot;Jorge Martínez&quot;,
+   &quot;arbitre3&quot;:&quot;Alfonso Olivares&quot;,
+   &quot;equip_local&quot;: Object,
+   &quot;equip_visitant&quot;: Object,
+}
+</code></pre>
+<p>El camp <code>competicio</code> contindrà els valors de <code>"Lliga Regular &lt;temporada&gt;"</code> o <code>"Copa del Rei &lt;temporada&gt;"</code> en funció de l'origen d'aquell partit.</p>
+<p>Els camps <code>equip_local</code> i <code>equip_visitant</code> segueixen el mateix patró.</p>
+<pre><code class="language-json">{
+  &quot;nom&quot;:&quot;&quot;,
+  &quot;nom_comercial&quot;:&quot;Joventut&quot;,
+  &quot;url&quot;:&quot;/club/plantilla/id/8/equipo-Joventut&quot;,
+  &quot;punts&quot;:&quot;85&quot;,
+  &quot;entrenadors&quot;:Array
+  &quot;jugadors&quot;:Array
+}
+</code></pre>
+<p>El camp <code>entrenadors</code> és un array d'ojbectes entrenador</p>
+<pre><code class="language-json">{
+  &quot;nom&quot;:&quot;Carles Duran&quot;,
+  &quot;url&quot;:&quot;/entrenador/ver/20300277-Carles-Duran&quot;,
+  &quot;codi_acb&quot;:&quot;20300277&quot;
+}
+</code></pre>
+<p>El camp <code>jugadors</code> és un array d'objectes de jugador que conté les dades bàsiques del jugador juntament amb els seus estadístics</p>
+<pre><code class="language-json">{
+  &quot;dorsal&quot;:&quot;2&quot;,
+  &quot;titular&quot;:false,
+  &quot;nom&quot;:&quot;P. Busquets&quot;,
+  &quot;url&quot;:&quot;/jugador/ver/20211754-P. Busquets.html&quot;,
+  &quot;codi_acb&quot;:&quot;20211754&quot;,
+  &quot;estadistics&quot;: Object
+ }
+ ```
+
+ El camp `estadistics` és un objecte dels diferents estadístics d'aquell jugador en aquell partit
+
+```json
+{
+  &quot;minuts&quot;:7,
+  &quot;segons&quot;:42,
+  &quot;punts&quot;:&quot;0&quot;,
+  &quot;intents_2&quot;:&quot;0&quot;,
+  &quot;encerts_2&quot;:&quot;0&quot;,
+  &quot;intents_3&quot;:&quot;1&quot;,
+  &quot;encerts_3&quot;:&quot;0&quot;,
+  &quot;intents_1&quot;:&quot;0&quot;,
+  &quot;encerts_1&quot;:&quot;0&quot;,
+  &quot;rebots_defensius&quot;:&quot;1&quot;,
+  &quot;rebots_ofensius&quot;:&quot;0&quot;,
+  &quot;assistencies&quot;:&quot;1&quot;,
+  &quot;pilotes_recuperades&quot;:&quot;1&quot;,
+  &quot;pilotes_perdudes&quot;:&quot;0&quot;,
+  &quot;taps_comesos&quot;:&quot;0&quot;,
+  &quot;taps_rebuts&quot;:&quot;0&quot;,
+  &quot;faltes_comeses&quot;:&quot;1&quot;,
+  &quot;faltes_rebudes&quot;:&quot;0&quot;
+}
+</code></pre>
+<hr />
+<h2 id="exportacio-i-importacio">Exportació i Importació</h2>
+<h3 id="importacio">Importació</h3>
+<p>Per la importació es pot utilitzar l'eina <a href="https://www.mongodb.com/docs/database-tools/mongoimport/"><strong>mongoimport</strong></a> dins del conjunt d'eines MongoDB Command Line Database Tools </p>
+<pre><code class="language-cmd">mongoimport --uri=mongodb+srv://&lt;username&gt;:&lt;password&gt;@atlas-cluster-url.mongodb.net/ --db=&lt;db-name&gt; --collection=&lt;collection&gt; --file=&lt;path_file&gt;
+</code></pre>
+<h3 id="exportacio">Exportació</h3>
+<p>La base de dades s'ha exportat d'un SGBD MongoDB mitjançant l'eina <a href="https://www.mongodb.com/docs/database-tools/mongoexport/"><strong>mongoexport</strong></a> dins del conjunt d'eines MongoDB Command Line Database Tools</p>
+<pre><code class="language-cmd">mongoexport --uri mongodb+srv://&lt;username&gt;:&lt;password&gt;@atlas-cluster-url.mongodb.net/&lt;db-name&gt; --collection &lt;collection-name&gt; --out &lt;path-to-export&gt;
+</code></pre>
+<pre><code class="language-cmd">mongoexport.exe --uri=&quot;mongodb+srv://&lt;username&gt;:&lt;password&gt;@atlas-cluster-url.mongodb.net&quot; -d=&quot;acb_db&quot; -c=&quot;partits&quot; --sort=&quot;{_id: 1}&quot; --limit=&quot;1000&quot; --skip=&quot;0&quot; --out=&quot;partits_0.json&quot;
+mongoexport.exe --uri=&quot;mongodb+srv://&lt;username&gt;:&lt;password&gt;@atlas-cluster-url.mongodb.nett&quot; -d=&quot;acb_db&quot; -c=&quot;partits&quot; --sort=&quot;{_id: 1}&quot; --limit=&quot;1000&quot; --skip=&quot;1000&quot; --out=&quot;partits_1000.json&quot;
+mongoexport.exe --uri=&quot;mongodb+srv://&lt;username&gt;:&lt;password&gt;@atlas-cluster-url.mongodb.net&quot; -d=&quot;acb_db&quot; -c=&quot;partits&quot; --sort=&quot;{_id: 1}&quot; --limit=&quot;1000&quot; --skip=&quot;2000&quot; --out=&quot;partits_2000.json&quot;
+...
+mongoexport.exe --uri=&quot;mongodb+srv://&lt;username&gt;:&lt;password&gt;@atlas-cluster-url.mongodb.net&quot; -d=&quot;acb_db&quot; -c=&quot;partits&quot; --sort=&quot;{_id: 1}&quot; --limit=&quot;1000&quot; --skip=&quot;7000&quot; --out=&quot;partits_7000.json&quot;
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

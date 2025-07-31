@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/0%20-%20Introducci%C3%B3%20a%20les%20Bases%20de%20Dades/NF2%20-%20Disseny%20conceptual%20-%20model%20ER/EXERCICIS/NF2-exercicis-MiniER-Pizzeria/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Exercicis Mni ER - PIZZERIA ANDIAMO - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercicis Mni ER - PIZZERIA ANDIAMO";
+        var mkdocs_page_input_path = "0 - Introducci\u00f3 a les Bases de Dades\\NF2 - Disseny conceptual - model ER\\EXERCICIS\\NF2-exercicis-MiniER-Pizzeria.md";
+        var mkdocs_page_url = "/0%20-%20Introducci%C3%B3%20a%20les%20Bases%20de%20Dades/NF2%20-%20Disseny%20conceptual%20-%20model%20ER/EXERCICIS/NF2-exercicis-MiniER-Pizzeria/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exercicis Mni ER - PIZZERIA ANDIAMO</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercicis-mni-er-pizzeria-andiamo">Exercicis Mni ER - PIZZERIA ANDIAMO</h1>
+<p>Dissenyeu petits diagrames ER per cada exercici. En els subapartats de cada exercici intenta de reutilitzar els elements de diagrames anteriors.</p>
+<p><img src="assets/logo-pizzeria-andiamo.png"
+     alt="Logo Pizzeria Andiamo"
+     height = "300" /></p>
+<h2 id="ex-10-pizzes-i-ingredients-duna-pizza">Ex 1.0 - Pizzes i ingredients d'una pizza</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: La cadena de pizzeries "Andiamo" té una carta de pizzes a on cadascuna d'elles té un nom i on cada pizza conté diferents ingredients.</p>
+<p><img src="assets/carta-pizzas.jpg"
+     alt="Logo Pizzeria Andiamo"
+     width = "250" /></p>
+<h2 id="ex-11-tamany-i-preu-de-les-pizzes">Ex 1.1 - Tamany i preu de les pizzes</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: La cadena de pizzeries té una carta de pizzes a on cadascuna d'elles té un nom i poden ser de diferents mides (individual, mitjana o familiar). Hem de poder guardar un preu diferent depenent de la mida i el nom de la pizza</p>
+<h2 id="ex-12-ingredients-substituibles">Ex 1.2 - Ingredients substituïbles</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: Cada ingredient d'una pizza pot ser substituït per altres ingredients, en cas d'inexistència. Per exemple quan no hi ha mozzarella aquesta es substitueix per formatge emmental o parmesà. O per exemple quan no hi hagi pomodoro podrem utilitzar marinara o tomàquet triturat.</p>
+<h2 id="ex-2-locals-de-la-cadena-de-pizzeries">Ex 2 - Locals de la cadena de pizzeries</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: La cadena de pizzeries té diferents locals repartits per tot Catalunya. Els locals que poden ser de tipus restaurant, on els clients poden degustar-hi les pizzes in situ, o de tipus “per emportar”. Un mateix local pot ser, a la vegada, restaurant i admetre comandes per emportar.
+Cada local l'identifiquem mitjançant un número correlatiu i ens n'hem de guardar la seva adreça completa (carrer, número, codi postal i població), la data de la seva inauguració i els metres quadrats.</p>
+<h2 id="ex-3-comandes-de-pizzes">Ex 3 - Comandes de pizzes</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: Per cada comanda, en una pizzeria, cal enregistrar les línies que la componen, Les comandes han de guardar la següent informació d'exemple.</p>
+<p><sub>Nota: Revisar aquest exercici quan s'expliqui ERE</sub></p>
+<p>Exemple de comanda:</p>
+<pre><code>    COMANDA 278 – 25/05/2021
+        2 Pizza margarita individual 10 €/unitat
+        1 Pizza americana individual 12 €/unitat
+        4 Aigues 1,5 €/unitat
+    TOTAL: 38 €
+</code></pre>
+<h2 id="ex-4-empleat-del-mes">Ex 4 - Empleat del mes</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: Cal enregistrar a la nostra base de dades, quin empleat serveix cada comanda, en una pizzeria, per tal de poder obtenir a posteriori l’empleat del mes (aquell que ha facturat més). Els empleats els identificarem per el seu DNI, però en voldre guardar també el seu nom i cognoms.</p>
+<h2 id="ex-5-motoristes">Ex 5 – Motoristes</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: A la cadena de pizzeries, cada empleat té associada una moto per si algun dia ha de fer la feina de motorista, però una moto és compartida per diversos empleats de diversos torns.</p>
+<h2 id="ex-60-empleats-duna-pizzeria">Ex 6.0 - Empleats d'una pizzeria</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: La cadena de pizzeries té diferents empleats i aquests estan assignats en els diferents locals que la cadena de pizzes té arreu de tot Catalunya. Quan la cadena contracta a un empleat li assigna un perfil (cuiner, cambrer, telefonista o motorista) i un local.</p>
+<p>Cal tenir en compte que un empleat pot canviar de rol en un dia determinat o de local. Ens interessa saber el dia que aquest empleat a començat a treballar d'aquest rol. En definitiva ens interessa guardar quins diferents rols han anat tenint els empleats i en quins locals han estat assignats.</p>
+<p>Per simplificar el disseny un empleat no pot assignar-se dues vegades al mateix rol i local.</p>
+<p>Per exemple:
+* El dia <strong>21/05/2000</strong> l'empleat amb DNI <strong>111</strong> va entrar a treballar de <strong>cambrer</strong>  al <strong>local 1</strong> 
+* El <strong>dia 22/10/2001</strong> el mateix empleat va canviar a <strong>telefonista</strong>, però sense canviar de local. 
+* El dia <strong>21/05/2000</strong> l'empleat amb DNI <strong>222</strong> va entrar a treballar de <strong>cuiner</strong>  al <strong>local 2</strong>
+* El dia <strong>01/12/2002</strong> l'empleat <strong>222</strong> el van canviar de local. </p>
+<h2 id="ex-61-historial-de-rols-i-locals-dels-empleats">Ex 6.1 - Historial de rols i locals dels empleats</h2>
+<p>Modifica el diagrama anterior de tal manera que podem guardar l'historial que ha tingut un empleat i amb quins rols dins de la nostra cadena de pizzeries.</p>
+<h2 id="ex-7-estoc-dingredients">Ex 7 - Estoc d'ingredients</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: En cada local de la cadena de pizzeries cal controlar l'estoc de cada ingredient que hi ha en un moment determinat, així com l'estoc mínim admissible. Aquest serveix perquè el sistema doni un avís de compra si l'estoc d'aquest ingredient està per sota d'aquest mínim.</p>
+<h2 id="ex-80-substitucions">Ex 8.0 - Substitucions</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: Un empleat en un cert moment pot substituir a un altre empleat si aquest està malalt. Ens interessa saber quan el va substituir.</p>
+<p>Per simplificar el disseny un empleat només pot substituir el mateix empleat una sola vegada.</p>
+<h2 id="ex-81-substitucions-sense-restriccions">Ex 8.1 - Substitucions sense restriccions</h2>
+<p>Intenta de modificar el diagrama anterior per no tenir la restricció de que un empleat només pot substituri el mateix empleat una sola vegada.</p>
+<h2 id="ex-9-taules-dels-locals-restaurant">Ex 9 - Taules dels locals restaurant</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: Dissenyeu un petit diagrama ER pel següent fragment del sistema: En els locals que són de tipus restaurant, hi ha diverses taules. De cada taula ens cal saber el nombre de seients que té. Sabem que les taules s'enumeren amb un número seqüencial dins d'un local.</p>
+<h2 id="ex-10-reserves">Ex 10 – Reserves</h2>
+<p>Dissenyeu un petit diagrama ER pel següent fragment del sistema: En els locals de tipus restaurant s’admeten reserves. Llavors caldrà enregistrar el nom, el telèfon, el nombre de persones i la data i hora de la reserva, a més de la taula que se’ls assignarà, en el moment de fer la reserva.</p>
+<p>Cada reserva està identificada per un codi que vindrà generat per el nostre aplicatiu.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

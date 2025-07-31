@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/03-sql_gestio_vendes/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>1.3 Base de dades Gestió de Vendes - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1.3 Base de dades Gesti\u00f3 de Vendes";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\EXERCICIS\\03-sql_gestio_vendes.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/03-sql_gestio_vendes/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1.3 Base de dades Gestió de Vendes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="13-base-de-dades-gestio-de-vendes">1.3 Base de dades Gestió de Vendes</h1>
+<ul>
+<li><a href="#13-base-de-dades-gestió-de-vendes">1.3 Base de dades Gestió de Vendes</a></li>
+<li><a href="#131-model-relacional">1.3.1 Model relacional</a></li>
+<li><a href="#132-scripts-de-creació-de-la-base-de-dades">1.3.2 Scripts de creació de la base de dades</a></li>
+<li><a href="#133-consultes-sobre-una-taula">1.3.3 Consultes sobre una taula</a></li>
+<li><a href="#134-consultes-multitaula-inner-join">1.3.4 Consultes multitaula (INNER JOIN)</a></li>
+<li><a href="#135-consultes-multitaula-outer-join">1.3.5 Consultes multitaula (OUTER JOIN)</a></li>
+<li><a href="#136-consultes-resum">1.3.6 Consultes resum</a></li>
+<li><a href="#137-subconsultes">1.3.7 Subconsultes</a><ul>
+<li><a href="#1371-amb-operadors-bàsics-de-comparació">1.3.7.1 Amb operadors bàsics de comparació</a></li>
+<li><a href="#1372-subconsultes-amb-all-i-any">1.3.7.2 Subconsultes amb ALL i ANY</a></li>
+<li><a href="#1373-subconsultes-amb-in-i-no-in">1.3.7.3 Subconsultes amb IN i NO IN</a></li>
+<li><a href="#1374-subconsultes-amb-exists-y-not-exists">1.3.7.4 Subconsultes amb EXISTS y NOT EXISTS</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="131-model-relacional">1.3.1 Model relacional</h2>
+<p><img alt="Tabla" src="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL/03%20-%20Gesti%C3%B3%20de%20vendes/gestiovendes_erm.png" /></p>
+<h2 id="132-scripts-de-creacio-de-la-base-de-dades">1.3.2 Scripts de creació de la base de dades</h2>
+<p>Crea la base de dades ventes descarregant els scripts des de Github.</p>
+<p><a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></p>
+<h2 id="133-consultes-sobre-una-taula">1.3.3 Consultes sobre una taula</h2>
+<ol>
+<li>Retorna un llistat amb totes les comandes que s'han realitzat. Les comandes han d' estar ordenades per la data de realització, mostrant en primer lloc les comandes més recents.</li>
+<li>Retorna totes les dades de les dues comandes de més valor.</li>
+<li>Retorna un llistat amb els identificadors dels clients que han realitzat alguna comanda. Tingui en compte que no ha de mostrar identificadors que estiguin repetits.</li>
+<li>Retorna un llistat de totes les comandes que es van realitzar durant l'any 2017, la quantitat total de les quals sigui superior a 500€.</li>
+<li>Retorna un llistat amb el nom i els cognoms dels comercials que tenen una comissió entre 0.05 i 0.11.</li>
+<li>Retorna el valor de la comissió de major valor que hi ha a la taula comercial.</li>
+<li>Retorna l'identificador, nom i primer cognom d'aquells clients el segon cognom dels quals <strong>no</strong> és NULL. El llistat haurà d' estar ordenat alfabèticament per cognoms i nom.</li>
+<li>Retorna un llistat dels noms dels clients que comencen per A i acaben per n i també els noms que comencen per P. El llistat haurà d' estar ordenat alfabèticament.</li>
+<li>Retorna un llistat dels noms dels clients que <strong>no</strong> comencen per A. El llistat haurà d' estar ordenat alfabèticament.</li>
+<li>Retorna un llistat amb els noms dels comercials que acaben en o. Tingui en compte que s' hauran d' eliminar els noms repetits.</li>
+</ol>
+<h2 id="134-consultes-multitaula-inner-join">1.3.4 Consultes multitaula (INNER JOIN)</h2>
+<ol>
+<li>Retorna un llistat amb l'identificador, nom i els cognoms de tots els clients que han realitzat alguna comanda. El llistat ha d' estar ordenat alfabèticament i s' han d' eliminar els elements repetits.</li>
+<li>Retorna un llistat que mostri totes les comandes que ha realitzat cada client. El resultat ha de mostrar totes les dades de les comandes i del client. El llistat ha de mostrar les dades dels clients ordenats alfabèticament.</li>
+<li>Retorna un llistat que mostri totes les comandes en què ha participat un comercial. El resultat ha de mostrar totes les dades de les comandes i dels comercials. El llistat ha de mostrar les dades dels comercials ordenats alfabèticament.</li>
+<li>Retorna un llistat que mostri tots els clients, amb totes les comandes que han realitzat i amb les dades dels comercials associades a cada comanda.</li>
+<li>Retorna un llistat de tots els clients que van realitzar una comanda durant l'any 2017, la quantitat de la qual estigui entre 300 € i 1000 €.</li>
+<li>Retorna el nom i els cognoms de tots els comercials que ha participat en alguna comanda realitzada per María Santana Moreno.</li>
+<li>Retorna el nom de tots els clients que han realitzat alguna comanda amb el comercial Daniel Sáez Vega.</li>
+</ol>
+<h2 id="135-consultes-multitaula-outer-join">1.3.5 Consultes multitaula (OUTER JOIN)</h2>
+<p>Resol totes les consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.</p>
+<ol>
+<li>Retorna un llistat amb <strong>tots els clients</strong> juntament amb les dades de les comandes que han realitzat. Aquest llistat també ha d' incloure els clients que no han realitzat cap comanda. El llistat ha d' estar ordenat alfabèticament pel primer cognom, segon cognom i nom dels clients.</li>
+<li>Retorna un llistat amb <strong>tots els comercials</strong> juntament amb les dades de les comandes que han realitzat. Aquest llistat també ha d' incloure els comercials que no han realitzat cap comanda. El llistat ha d' estar ordenat alfabèticament pel primer cognom, segon cognom i nom dels comercials.</li>
+<li>Retorna un llistat que només mostri els clients que no han realitzat cap comanda.</li>
+<li>Retorna un llistat que només mostri els comercials que no han realitzat cap comanda.</li>
+<li>Retorna un llistat amb els clients que no han realitzat cap comanda i dels comercials que no han participat en cap comanda. Ordeni el llistat alfabèticament pels cognoms i el nom. En aquest cas haurà de diferenciar d'alguna manera els clients i els comercials.</li>
+<li>Es podrien realitzar les consultes anteriors amb NATURAL LEFT JOIN o NATURAL RIGHT JOIN? Justifiqui la seva resposta.</li>
+</ol>
+<h2 id="136-consultes-resum">1.3.6 Consultes resum</h2>
+<ol>
+<li>Calcula la quantitat total que sumen totes les comandes que apareixen a la taula comanda.</li>
+<li>Calcula la quantitat mitjana de totes les comandes que apareixen a la taula comanda.</li>
+<li>Calcula el nombre total de comercials diferents que apareixen a la taula.</li>
+<li>Calcula el nombre total de clients que apareixen a la taula client.</li>
+<li>Calcula quina és la major quantitat que apareix a la taula.</li>
+<li>Calcula quina és la menor quantitat que apareix a la taula.</li>
+<li>Calcula quin és el valor màxim de categoria per a cadascuna de les ciutats que apareix a la taula client.</li>
+<li>Calcula quin és el màxim valor de les comandes realitzades durant el mateix dia per a cadascun dels clients. És a dir, el mateix client pot haver realitzat diverses comandes de diferents quantitats el mateix dia. Es demana que es calculi quina és la comanda de màxim valor per a cadascun dels dies en què un client ha realitzat una comanda. Mostra l' identificador del client, nom, cognoms, la data i el valor de la quantitat.</li>
+<li>Calcula quin és el màxim valor de les comandes realitzades durant el mateix dia per a cadascun dels clients, tenint en compte que només volem mostrar aquelles comandes que superin la quantitat de 2000 €.</li>
+<li>Calcula el màxim valor de les comandes realitzades per a cadascun dels comercials durant la data 2016-08-17. Mostra l' identificador del comercial, nom, cognoms i total.</li>
+<li>Retorna un llistat amb l' identificador de client, nom i cognoms i el nombre total de comandes que ha realitzat cadascun de clients. Tingui en compte que poden existir clients que no han realitzat cap comanda. Aquests clients també han d' aparèixer en el llistat indicant que el nombre de comandes realitzades és 0.</li>
+<li>Retorna un llistat amb l'identificador de client, nom i cognoms i el nombre total de comandes que ha realitzat cadascuna de clients <strong>durant l'any 2017</strong>.</li>
+<li>Retorna un llistat que mostri l' identificador de client, nom, primer cognom i el valor de la màxima quantitat de la comanda realitzada per cadascun dels clients. El resultat ha de mostrar aquells clients que no han realitzat cap comanda indicant que la màxima quantitat de les seves comandes realitzades és 0. Pot fer ús de la funció <a href="https://dev.mysql.com/doc/refman/8.0/en/control-flow-functions.html#function_ifnull">IFNULL</a>.</li>
+<li>Retorna quina ha estat la comanda de màxim valor que s'ha realitzat cada any.</li>
+<li>Retorna el nombre total de comandes que s' han realitzat cada any.</li>
+</ol>
+<h2 id="137-subconsultes">1.3.7 Subconsultes</h2>
+<h3 id="1371-amb-operadors-basics-de-comparacio">1.3.7.1 Amb operadors bàsics de comparació</h3>
+<ol>
+<li>Retorna un llistat amb totes les comandes que ha realitzat Adela Salas Díaz. (Sense utilitzar INNER JOIN).</li>
+<li>Retorna el nombre de comandes en què ha participat el comercial Daniel Sáez Vega. (Sense utilitzar INNER JOIN)</li>
+<li>Retorna les dades del client que va realitzar la comanda més car l'any 2019. (Sense utilitzar INNER JOIN)</li>
+<li>Retorna la data i la quantitat de la comanda de menor valor realitzat pel client Pepe Ruiz Santana.</li>
+<li>Retorna un llistat amb les dades dels clients i les comandes, de tots els clients que han realitzat una comanda durant l'any 2017 amb un valor major o igual al valor mitjà de les comandes realitzades durant aquest mateix any.</li>
+</ol>
+<h3 id="1372-subconsultes-amb-all-i-any">1.3.7.2 Subconsultes amb ALL i ANY</h3>
+<ol>
+<li>Retorna la comanda més car que hi ha a la taula demanat si fer ús de MAX, ORDER BY ni LIMIT.</li>
+<li>Retorna un llistat dels clients que no han fet cap comanda. (Utilitzant ANY o ALL).</li>
+<li>Retorna un llistat dels comercials que no han realitzat cap comanda. (Utilitzant ANY o ALL).</li>
+</ol>
+<h3 id="1373-subconsultes-amb-in-i-no-in">1.3.7.3 Subconsultes amb IN i NO IN</h3>
+<ol>
+<li>Retorna un llistat dels clients que no han fet cap comanda. (Utilitzant IN o NOT IN).</li>
+<li>Retorna un llistat dels comercials que no han realitzat cap comanda. (Utilitzant IN o NOT IN).</li>
+</ol>
+<h3 id="1374-subconsultes-amb-exists-y-not-exists">1.3.7.4 Subconsultes amb EXISTS y NOT EXISTS</h3>
+<ol>
+<li>Retorna un llistat dels clients que no han fet cap comanda. (Utilitzant EXISTS o NOT EXISTS).</li>
+<li>Retorna un llistat dels comercials que no han realitzat cap comanda. (Utilitzant EXISTS o NOT EXISTS).</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

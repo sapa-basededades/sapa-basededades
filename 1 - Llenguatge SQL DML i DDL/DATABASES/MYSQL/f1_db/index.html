@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/f1_db/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Base de dades de F1 (Fórmula 1) - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Base de dades de F1 (F\u00f3rmula 1)";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\MYSQL\\f1_db\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/f1_db/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Base de dades de F1 (Fórmula 1)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="base-de-dades-de-f1-formula-1">Base de dades de F1 (Fórmula 1)</h1>
+<p>Aquesta base de dades s'ha extret de la web Ergast (https://ergast.com/mrd/) a on conté les estadístiques de les diferents compteicions de F1 que hi han hagut durant els últims temps a partir de l'any 1950.</p>
+<blockquote>
+<p>[!WARNING]
+Aquest projecte està obsolet i no es manté. S'ha traspassat al projecte <a href="https://github.com/jolpica/jolpica-f1">jolpica-f1</a></p>
+</blockquote>
+<h1 id="esquema-de-la-base-de-dades">Esquema de la base de dades</h1>
+<p>L'esquema de la base de dades es mostra en el document <a href="f1db_user_guide.txt">f1db_user_guide.txt</a>.
+o també trobareu un diagrama en el fitxer <a href="db_diagram.png">db_diagram.png</a>.</p>
+<p>A continuació de detallen alguns aspectes a considerar a nivell d'interpretació de certes taules/camps.</p>
+<h2 id="taula-sprintresults-i-results">Taula <strong><em>sprintResults</em></strong> i <strong><em>results</em></strong></h2>
+<ul>
+<li><strong>D: Disqualified</strong> -&gt; Desqualificat: Alguna raó sancionadora per part de comissaris, com per exemple, no respectar un semàfor vermell.</li>
+<li><strong>E: Excluded</strong> -&gt; Exclòs: Desqualificat a posteriori per algun tema il·legal (les verificacions de pes, de flexibilitat dels alerons, mostra de combustible,... no s'han superat) </li>
+<li><strong>F: Failed to qualify</strong> -&gt; No classificat a la qualificació: Els pilots quan hi ha la qualificació no poden qualificar amb un temps superior al 107% del que ha fet la pole per evitar cotxes lents el dia de la cursa. </li>
+<li><strong>N: Non Classified</strong> -&gt; No classificat: per algun motiu de reglament es considera que no ha acabat la cursa (per exemple, hi ha un mínim de distància a recorrer en un gran premi, si un cotxe per exemple a la volta 20 para, s'està 20 voltes a boxes, torna i en queden 10, a nivell de km no haurà fet probablement ni el 60%, seria un motiu). </li>
+<li><strong>R: Retired</strong> -&gt; Retirat: el pilot ha abandonat per algun motiu durant la cursa. </li>
+<li><strong>W: Withdrew</strong> -&gt; No participa: és quan s'ha classificat a la qualificació però per algun motiu no participa a la cursa (per exemple, li ha fallat el cotxe a la volta d'escalfament) </li>
+</ul>
+<h2 id="taula-status">Taula <strong><em>status</em></strong></h2>
+<p>Aquesta taula està relacionada amb <strong>results</strong> i <strong>sprintResults</strong></p>
+<ul>
+<li><strong>Finished:</strong> Ha finalitzat</li>
+<li><strong>Disqualified:</strong> Desqualificat</li>
+<li><strong>Accident:</strong> Accident, El pilot ha tingut un accident ell sol</li>
+<li><strong>Collision:</strong> Xoc i/o accident que han intervingut més d'un pilot/cotxe </li>
+<li><strong>Engine: motor</strong></li>
+<li><strong>Gearbox:</strong> Canvi de marxes</li>
+<li><strong>Transmission:</strong> Transmissió</li>
+<li><strong>Clutch:</strong> Embragatge </li>
+<li><strong>Hydraulics:</strong> Problema hidràulic</li>
+<li><strong>Electrical:</strong> Problema elèctric</li>
+<li><strong>+1......9 Laps:</strong> Diferència de voltes amb el guanyador</li>
+<li><strong>Spun off:</strong> Virolla </li>
+<li><strong>Radiator:</strong> Radiador </li>
+<li><strong>Suspension:</strong> Suspensió </li>
+<li><strong>Brakes:</strong> Frens</li>
+<li><strong>Differential:</strong> Diferencial</li>
+<li><strong>Overheating:</strong> Sobreescalfament</li>
+</ul>
+<h2 id="taula-constructorstandings">Taula <strong><em>constructorStandings</em></strong></h2>
+<p>Aquesta taula contempla la classificació de les escuderies en les diferents curses. </p>
+<p>El camp <code>points</code> és un acumulat dels punts que porta l'escuderia dins de la temporada.</p>
+<p>Els camp  <code>position</code> i <code>positionText</code> són les classficiacions de l'escuderia dins de la temporada</p>
+<p>El camp <code>wins</code> és un acumulat de les victòries de l'escuderia dins de la temporada.</p>
+<h2 id="notes-i-altres-consideracions">Notes i altres consideracions</h2>
+<ul>
+<li>Quan la posició de sortida és igual a 0 (zero) significa que no surten de la graella de sortida, sinó des de boxes/pitlane.</li>
+</ul>
+<h1 id="contingut-de-la-base-de-dades">Contingut de la base de dades</h1>
+<p>Trobareu script de creació de la base de dades juntament amb les dades dins del fitxer <a href="f1db.zip">f1db.zip</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

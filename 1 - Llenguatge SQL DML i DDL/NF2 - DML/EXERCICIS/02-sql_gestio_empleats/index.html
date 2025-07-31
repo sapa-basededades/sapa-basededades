@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/02-sql_gestio_empleats/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>1.2 Base de dades Gestió Empleats - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1.2 Base de dades Gesti\u00f3 Empleats";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\EXERCICIS\\02-sql_gestio_empleats.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/02-sql_gestio_empleats/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1.2 Base de dades Gestió Empleats</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="12-base-de-dades-gestio-empleats">1.2 Base de dades Gestió Empleats</h1>
+<ul>
+<li><a href="#12-base-de-dades-gestió-empleats">1.2 Base de dades Gestió Empleats</a></li>
+<li><a href="#121-model-relacional">1.2.1 Model relacional</a></li>
+<li><a href="#122-scripts-de-creació-de-la-base-de-dades">1.2.2 Scripts de creació de la base de dades</a></li>
+<li><a href="#123-consultes-sobre-una-taula">1.2.3 Consultes sobre una taula</a></li>
+<li><a href="#124-consultes-multitaula-inner-join">1.2.4 Consultes multitaula (INNER JOIN)</a></li>
+<li><a href="#125-consultes-multitaula-outer-join">1.2.5 Consultes multitaula (OUTER JOIN)</a></li>
+<li><a href="#126-consultes-resum">1.2.6 Consultes resum</a></li>
+<li><a href="#127-subconsultes">1.2.7 Subconsultes</a><ul>
+<li><a href="#1271-amb-operadors-bàsics-de-comparació">1.2.7.1 Amb operadors bàsics de comparació</a></li>
+<li><a href="#1272-subconsultes-amb-all-i-any">1.2.7.2 Subconsultes amb ALL i ANY</a></li>
+<li><a href="#1273-subconsultes-amb-in-i-not-in">1.2.7.3 Subconsultes amb IN i NOT IN</a></li>
+<li><a href="#1274-subconsultes-amb-exists-i-not-exists">1.2.7.4 Subconsultes amb EXISTS i NOT EXISTS</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="121-model-relacional">1.2.1 Model relacional</h2>
+<p><img alt="Tabla" src="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL/02%20-%20Gesti%C3%B3%20Empleats/gestioempleats_erm.png" /></p>
+<h2 id="122-scripts-de-creacio-de-la-base-de-dades">1.2.2 Scripts de creació de la base de dades</h2>
+<p>Crea la base de dades gestio-empleats descarregant els scripts des de Github.</p>
+<p><a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></p>
+<h2 id="123-consultes-sobre-una-taula">1.2.3 Consultes sobre una taula</h2>
+<ol>
+<li>Llista el primer cognom de tots els empleats.</li>
+<li>Llista el primer cognom dels empleats eliminant els cognoms que estiguin repetits.</li>
+<li>Llista totes les columnes de la taula empleat.</li>
+<li>Llista el nom i els cognoms de tots els empleats.</li>
+<li>Llista el codi dels departaments dels empleats que apareixen a la taula empleat.</li>
+<li>Llista el codi dels departaments dels empleats que apareixen a la taula empleat, eliminant els codis que apareixen repetits.</li>
+<li>Llista el nom i cognoms dels empleats en una única columna.</li>
+<li>Llista el nom i cognoms dels empleats en una única columna, convertint tots els caràcters en majúscula.</li>
+<li>Llista el nom i cognoms dels empleats en una única columna, convertint tots els caràcters en minúscula.</li>
+<li>Llista el codi dels empleats al costat del NIF, però el NIF haurà d' aparèixer en dues columnes, una mostrarà únicament els dígits del NIF i l' altra la lletra.</li>
+<li>Llista el nom de cada departament i el valor del pressupost actual de què disposa. Per calcular aquesta dada haurà de restar al valor del pressupost inicial (columna presupuesto) les despeses que s'han generat (columna gastos). Tingui en compte que en alguns casos poden existir valors negatius. Utilitzi un àlies apropiat per a la nova columna que està calculant.</li>
+<li>Llista el nom dels departaments i el valor del pressupost actual ordenat de forma ascendent.</li>
+<li>Llista el nom de tots els departaments ordenats de forma ascendent.</li>
+<li>Llista el nom de tots els departaments ordenats de forma descendent.</li>
+<li>Llista els cognoms i el nom de tots els empleats, ordenats de forma alfabètica tendint en compte en primer lloc els seus cognoms i després el seu nom.</li>
+<li>Retorna una llista amb el nom i el pressupost, dels 3 departaments que tenen més pressupost.</li>
+<li>Retorna una llista amb el nom i el pressupost, dels 3 departaments que tenen menor pressupost.</li>
+<li>Retorna una llista amb el nom i la despesa, dels 2 departaments que tenen més despesa.</li>
+<li>Retorna una llista amb el nom i la despesa, dels 2 departaments que tenen menor despesa.</li>
+<li>Retorna una llista amb 5 files a partir de la tercera fila de la taula. La tercera fila s' ha d' incloure en la resposta. La resposta ha d' incloure totes les columnes de la taula empleat.</li>
+<li>Retorna una llista amb el nom dels departaments i el pressupost, d' aquells que tenen un pressupost major o igual a 150000 euros.</li>
+<li>Retorna una llista amb el nom dels departaments i la despesa, d'aquells que tenen menys de 5000 euros de despeses.</li>
+<li>Retorna una llista amb el nom dels departaments i el pressupost, d'aquells que tenen un pressupost entre 100000 i 200000 euros. Sense utilitzar l'operador BETWEEN.</li>
+<li>Retorna una llista amb el nom dels departaments que <strong>no</strong> tenen un pressupost entre 100000 i 200000 euros. Sense utilitzar l'operador BETWEEN.</li>
+<li>Retorna una llista amb el nom dels departaments que tenen un pressupost entre 100000 i 200000 euros. Utilitzant l' operador BETWEEN.</li>
+<li>Retorna una llista amb el nom dels departaments que <strong>no</strong> tenen un pressupost entre 100000 i 200000 euros. Utilitzant l' operador BETWEEN.</li>
+<li>Retorna una llista amb el nom dels departaments, despeses i pressupost, de que els departaments on les despeses siguin més grans que el pressupost de què disposen.</li>
+<li>Retorna una llista amb el nom dels departaments, despeses i pressupost, d' aquells departaments on les despeses siguin menors que el pressupost de què disposen.</li>
+<li>Retorna una llista amb el nom dels departaments, despeses i pressupost, d' aquells departaments on les despeses siguin iguals al pressupost de què disposen.</li>
+<li>Llista totes les dades dels empleats el segon cognom dels quals sigui NULL.</li>
+<li>Llista totes les dades dels empleats el segon cognom dels quals <strong>no sigui</strong> NULL.</li>
+<li>Llista totes les dades dels empleats el segon cognom dels quals sigui López.</li>
+<li>Llista totes les dades dels empleats el segon cognom dels quals sigui Díaz o Moreno. Sense utilitzar l' operador IN.</li>
+<li>Llista totes les dades dels empleats el segon cognom dels quals sigui Díaz o Moreno. Utilitzant l' operador IN.</li>
+<li>Llista els noms, cognoms i cap dels empleats que treballen al departament 3.</li>
+<li>Llista els noms, cognoms i cap dels empleats que treballen en els departaments 2, 4 o 5.</li>
+</ol>
+<h2 id="124-consultes-multitaula-inner-join">1.2.4 Consultes multitaula (INNER JOIN)</h2>
+<ol>
+<li>Retorna un llistat amb els empleats i les dades dels departaments on treballa cadascú.</li>
+<li>Retorna un llistat amb els empleats i les dades dels departaments on treballa cadascú. Ordena el resultat, en primer lloc pel nom del departament (en ordre alfabètic) i en segon lloc pels cognoms i el nom dels empleats.</li>
+<li>Retorna un llistat amb el codi i el nom del departament, només d' aquells departaments que tenen empleats.</li>
+<li>Retorna un llistat amb el codi, el nom del departament i el valor del pressupost actual de què disposa, només d' aquells departaments que tenen empleats. El valor del pressupost actual el pot calcular restant al valor del pressupost inicial (columna pressupost) el valor de les despeses que ha generat (columna despeses).</li>
+<li>Retorna el nom del departament on treballa l' empleat que té el nif 38382980M.</li>
+<li>Retorna el nom del departament on treballa l'empleat Pepe Ruiz Santana.</li>
+<li>Retorna un llistat amb les dades dels empleats que treballen al departament d' R + D. Ordena el resultat alfabèticament.</li>
+<li>Retorna un llistat amb les dades dels empleats que treballen al departament de Sistemes, Comptabilitat o R + D. Ordena el resultat alfabèticament.</li>
+<li>Retorna una llista amb el nom dels empleats que tenen els departaments que <strong>no</strong> tenen un pressupost entre 100000 i 200000 euros.</li>
+<li>Retorna un llistat amb el nom dels departaments on hi ha algun empleat el segon cognom del qual sigui NULL. Tingui en compte que no ha de mostrar noms de departaments que estiguin repetits.</li>
+</ol>
+<h2 id="125-consultes-multitaula-outer-join">1.2.5 Consultes multitaula (OUTER JOIN)</h2>
+<p>Resol totes les consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.</p>
+<ol>
+<li>Retorna un llistat amb <strong>tots els empleats</strong> juntament amb les dades dels departaments on treballen. Aquest llistat també ha d' incloure els empleats que no tenen cap departament associat.</li>
+<li>Retorna un llistat on només apareguin aquells empleats que no tenen cap departament associat.</li>
+<li>Retorna un llistat on només apareguin aquells departaments que no tenen cap empleat associat.</li>
+<li>Retorna un llistat amb tots els empleats juntament amb les dades dels departaments on treballen. El llistat ha d' incloure els empleats que no tenen cap departament associat i els departaments que no tenen cap empleat associat. Ordeni el llistat alfabèticament pel nom del departament.</li>
+<li>Retorna un llistat amb els empleats que no tenen cap departament associat i els departaments que no tenen cap empleat associat. Ordeni el llistat alfabèticament pel nom del departament.</li>
+</ol>
+<h2 id="126-consultes-resum">1.2.6 Consultes resum</h2>
+<ol>
+<li>Calcula la suma del pressupost de tots els departaments.</li>
+<li>Calcula la mitjana del pressupost de tots els departaments.</li>
+<li>Calcula el valor mínim del pressupost de tots els departaments.</li>
+<li>Calcula el nom del departament i el pressupost que té assignat, del departament amb menor pressupost.</li>
+<li>Calcula el valor màxim del pressupost de tots els departaments.</li>
+<li>Calcula el nom del departament i el pressupost que té assignat, del departament amb major pressupost.</li>
+<li>Calcula el nombre total d' empleats que hi ha a la taula empleat.</li>
+<li>Calcula el nombre d' empleats que <strong>no tenen</strong> NULL en el seu segon cognom.</li>
+<li>Calcula el nombre d' empleats que hi ha a cada departament. Has de retornar dues columnes, una amb el nom del departament i una altra amb el nombre d'empleats que té assignats.</li>
+<li>Calcula el nom dels departaments que tenen més de 2 empleats. El resultat ha de tenir dues columnes, una amb el nom del departament i una altra amb el nombre d' empleats que té assignats.</li>
+<li>Calcula el nombre d' empleats que treballen en cadascun dels departaments. El resultat d' aquesta consulta també ha d' incloure aquells departaments que no tenen cap empleat associat.</li>
+<li>Calcula el nombre d' empleats que treballen en cadascun dels departaments que tenen un pressupost major a 200000 euros.</li>
+</ol>
+<h2 id="127-subconsultes">1.2.7 Subconsultes</h2>
+<h3 id="1271-amb-operadors-basics-de-comparacio">1.2.7.1 Amb operadors bàsics de comparació</h3>
+<ol>
+<li>Retorna un llistat amb tots els empleats que té el departament de Sistemes. (Sense utilitzar INNER JOIN).</li>
+<li>Retorna el nom del departament amb major pressupost i la quantitat que té assignada.</li>
+<li>Retorna el nom del departament amb menor pressupost i la quantitat que té assignada.</li>
+</ol>
+<h3 id="1272-subconsultes-amb-all-i-any">1.2.7.2 Subconsultes amb ALL i ANY</h3>
+<ol>
+<li>Retorna el nom del departament amb major pressupost i la quantitat que té assignada. Sense fer ús de MAX, ORDER BY ni LIMIT.</li>
+<li>Retorna el nom del departament amb menor pressupost i la quantitat que té assignada. Sense fer ús de MIN, ORDER BY ni LIMIT.</li>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant ALL o ANY).</li>
+<li>Retorna els noms dels departaments que no tenen empleats associats. (Utilitzant ALL o ANY).</li>
+</ol>
+<h3 id="1273-subconsultes-amb-in-i-not-in">1.2.7.3 Subconsultes amb IN i NOT IN</h3>
+<ol>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant IN o NOT IN).</li>
+<li>Retorna els noms dels departaments que no tenen empleats associats. (Utilitzant IN o NOT IN).</li>
+</ol>
+<h3 id="1274-subconsultes-amb-exists-i-not-exists">1.2.7.4 Subconsultes amb EXISTS i NOT EXISTS</h3>
+<ol>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant EXISTS o NOT EXISTS).</li>
+<li>Retorna els noms dels departaments que tenen empleats associats. (Utilitzant EXISTS o NOT EXISTS).</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

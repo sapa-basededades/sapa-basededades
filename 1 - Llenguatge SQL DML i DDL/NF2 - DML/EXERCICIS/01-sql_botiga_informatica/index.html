@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/01-sql_botiga_informatica/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>1.1 Base de dades Botiga informàtica - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1.1 Base de dades Botiga inform\u00e0tica";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\NF2 - DML\\EXERCICIS\\01-sql_botiga_informatica.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/NF2%20-%20DML/EXERCICIS/01-sql_botiga_informatica/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1.1 Base de dades Botiga informàtica</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="11-base-de-dades-botiga-informatica">1.1 Base de dades Botiga informàtica</h1>
+<ul>
+<li><a href="#11-base-de-dades-botiga-informàtica">1.1 Base de dades Botiga informàtica</a></li>
+<li><a href="#111-model-relacional">1.1.1 Model relacional</a></li>
+<li><a href="#112-scripts-de-creació-de-la-base-de-dades">1.1.2 Scripts de creació de la base de dades</a></li>
+<li><a href="#113-consultes-sobre-una-taula">1.1.3 Consultes sobre una taula</a></li>
+<li><a href="#114-consultes-multitaula-inner-join">1.1.4 Consultes multitaula (INNER JOIN)</a></li>
+<li><a href="#115-consultes-multitaula-outer-join">1.1.5 Consultes multitaula (OUTER JOIN)</a></li>
+<li><a href="#116-consultes-resum-group-by-having">1.1.6 Consultes resum (GROUP BY, HAVING)</a></li>
+<li><a href="#117-subconsultes-a-la-clàusula-where">1.1.7 Subconsultes (A la clàusula WHERE)</a><ul>
+<li><a href="#1171-amb-operadors-bàsics-de-comparació">1.1.7.1 Amb operadors bàsics de comparació</a></li>
+<li><a href="#1172-subconsultes-amb-all-y-any">1.1.7.2 Subconsultes amb ALL y ANY</a></li>
+<li><a href="#1173-subconsultes-amb-in-i-not-in">1.1.7.3 Subconsultes amb IN i NOT IN</a></li>
+<li><a href="#1174-subconsultes-amb-exists-i-not-exists">1.1.7.4 Subconsultes amb EXISTS i NOT EXISTS</a></li>
+<li><a href="#1175-subconsultes-correlacionades">1.1.7.5 Subconsultes correlacionades</a></li>
+</ul>
+</li>
+<li><a href="#118-subconsultes-a-la-clàusula-having">1.1.8 Subconsultes (A la clàusula HAVING)</a></li>
+</ul>
+<h2 id="111-model-relacional">1.1.1 Model relacional</h2>
+<p><img alt="Tabla" src="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/blob/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL/01%20-%20Botiga%20Inform%C3%A0tica/botigainformatica_erm.png" /></p>
+<h2 id="112-scripts-de-creacio-de-la-base-de-dades">1.1.2 Scripts de creació de la base de dades</h2>
+<p>Crea la base de dades botiga-informatica descarregant els scripts des de Github.</p>
+<p><a href="https://github.com/sapa-basededades/M02-M10-Bases-de-Dades/tree/main/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/POSTGRESQL">Esquemes de Base de dades per PostgreSQL</a></p>
+<h2 id="113-consultes-sobre-una-taula">1.1.3 Consultes sobre una taula</h2>
+<ol>
+<li>Llista el nom de tots els productes que hi ha a la taula producte.</li>
+<li>Llista els noms i els preus de tots els productes de la taula producte.</li>
+<li>Llista totes les columnes de la taula producte.</li>
+<li>Llista el nom dels productes, el preu en euros i el preu en dòlars (USD). Utilitza els següents àlies per a les columnes: nom de producte, euros, dòlars.</li>
+<li>Llista els noms i els preus de tots els productes de la taula producte, convertint els noms a majúscula.</li>
+<li>Llista els noms i els preus de tots els productes de la taula producte, convertint els noms a minúscula.</li>
+<li>Llista el nom de tots els fabricants en una columna, i en una altra columna obtingui en majúscules els dos primers caràcters del nom del fabricant.</li>
+<li>Llista els noms i els preus de tots els productes de la taula producte, arrodonint el valor del preu a 2 decimals.</li>
+<li>Llista els noms i els preus de tots els productes de la taula producte, truncant el valor del preu per mostrar-lo sense cap xifra decimal.</li>
+<li>Llista el codi dels fabricants que tenen productes a la taula producte.</li>
+<li>Llista el codi dels fabricants que tenen productes a la taula producte, eliminant els codis que apareixen repetits.</li>
+<li>Llista els noms dels fabricants ordenats de forma ascendent.</li>
+<li>Llista els noms dels fabricants ordenats de forma descendent.</li>
+<li>Llista els noms dels productes ordenats en primer lloc pel nom de forma ascendent i en segon lloc pel preu de forma descendent.</li>
+<li>Retorna una llista amb les 5 primeres files de la taula fabricant.</li>
+<li>Retorna una llista amb 2 files a partir de la quarta fila de la taula fabricant. La quarta fila també s' ha d' incloure en la resposta.</li>
+<li>Llista el nom i el preu del producte més barat. (Utilitzi només les clàusules ORDER BY i LIMIT)</li>
+<li>Llista el nom i el preu del producte més car. (Utilitzi només les clàusules ORDER BY i LIMIT)</li>
+<li>Llista el nom de tots els productes on el codi de fabricant és igual a 2.</li>
+<li>Llista el nom dels productes que tenen un preu menor o igual a 120€.</li>
+<li>Llista el nom dels productes que tenen un preu major o igual a 400€.</li>
+<li>Llista el nom dels productes que <strong>no tenen</strong> un preu major o igual a 400€.</li>
+<li>Llista tots els productes que tinguin un preu entre 80€ i 300€. Sense utilitzar l'operador BETWEEN.</li>
+<li>Llista tots els productes que tinguin un preu entre 60€ i 200€. Utilitzant l' operador BETWEEN.</li>
+<li>Llista tots els productes que tinguin un preu més gran que 200 € i que el codi de fabricant sigui igual a 6.</li>
+<li>Llista tots els productes on el codi de fabricant sigui 1, 3 o 5. Sense utilitzar l' operador IN.</li>
+<li>Llista tots els productes on el codi de fabricant sigui 1, 3 o 5. Utilitzant l' operador IN.</li>
+<li>Llista el nom i el preu dels productes només dels cèntims (Caldrà multiplicar per 100 el valor del preu). Creu un àlies per a la columna que conté el preu que s'anomeni cèntims.</li>
+<li>Llista els noms dels fabricants el nom dels quals comenci per la lletra S.</li>
+<li>Llista els noms dels fabricants el nom dels quals acabi per la vocal e.</li>
+<li>Llista els noms dels fabricants el nom dels quals contingui el caràcter w.</li>
+<li>Llista els noms dels fabricants el nom dels quals sigui de 4 caràcters.</li>
+<li>Retorna una llista amb el nom de tots els productes que contenen la cadena Portàtil en el nom.</li>
+<li>Retorna una llista amb el nom de tots els productes que contenen la cadena Monitor en el nom i tenen un preu inferior a 215 €.</li>
+<li>Llista el nom i el preu de tots els productes que tinguin un preu major o igual a 180€. Ordeni el resultat en primer lloc pel preu (en ordre descendent) i en segon lloc pel nom (en ordre ascendent).</li>
+</ol>
+<h2 id="114-consultes-multitaula-inner-join">1.1.4 Consultes multitaula (INNER JOIN)</h2>
+<p>Resol totes les consultes:</p>
+<ol>
+<li>Retorna una llista amb el nom del producte, preu i nom de fabricant de tots els productes de la base de dades.</li>
+<li>Retorna una llista amb el nom del producte, preu i nom de fabricant de tots els productes de la base de dades. Ordeni el resultat pel nom del fabricant, per ordre alfabètic.</li>
+<li>Retorna una llista amb el codi del producte, nom del producte, codi del fabricant i nom del fabricant, de tots els productes de la base de dades.</li>
+<li>Retorna el nom del producte, el seu preu i el nom del seu fabricant, del producte més barat.</li>
+<li>Retorna el nom del producte, el seu preu i el nom del seu fabricant, del producte més car.</li>
+<li>Retorna una llista de tots els productes del fabricant Lenovo.</li>
+<li>Retorna una llista de tots els productes del fabricant Crucial que tinguin un preu més gran que 200€.</li>
+<li>Retorna un llistat amb tots els productes dels fabricants Asus, Hewlett-Packard i Seagate. Sense utilitzar l' operador IN.</li>
+<li>Retorna un llistat amb tots els productes dels fabricants Asus, Hewlett-Packard i Seagate. Utilitzant l' operador IN.</li>
+<li>Retorna un llistat amb el nom i el preu de tots els productes dels fabricants el nom dels quals acabi per la vocal e.</li>
+<li>Retorna un llistat amb el nom i el preu de tots els productes el nom de fabricant dels quals contingui el caràcter w en el seu nom.</li>
+<li>Retorna un llistat amb el nom de producte, preu i nom de fabricant, de tots els productes que tinguin un preu major o igual a 180€. Ordeni el resultat en primer lloc pel preu (en ordre descendent) i en segon lloc pel nom del producte(en ordre ascendent)</li>
+<li>Retorna un llistat amb el codi i el nom de fabricant, només d' aquells fabricants que tenen productes associats a la base de dades.</li>
+</ol>
+<h2 id="115-consultes-multitaula-outer-join">1.1.5 Consultes multitaula (OUTER JOIN)</h2>
+<p>Resol totes les consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.</p>
+<ol>
+<li>Retorna un llistat de <strong>tots els fabricants</strong> que hi ha a la base de dades, juntament amb els productes que té cadascun d' ells. El llistat haurà de mostrar també aquells fabricants que no tenen productes associats.</li>
+<li>Retorna un llistat on només apareguin aquells fabricants que no tenen cap producte associat.</li>
+<li>Poden existir productes que no estiguin relacionats amb un fabricant? Justifiqui la seva resposta.</li>
+</ol>
+<h2 id="116-consultes-resum-group-by-having">1.1.6 Consultes resum (GROUP BY, HAVING)</h2>
+<ol>
+<li>Calcula el nombre total de productes que hi ha a la taula productes.</li>
+<li>Calcula el nombre total de fabricants que hi ha a la taula fabricant.</li>
+<li>Calcula el nombre de valors diferents de codi de fabricant apareixen a la taula productes.</li>
+<li>Calcula la mitjana del preu de tots els productes.</li>
+<li>Calcula el preu més barat de tots els productes.</li>
+<li>Calcula el preu més car de tots els productes.</li>
+<li>Llista el nom i el preu del producte més barat.</li>
+<li>Llista el nom i el preu del producte més car.</li>
+<li>Calcula la suma dels preus de tots els productes.</li>
+<li>Calcula el nombre de productes que té el fabricant Asus.</li>
+<li>Calcula la mitjana del preu de tots els productes del fabricant Asus.</li>
+<li>Calcula el preu més barat de tots els productes del fabricant Asus.</li>
+<li>Calcula el preu més car de tots els productes del fabricant Asus.</li>
+<li>Calcula la suma del preu de tots els productes del fabricant Asus.</li>
+<li>Mostra el preu màxim, preu mínim, preu mitjà i el nombre total de productes que té el fabricant Crucial.</li>
+<li>Mostra el nombre total de productes que té cadascun dels fabricants. El llistat també ha d' incloure els fabricants que no tenen cap producte. El resultat mostrarà dues columnes, una amb el nom del fabricant i una altra amb el nombre de productes que té. Ordeni el resultat descendent pel nombre de productes.</li>
+<li>Mostra el preu màxim, preu mínim i preu mitjà dels productes de cadascun dels fabricants. El resultat mostrarà el nom del fabricant juntament amb les dades que se sol·liciten.</li>
+<li>Mostra el preu màxim, preu mínim, preu mitjà i el nombre total de productes dels fabricants que tenen un preu mitjà superior a 200€. No cal mostrar el nom del fabricant, amb el codi del fabricant és suficient.</li>
+<li>Mostra el nom de cada fabricant, juntament amb el preu màxim, preu mínim, preu mitjà i el nombre total de productes dels fabricants que tenen un preu mitjà superior a 200 €.</li>
+<li>Calcula el nombre de productes que tenen un preu major o igual a 180€.</li>
+<li>Calcula el nombre de productes que té cada fabricant amb un preu major o igual a 180 €.</li>
+<li>Llista el preu mitjà els productes de cada fabricant, mostrant només el codi del fabricant.</li>
+<li>Llista el preu mitjà els productes de cada fabricant, mostrant només el nom del fabricant.</li>
+<li>Llista els noms dels fabricants els productes dels quals tenen un preu mitjà major o igual a 150€.</li>
+<li>Retorna un llistat amb els noms dels fabricants que tenen 2 o més productes.</li>
+<li>
+<p>Retorna un llistat amb els noms dels fabricants i el número de productes que té cadascun amb un preu superior o igual a 220 €. No cal mostrar el nom dels fabricants que no tenen productes que compleixin la condició.</p>
+<p>Exemple del resultat esperat:</p>
+<table>
+<thead>
+<tr>
+<th><strong>nombre</strong></th>
+<th><strong>total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lenovo</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Asus</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Crucial</strong></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Retorna un llistat amb els noms dels fabricants i el nombre de productes que té cadascun amb un preu superior o igual a 220 €. El llistat ha de mostrar el nom de tots els fabricants, és a dir, si hi ha algun fabricant que no té productes amb un preu superior o igual a 220 € haurà d' aparèixer en el llistat amb un valor igual a 0 en el nombre de productes.</p>
+<p>Exemple del resultat esperat:</p>
+<table>
+<thead>
+<tr>
+<th><strong>nombre</strong></th>
+<th><strong>total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lenovo</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Crucial</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Asus</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Huawei</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Samsung</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Gigabyte</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Hewlett-Packard</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Xiaomi</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Seagate</strong></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Retorna un llistat amb els noms dels fabricants on la suma del preu de tots els seus productes és superior a 1000 €.</p>
+</li>
+<li>Retorna un llistat amb el nom del producte més car que té cada fabricant. El resultat ha de tenir tres columnes: nom del producte, preu i nom del fabricant. El resultat ha d' estar ordenat alfabèticament de menor a major pel nom del fabricant.</li>
+</ol>
+<h2 id="117-subconsultes-a-la-clausula-where">1.1.7 Subconsultes (A la clàusula WHERE)</h2>
+<h3 id="1171-amb-operadors-basics-de-comparacio">1.1.7.1 Amb operadors bàsics de comparació</h3>
+<ol>
+<li>Retorna tots els productes del fabricant Lenovo. (Sense utilitzar INNER JOIN).</li>
+<li>Retorna totes les dades dels productes que tenen el mateix preu que el producte més car del fabricant Lenovo. (Sense utilitzar INNER JOIN).</li>
+<li>Llista el nom del producte més car del fabricant Lenovo.</li>
+<li>Llista el nom del producte més barat del fabricant Hewlett-Packard.</li>
+<li>Retorna tots els productes de la base de dades que tenen un preu més gran o igual al producte més car del fabricant Lenovo.</li>
+<li>Llista tots els productes del fabricant Asus que tenen un preu superior al preu mitjà de tots els seus productes.</li>
+</ol>
+<h3 id="1172-subconsultes-amb-all-y-any">1.1.7.2 Subconsultes amb ALL y ANY</h3>
+<ol>
+<li>Retorna el producte més car que hi ha a la taula producte sense fer ús de MAX, ORDER BY ni LIMIT.</li>
+<li>Retorna el producte més barat que hi ha a la taula producte sense fer ús de MIN, ORDER BY ni LIMIT.</li>
+<li>Retorna els noms dels fabricants que tenen productes associats. (Utilitzant ALL o ANY).</li>
+<li>Retorna els noms dels fabricants que no tenen productes associats. (Utilitzant ALL o ANY).</li>
+</ol>
+<h3 id="1173-subconsultes-amb-in-i-not-in">1.1.7.3 Subconsultes amb IN i NOT IN</h3>
+<ol>
+<li>Retorna els noms dels fabricants que tenen productes associats. (Utilitzant IN o NOT IN).</li>
+<li>Retorna els noms dels fabricants que no tenen productes associats. (Utilitzant IN o NOT IN).</li>
+</ol>
+<h3 id="1174-subconsultes-amb-exists-i-not-exists">1.1.7.4 Subconsultes amb EXISTS i NOT EXISTS</h3>
+<ol>
+<li>Retorna els noms dels fabricants que tenen productes associats. (Utilitzant EXISTS o NOT EXISTS).</li>
+<li>Retorna els noms dels fabricants que no tenen productes associats. (Utilitzant EXISTS o NOT EXISTS).</li>
+</ol>
+<h3 id="1175-subconsultes-correlacionades">1.1.7.5 Subconsultes correlacionades</h3>
+<ol>
+<li>Llista el nom de cada fabricant amb el nom i el preu del seu producte més car.</li>
+<li>Retorna un llistat de tots els productes que tenen un preu major o igual a la mitjana de tots els productes del seu mateix fabricant.</li>
+<li>Llista el nom del producte més car del fabricant Lenovo.</li>
+</ol>
+<h2 id="118-subconsultes-a-la-clausula-having">1.1.8 Subconsultes (A la clàusula HAVING)</h2>
+<ol>
+<li>Retorna un llistat amb tots els noms dels fabricants que tenen el mateix nombre de productes que el fabricant Lenovo.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

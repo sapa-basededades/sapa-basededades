@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/0%20-%20Introducci%C3%B3%20a%20les%20Bases%20de%20Dades/NF2%20-%20Disseny%20conceptual%20-%20model%20ER/EXERCICIS/NF2-exercicis-MiniER-La%20Volta/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Exercicis Mni ER - La Volta - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercicis Mni ER - La Volta";
+        var mkdocs_page_input_path = "0 - Introducci\u00f3 a les Bases de Dades\\NF2 - Disseny conceptual - model ER\\EXERCICIS\\NF2-exercicis-MiniER-La Volta.md";
+        var mkdocs_page_url = "/0%20-%20Introducci%C3%B3%20a%20les%20Bases%20de%20Dades/NF2%20-%20Disseny%20conceptual%20-%20model%20ER/EXERCICIS/NF2-exercicis-MiniER-La%20Volta/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exercicis Mni ER - La Volta</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercicis-mni-er-la-volta">Exercicis Mni ER - La Volta</h1>
+<p>Dissenyeu petits diagrames ER per cada exercici. En els subapartats de cada exercici intenta de reutilitzar els elements de diagrames anteriors.</p>
+<p>Si et veus capaç crea una sol diagrama ER tenint en compte els diferents enunciats dels diferents exercicis </p>
+<p><img src="assets/logo-lavolta.png"
+     alt="Logo La Volta" /></p>
+<h2 id="ex-1-etapes-de-la-volta">Ex 1 – Etapes de La Volta</h2>
+<p>Les etapes de La Volta s’identifiquen per un número correlatiu, a comptar a partir de l’1, que com és lògic s’associa a la primera etapa, a continuació el 2 s’associa a la segona, i així successivament fins a l’última. Cada etapa comença en una localitat i acaba en una altra. La localitat d'arribada pot ser la mateixa que la de sortida si l'etapa és circular.</p>
+<p>Ens cal saber la data en la qual es desenvolupen les etapes. No hi pot haver cap etapa que duri més d'un dia. També ens diuen que cal guardar el total de Kms de cada etapa.</p>
+<p><img src="assets/exercici-lavolta-etapes.png"
+     alt="Etapes"
+     width = "250" /></p>
+<h2 id="ex-2-ports-de-muntanya-en-les-etapes">Ex 2 – Ports de muntanya en les etapes</h2>
+<p>Cada etapa de La Volta pot incloure un o més ports de muntanya (o cap), però cada port només pot estar inclòs dins d’una etapa. Dels ports de muntanya ens interessa saber el seu topònim i la seva alçada en metres.</p>
+<p><img src="assets/exercici-lavolta-port-bonaiga.jpg"
+     alt="Etapes"
+     width = "250" /></p>
+<h2 id="ex-3-provincies-en-les-etapes">Ex 3 – Províncies en les etapes</h2>
+<p>Cada etapa de La Volta passa pel territori d’una o més províncies, però per una mateixa província pot passar més d’una etapa (o cap). Cal registrar el total de km de cada etapa que travessen per cada província. Per exemple, a l'etapa 2 es travessa 35 km per la província de Barcelona i 47 km per la província de Tarragona. </p>
+<h2 id="ex-4-mallot-dels-ciclistes-en-les-etapes">Ex 4 - Mallot dels ciclistes en les etapes</h2>
+<p>La nostra base de dades ha de poder registrar quin ciclista porta cada mallot (general, punts, muntanya, etc.) a cada etapa de La Volta. Cada mallot s’identifica gràcies a un codi (3 lletres) i un color determinat. Els ciclistes s’identifiquen per un dorsal, i a la BD ha de constar també el seu nom i cognoms i la seva data de naixement.</p>
+<p><img src="assets/exercici-lavolta-mallots.png"
+     alt="Mallots"
+     height = "100" /></p>
+<h2 id="ex-5-sistema-de-punts-per-saber-qui-es-el-millor-escalador">Ex 5 – Sistema de punts per saber qui és el millor escalador</h2>
+<p>Els ports de muntanya s’identifiquen pel seu topònim, i tenen una una alçada determinada per sobre del nivell del mar. </p>
+<p><img src="assets/exercici-lavolta-mallot-escalador.png"
+     alt="Mallots"
+     height = "100" /></p>
+<p>Depenent de la dificultat els ports es classifiquen en quatre categories (especial, 1a, 2a i 3a). </p>
+<p>Cal dissenyar un sistema per tal d’emmagatzemar els punts que poden assolir els ciclistes segons la posició en què arribin a cada port segons es detalla a continuació.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Categoria  Especial</strong></th>
+<th><strong>Primera categoria</strong></th>
+<th><strong>Segona categoria</strong></th>
+<th><strong>Tercera categoria</strong></th>
+<th><strong>Quarta categoria</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Posició</strong></td>
+<td><em>Punts</em></td>
+<td><em>Punts</em></td>
+<td><em>Punts</em></td>
+<td><em>Punts</em></td>
+<td><em>Punts</em></td>
+</tr>
+<tr>
+<td><strong>1r</strong></td>
+<td>20</td>
+<td>10</td>
+<td>5</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>2a</strong></td>
+<td>16</td>
+<td>8</td>
+<td>3</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>3a</strong></td>
+<td>12</td>
+<td>6</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>4a</strong></td>
+<td>8</td>
+<td>4</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>5a</strong></td>
+<td>4</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>6a</strong></td>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ex-6-sistema-de-punts-per-saber-el-millor-ciclista-per-punts">Ex 6 – Sistema de punts per saber el millor ciclista per punts</h2>
+<p>Seguint el mateix funcionament que el Tour de França es determinarà el sistema de puntuació per aconseguir el mallot verd.</p>
+<p><img src="assets/exercici-lavolta-mallot-punts.png"
+     alt="Mallots"
+     height = "100" /></p>
+<p>Cada etapa es categoritzarà en: etapa plana, etapa mitja muntanya, etapa de muntanya, contrarellotge individual.</p>
+<p>Els punts s'obtindran per el primers llocs de cada etapa i en funció de la seva categoria.
+La distribució de punts es realitzarà mitjançant la següent taula:
+* Etapes planes: 50, 30, 20, 18, 16, 14, 12, 10, 8, 7, 6, 5, 4, 3 y 2 punts respectivament des del primer fins el quinzè ciclista en arribar a la meta.
+* Etapes de mitja muntanya: 30, 25, 22, 19, 17, 15, 13, 11, 9, 7, 6, 5, 4, 3 y 2 punts respectivament des del primer fins el quinzè ciclista en arribar a la meta.
+* Etapes de muntanya i contrarellotges individuals: 20, 17, 15, 13, 12, 10, 9, 8, 7, 6, 5, 4, 3, 2 y 1 punts respectivament des del primer fins el quinzè ciclista en arribar a la meta. </p>
+<h2 id="ex-7-ciclistes-i-classificacions">Ex 7 – Ciclistes i classificacions</h2>
+<p>Ara que ja s'han explicat els diferents tipus de premis que pot aconseguir un ciclista juntament amb les dades bàsiques que cal guardar de cadascun d'ells cal dissenyar quelcom per poder generar les classificacions dels següents mallots: general, punts i muntanya.</p>
+<p><strong><em>Important: No s'ha de dissenyar res per guardar les classificacions sinó aquelles dades necessàries per poder-les generar.</em></strong></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

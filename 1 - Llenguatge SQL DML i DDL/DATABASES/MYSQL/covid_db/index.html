@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Francesc Barragan & Robert Ventura" /><link rel="canonical" href="https://sapa-basededades.github.io/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/covid_db/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Catalonia COVID Database - SaPalomera Bases de dades</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Catalonia COVID Database";
+        var mkdocs_page_input_path = "1 - Llenguatge SQL DML i DDL\\DATABASES\\MYSQL\\covid_db\\README.md";
+        var mkdocs_page_url = "/1%20-%20Llenguatge%20SQL%20DML%20i%20DDL/DATABASES/MYSQL/covid_db/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> SaPalomera Bases de dades
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">SaPalomera Bases de dades</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Catalonia COVID Database</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="catalonia-covid-database">Catalonia COVID Database</h1>
+<p>Base de dades que conté el número de casos positius confirmats de COVID durant l'any 2020 i fins el 9 de juliol del 2021.
+Les dades s'han extret del <a href="https://analisi.transparenciacatalunya.cat/">Portal de dades obertes de la Generalitat de Catalunya</a>:
+* <a href="https://analisi.transparenciacatalunya.cat/Salut/Registre-de-casos-de-COVID-19-a-Catalunya-per-muni/jj6z-iyrp">Registre de casos de COVID 19 a Catalunya per municipi</a>
+* <a href="https://analisi.transparenciacatalunya.cat/Educaci-/Dades-COVID-19-als-centres-educatius/fk8v-uqfv">Registres de dades COVID-19 als centres educatius</a></p>
+<p>Aquesta base de dades va destinada a usos didàctics en assignatures com base de dades, gestió i administració de base de dades.</p>
+<ul>
+<li>Model de la base de dades en format Workbench  <a href="model-covid_db.mwb">model-covid_db.mwb</a></li>
+<li>El fitxer <a href="covid_db-schema.sql">covid_db-schema.sql</a> conté les sentències DDL per la generació de l'esquema/estructura de la base de dades.</li>
+<li>El fitxer <a href="covid_db-data.zip">covid_db-data.zip</a> conté les sentències DML per poder afegir les dades per cada taula de la la base de dades.</li>
+</ul>
+<p>Les seves taules principals són:</p>
+<ul>
+<li><strong>Provincies (4 registres)</strong></li>
+<li><strong>Comarques (~42 registres)</strong></li>
+<li><strong>Municipis (~766 registres)</strong></li>
+<li><strong>Tipus de Casos (5 registres):</strong> Conté els tipus de casos que s'han classificat amb les diferents maneres/proves fetes per detectar positius (Positiu per Test Ràpid, Epidemiològic, Positiu per ELISA, Positiu per ELISA, Positiu per PCR, Positiu per TAR).</li>
+<li><strong>Casos (~155.500 registres):</strong> En aquesta taula conté el número de casos que hi ha hagut en una municipi per sexe i tipus de cas (Positiu per PCR, Test Ràpid,...)</li>
+<li><strong>Centres Educatius Casos (~ 450.000 registres)</strong></li>
+</ul>
+<p>data_generació: Data de la descàrrega de les dades del TRAÇACOVID
+data_creació: Data en que s'ha introduït la dada en el sistema</p>
+<ul>
+<li><strong>Centres Educatius (~ 3.800 registres)</strong></li>
+</ul>
+<blockquote>
+<p>Aquesta base de dades no conté cap índex que no sigui una clau primària, foranao algun índex de tipus únic.</p>
+<p>Tampoc conté cap control d'entrada de dades excepte les restriccions d'integritat referencial proporcionades per les claus foranes i les restriccions d'unicitat de les claus primàries o els índexs de tipus únic.</p>
+</blockquote>
+<p>Autor: <a href="https://www.linkedin.com/in/robertvallllovera/" title="Perfil LinkedIn Robert Ventura Vall-llovera">Robert Ventura Vall-llovera</a>, professor de Cicles Formatius d'Informàtica per la Generalitat de Catalunya .</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
